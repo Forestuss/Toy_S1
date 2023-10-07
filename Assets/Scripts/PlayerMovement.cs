@@ -27,7 +27,8 @@ public class PlayerMovement : MonoBehaviour
             _rb.velocity = new Vector3(_rb.velocity.x, _jumpForce, _rb.velocity.z);
         }
         Look();
-    }
+    }//zzzzzzz
+
 
     void Look() //tuto ytb pour la souris
     {

@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5c6b0eef628b94f841741dc10fc671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubble: {fileID: 1870466366}
+  bubble: {fileID: 8502394694348001283, guid: da404e642003e1e45ac5846406683c5e, type: 3}
   Target: {fileID: 587576036}
 --- !u!114 &41718544
 MonoBehaviour:
@@ -1326,7 +1326,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 587576036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 7.55}
+  m_LocalPosition: {x: 0, y: 0, z: 4.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4828,11 +4828,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1857684780}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1870466366 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8502394694348001283, guid: da404e642003e1e45ac5846406683c5e, type: 3}
-  m_PrefabInstance: {fileID: 8502394695145781711}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1878604128
 GameObject:
   m_ObjectHideFlags: 0

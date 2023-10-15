@@ -17,7 +17,7 @@ public class InstantiateBloc : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            Instantiate(bloc, Target.transform.position, Quaternion.identity);
+            Instantiate(bloc, Target.transform.position, Camera.main.transform.rotation);
         }
     }
 }

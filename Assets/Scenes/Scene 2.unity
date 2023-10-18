@@ -1731,16 +1731,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97541c8d35d194f4e8a6e4e611a030ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 80
-  maxSpeed: 50
-  _jumpForce: 35
+  _speed: 100
+  maxSpeed: 70
+  _jumpForce: 60
   _sensitivity: 2
-  _liquidSpeed: 2
-  _liquidLook: 1
-  _bumpForce: 10
+  _liquidSpeed: 1.8
+  _liquidLook: 2
+  _bumpForce: 1
   _bumpInfluence: 0.4
-  _bumpMIN: 50
-  _bumpMAX: 100
+  _bumpMIN: 1
+  _bumpMAX: 500
   _cameraDistance: 70
   _cameraPivot: {fileID: 1841644205}
 --- !u!54 &942965406

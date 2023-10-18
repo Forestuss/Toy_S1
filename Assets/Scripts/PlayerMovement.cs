@@ -90,7 +90,8 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        MovePlayer();
+        //MovePlayer();
+        MovePlayerAlternate();
         JumpPlayer();
     }
 
@@ -117,6 +118,22 @@ public class PlayerMovement : MonoBehaviour
             _rb.velocity = _rb.velocity.normalized * maxSpeed;
         }
         */
+    }
+
+    private void MovePlayerAlternate()
+    {
+        if (_isGrounded)
+        {
+            _movementDir = transform.forward * _verticalInput + transform.right * _horizontalInput;
+            _rb.AddForce(_movementDir.normalized * _speed, ForceMode.Force);
+            Debug.Log("Grounded");
+        }
+        else
+        {
+            _movementDir = transform.forward * _verticalInput + transform.right * _horizontalInput;
+            _rb.AddForce(_movementDir.normalized * _speed / 3, ForceMode.Force);
+            Debug.Log("Not Grounded");
+        }
     }
 
     private void JumpPlayer()

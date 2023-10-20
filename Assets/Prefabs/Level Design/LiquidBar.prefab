@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1295204437752031411}
   - component: {fileID: 1295204437752031410}
   m_Layer: 0
-  m_Name: BoostLiquid - Rectangle
+  m_Name: LiquidBar
   m_TagString: BoostLiquid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

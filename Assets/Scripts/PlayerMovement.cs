@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Dependencies.NCalc;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Animations;
 
@@ -35,14 +36,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxSpeed = 200f;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _sensitivity;
+    [SerializeField] private float _AirResistence; //resistence de l'air lorsque le joueur n'est ni grounded ni boosted (réduit sa vélocité progressivement). Valeur de base: 1.002
 
     private float _originalSensitivity;
 
     [Header("Liquid")]
     public float _liquidSpeed; //multiplicateur de vitesse dans la bulle. 1 signifie que la vitesse est la même dans la bulle qu'a l'exterieur. 
     public float _liquidLook; //Sensivité de la caméra dans la bulle (ne pas mettre une sensibilité au dessus de la sensibilité de base) 
+    public bool _isLiquidBoostLinear; //fonctionnement alternatif de la bulle: le joueur n'accélère que dedans et perd ensuite sa vitesse gagnée. (fonctionnement plus "directionnel" de la bulle).
+    public float _linearBoostRatio; //Facteur d'augmentation de la vélocité en sortie de bulle si isLiquidBoostLenear est true. Valeur de base = 1 (pas de changement de vélocité en sortie de bulle).
 
-    [Header("Bump")]
+    [Header("Bumper")]
     public float _bumpForce; //puissance factorielle du bumper. 1 signifie que le bumper renvoie la même force que l'on lui donne. Valeur de base 0.9 (légère perte de puissance de vélocité à chaque saut de bumper)
     public float _bumpInfluence; //influence de la direction du bumper sur la trajectoire du joueur. Uniquement mettre une valeur float entre 0 et 1. 0 signifie que le player rebondit comme sur un miroir, et 1 qu'il suit complètement la direction du bumper.
     public float _bumpMIN; //Le minimum de base est de 50. Empêche le joueur de faire de touts petits sauts par erreurs.
@@ -52,11 +56,16 @@ public class PlayerMovement : MonoBehaviour
     [Range(0.0f, 70.0f)] public float _cameraDistance;
     public GameObject _cameraPivot;
 
+    [Header("SpawnManagment")]
+    public SpawnLiquid SpawnLiquidRefScript;
+    public SpawnBouncer SpawnBumperRefScript;
+
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _originalSensitivity = _sensitivity;
-       
+
     }
 
     void Update()
@@ -93,6 +102,12 @@ public class PlayerMovement : MonoBehaviour
         //MovePlayer();
         MovePlayerAlternate();
         JumpPlayer();
+
+        if (_isGrounded == false && _isBoosted == false)
+        {
+            _rb.velocity = _rb.velocity / _AirResistence;
+        }
+
     }
 
     private void MovePlayer()
@@ -103,13 +118,13 @@ public class PlayerMovement : MonoBehaviour
         {
             _movementDir = transform.forward * _verticalInput + transform.right * _horizontalInput;
             _rb.AddForce(_movementDir.normalized * _speed, ForceMode.Force);
-            Debug.Log("Grounded");
+            //Debug.Log("Grounded");
         }
         else
         {
             _movementDir = transform.forward * _verticalInput + transform.right * _horizontalInput;
             _rb.AddForce(_movementDir.normalized * _speed / 3, ForceMode.Force);
-            Debug.Log("Not Grounded");
+            //Debug.Log("Not Grounded");
         }
 
         /*
@@ -126,13 +141,13 @@ public class PlayerMovement : MonoBehaviour
         {
             _movementDir = transform.forward * _verticalInput + transform.right * _horizontalInput;
             _rb.AddForce(_movementDir.normalized * _speed, ForceMode.Force);
-            Debug.Log("Grounded");
+            //Debug.Log("Grounded");
         }
         else
         {
             _movementDir = transform.forward * _verticalInput + transform.right * _horizontalInput;
             _rb.AddForce(_movementDir.normalized * _speed / 3, ForceMode.Force);
-            Debug.Log("Not Grounded");
+            //Debug.Log("Not Grounded");
         }
     }
 
@@ -168,6 +183,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Liquid.gameObject.tag == "BoostLiquid")
         {
+            SpawnLiquidRefScript.isCollidedLiquid = true;
+            SpawnBumperRefScript.isCollidedLiquid = true;
+
             _rb.useGravity = false; //enlève la gravité dans le liquide de boost 
             _isBoosted = true; // annule la possibilité de mouvement 
             originalVelocity = _rb.velocity;
@@ -178,8 +196,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Liquid.gameObject.tag == "BoostLiquid")
         {
+
+            if (_isLiquidBoostLinear)
+            {
+                _rb.velocity = originalVelocity * _liquidSpeed;
+            }
+            else
+            {
+                _rb.AddForce(_rb.velocity * _liquidSpeed, ForceMode.Force); //boost de la velocité 
+            }
+            
             _sensitivity = Mathf.Min(_sensitivity / 1.05f, _liquidLook); //réduit la sensi de la souris dans le liquide de boost (pas néscessaire) 
-            _rb.AddForce(_rb.velocity * _liquidSpeed, ForceMode.Force); //boost de la velocité 
+
         }
     }
 
@@ -187,6 +215,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Liquid.gameObject.tag == "BoostLiquid")
         {
+            if (_isLiquidBoostLinear)
+            {
+                _rb.velocity = originalVelocity * _linearBoostRatio;
+            }
             _isBoosted = false;  
             _sensitivity = _originalSensitivity; 
             _rb.useGravity = true; 
@@ -195,19 +227,24 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision Bumper)
     {
+
         if (Bumper.gameObject.tag == "Bouncer")
-            {
+        {
+            SpawnLiquidRefScript.isCollidedBumper = true;
+            SpawnBumperRefScript.isCollidedBumper = true;
+
             var _bumpSpeed = Mathf.Clamp(bumperVelocity.magnitude * _bumpForce, _bumpMIN, _bumpMAX); //récupère la vitesse (magnitude) du player et la factorise avec la puissance que le bump va renvoyer, et défini une distance de saut de bumper Min et Max 
             Vector3 _mirrorDirection = Vector3.Reflect(bumperVelocity.normalized, Bumper.contacts[0].normal); //Vecteur Miroir réfléchi sur la normale du bumper.
             Vector3 _bumpDirection = Vector3.Lerp(_mirrorDirection, Bumper.contacts[0].normal, _bumpInfluence); //Définition de l'influence de la direction du bumper (max 1) sur le vecteur miroir (min 0) réfléchi dessus.
 
             _rb.velocity = _bumpDirection * _bumpSpeed; //application de la vélocité sur le player
 
-            //_velovityBug = _bumpDirection * _bumpSpeed; //Debug
-            //Debug.Log("Bumper Direction: " + _bumpDirection);
-            //Debug.Log("Reflect Result: " + _velovityBug);
-            //Debug.Log("Final Velocity: " + _rb.velocity);
-            //_debugIsFrameCollide = true;
+        }
+
+        if (Bumper.gameObject.tag == "Ground")
+        {
+            SpawnLiquidRefScript.isCollidedGround = true;
+            SpawnBumperRefScript.isCollidedGround = true;
         }
     }
 }

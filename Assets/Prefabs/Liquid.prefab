@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8502394694348001281}
   - component: {fileID: 8502394694348001282}
   - component: {fileID: 9105821254516347672}
+  - component: {fileID: 8717353201174608800}
   m_Layer: 0
   m_Name: Liquid
   m_TagString: BoostLiquid
@@ -118,7 +119,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ab5fa08d7a8634bbfb2a2b0bd3972b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  liquidVanish: 5
-  bumperVanish: 5
+  liquidVanish: 0
+  bumperVanish: 0
   isResetOnCollision: 1
   isResetOnTrigger: 1
+--- !u!114 &8717353201174608800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8502394694348001283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e340454bc0f945408dffa0b9e008809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeRatioOnSpeed: 1
+  sizeRatioOnTime: 0

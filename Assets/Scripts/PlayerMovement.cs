@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
@@ -8,33 +9,41 @@ using UnityEngine.Animations;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Material slideMaterial;
+    public Material originalMaterial;
 
-    private Rigidbody _rb;
+    private Vector3 inputVelocity;
+    private Vector3 inertieVelocity;
+
+    private Rigidbody rb;
     private Vector3 bumperVelocity;
         
-    private bool _isBoosted;
-    private bool _isBumping;
+    private bool isBoosted;
+    private bool isBumping;
     private Vector3 originalVelocity;
 
-    private bool _debugIsFrameCollide = false; //DEBUG 
-    private Vector3 _velovityBug; //DEBUG
+    private bool debugIsFrameCollide = false; //DEBUG 
+    private Vector3 velovityBug; //DEBUG
 
-    private float _verticalInput;
-    private float _horizontalInput;
+    private float verticalInput;
+    private float horizontalInput;
 
-    private Vector3 _movementDir;
+    private Vector3 movementDir;
 
-    private bool _jumping;
-    private bool _isGrounded;
+    private bool jumping;
+    private bool isGrounded;
+    private bool isSliding;
 
+    public float lerpSlide;
 
     private float yaw = 0.0f, pitch = 0.0f;
 
     [Header("Controller")]
-    [SerializeField] private float _speed = 1.0f;
+    [SerializeField] private float speed = 1.0f;
     [SerializeField] private float maxSpeed = 200f;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _sensitivity;
+    [SerializeField] private float clamp;
 
     private float _originalSensitivity;
 
@@ -52,79 +61,118 @@ public class PlayerMovement : MonoBehaviour
     [Range(0.0f, 70.0f)] public float _cameraDistance;
     public GameObject _cameraPivot;
 
+
+    public LayerMask groundLayer;
+
     void Start()
     {
-        _rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         _originalSensitivity = _sensitivity;
-       
     }
 
     void Update()
     {
         // Récuperation de données pour le mouvement
-        _horizontalInput = Input.GetAxisRaw("Horizontal");
-        _verticalInput = Input.GetAxisRaw("Vertical");
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
         
         // Mouvement de la caméra
         Look();
 
         // Récuperation des données pour le saut
-        if (Physics.Raycast(_rb.transform.position, Vector3.down, 2.5f))
+        if (Physics.Raycast(rb.transform.position, Vector3.down, 2.5f, groundLayer))
         {
-            _isGrounded = true;
+            Debug.Log("grounded2222");
+            isGrounded = true;
         }
         else
         {
-            _isGrounded = false;
+            isGrounded = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            _jumping = true;
+            jumping = true;
+        }
+
+        if (Input.GetKey(KeyCode.C) && isGrounded)
+        {
+            Debug.Log("slides");
+            isSliding = true;
+            GetComponent<MeshRenderer>().material = slideMaterial;
+        }
+        else
+        {
+            isSliding = false;
+            GetComponent<MeshRenderer>().material = originalMaterial;
         }
 
         Camera.main.transform.localPosition = new Vector3(0, 0, - _cameraDistance);
 
-        bumperVelocity = _rb.velocity;
+        bumperVelocity = rb.velocity;
     }
 
     void FixedUpdate()
     {
-        MovePlayer();
+        //MovePlayer();
+        VelocityPlayer();
         JumpPlayer();
+        Debug.Log(rb.velocity.magnitude);
     }
 
-    private void MovePlayer()
+    private void VelocityPlayer()
     {
-        /*_movementDir = new Vector3(_horizontalInput, _rb.velocity.y, _verticalInput);
-        _rb.AddRelativeForce(_movementDir.normalized * _speed, ForceMode.Force);*/
-        if(_isGrounded)
+        inputVelocity = transform.forward * verticalInput + transform.right * horizontalInput;
+        inertieVelocity = rb.velocity;
+
+        if (isGrounded && !isSliding)
         {
-            _movementDir = transform.forward * _verticalInput + transform.right * _horizontalInput;
-            _rb.AddForce(_movementDir.normalized * _speed, ForceMode.Force);
+            rb.velocity =  Vector3.ClampMagnitude(inertieVelocity + inputVelocity.normalized * speed, clamp);
+        }
+
+        if (isGrounded && isSliding)
+        {
+            rb.velocity = Vector3.Lerp(inertieVelocity + inputVelocity.normalized * speed, Vector3.zero, lerpSlide);
+        }
+
+        if (!isGrounded)
+        {
+            rb.velocity = inertieVelocity + inputVelocity.normalized * speed;
+        }
+
+        
+}
+
+    private void MovePlayer() // Version AddForce
+    {
+        //_movementDir = new Vector3(_horizontalInput, _rb.velocity.y, _verticalInput);
+        //_rb.AddRelativeForce(_movementDir.normalized * _speed, ForceMode.Force);
+        if(isGrounded)
+        {
+            movementDir = transform.forward * verticalInput + transform.right * horizontalInput;
+            rb.AddForce(movementDir.normalized * speed, ForceMode.Force);
             Debug.Log("Grounded");
         }
         else
         {
-            _movementDir = transform.forward * _verticalInput + transform.right * _horizontalInput;
-            _rb.AddForce(_movementDir.normalized * _speed / 3, ForceMode.Force);
+            movementDir = transform.forward * verticalInput + transform.right * horizontalInput;
+            rb.AddForce(movementDir.normalized * speed / 3, ForceMode.Force);
             Debug.Log("Not Grounded");
         }
 
-        /*
-        if(_rb.velocity.magnitude > 10)
+        
+        if(rb.velocity.magnitude > 10)
         {
-            _rb.velocity = _rb.velocity.normalized * maxSpeed;
+            //_rb.velocity = _rb.velocity.normalized * maxSpeed;
         }
-        */
     }
 
     private void JumpPlayer()
     {
-        if(_jumping)
+        if(jumping)
         {
-            _rb.velocity = new Vector3(_rb.velocity.x, _jumpForce, _rb.velocity.z);
-            _jumping = false;
+            rb.velocity = new Vector3(rb.velocity.x, _jumpForce, rb.velocity.z);
+            jumping = false;
         }
     }
 
@@ -141,19 +189,19 @@ public class PlayerMovement : MonoBehaviour
 
     void Movement() //tuto ytb pour le mouvement (fonctionne en changant directement la vélocité) 
     {
-        Vector2 axis = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")).normalized * _speed; 
+        Vector2 axis = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")).normalized * speed; 
         Vector3 forward = new Vector3(-Camera.main.transform.right.z, 0.0f, Camera.main.transform.right.x);
-        Vector3 direction = forward * axis.x + Camera.main.transform.right * axis.y + Vector3.up * _rb.velocity.y;
-        _rb.velocity = direction;
+        Vector3 direction = forward * axis.x + Camera.main.transform.right * axis.y + Vector3.up * rb.velocity.y;
+        rb.velocity = direction;
     }
 
     void OnTriggerEnter(Collider Liquid)
     {
         if (Liquid.gameObject.tag == "BoostLiquid")
         {
-            _rb.useGravity = false; //enlève la gravité dans le liquide de boost 
-            _isBoosted = true; // annule la possibilité de mouvement 
-            originalVelocity = _rb.velocity;
+            rb.useGravity = false; //enlève la gravité dans le liquide de boost 
+            isBoosted = true; // annule la possibilité de mouvement 
+            originalVelocity = rb.velocity;
         }
     }
 
@@ -161,8 +209,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Liquid.gameObject.tag == "BoostLiquid")
         {
-            _sensitivity = Mathf.Min(_sensitivity / 1.05f, _liquidLook); //réduit la sensi de la souris dans le liquide de boost (pas néscessaire) 
-            _rb.AddForce(_rb.velocity * _liquidSpeed, ForceMode.Force); //boost de la velocité 
+            //_sensitivity = Mathf.Min(_sensitivity / 1.05f, _liquidLook); //réduit la sensi de la souris dans le liquide de boost (pas néscessaire) 
+            rb.AddForce(rb.velocity * _liquidSpeed, ForceMode.Force); //boost de la velocité 
         }
     }
 
@@ -170,9 +218,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Liquid.gameObject.tag == "BoostLiquid")
         {
-            _isBoosted = false;  
+            isBoosted = false;  
             _sensitivity = _originalSensitivity; 
-            _rb.useGravity = true; 
+            rb.useGravity = true; 
         }
     }
 
@@ -184,7 +232,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 _mirrorDirection = Vector3.Reflect(bumperVelocity.normalized, Bumper.contacts[0].normal); //Vecteur Miroir réfléchi sur la normale du bumper.
             Vector3 _bumpDirection = Vector3.Lerp(_mirrorDirection, Bumper.contacts[0].normal, _bumpInfluence); //Définition de l'influence de la direction du bumper (max 1) sur le vecteur miroir (min 0) réfléchi dessus.
 
-            _rb.velocity = _bumpDirection * _bumpSpeed; //application de la vélocité sur le player
+            rb.velocity += _bumpDirection * _bumpSpeed; //application de la vélocité sur le player
 
             //_velovityBug = _bumpDirection * _bumpSpeed; //Debug
             //Debug.Log("Bumper Direction: " + _bumpDirection);
@@ -194,4 +242,3 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 }
-

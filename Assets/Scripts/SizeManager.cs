@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SizeManager : MonoBehaviour
@@ -8,8 +9,9 @@ public class SizeManager : MonoBehaviour
     public float sizeRatioOnTime; //Mettre à 0 pour annuler la fonctionnalité
 
     private Rigidbody _RB;
+    private float originalScale;
 
-    public BlocVanish VanishScript;
+    [DoNotSerialize] public BlocVanish VanishScript;
 
     private void Start()
     {
@@ -18,6 +20,9 @@ public class SizeManager : MonoBehaviour
             _RB = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
             float sizeresult = transform.localScale.x + (transform.localScale.x * (sizeRatioOnSpeed * _RB.velocity.magnitude));
             transform.localScale = new Vector3(sizeresult, sizeresult, sizeresult);
+            originalScale = sizeresult;
+
+            VanishScript = gameObject.GetComponent<BlocVanish>();
         }
     }
 

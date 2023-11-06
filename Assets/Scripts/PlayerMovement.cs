@@ -139,32 +139,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = inertieVelocity + inputVelocity.normalized * speed;
         }
-
-        
-}
-
-    private void MovePlayer() // Version AddForce
-    {
-        //_movementDir = new Vector3(_horizontalInput, _rb.velocity.y, _verticalInput);
-        //_rb.AddRelativeForce(_movementDir.normalized * _speed, ForceMode.Force);
-        if(isGrounded)
-        {
-            movementDir = transform.forward * verticalInput + transform.right * horizontalInput;
-            rb.AddForce(movementDir.normalized * speed, ForceMode.Force);
-            Debug.Log("Grounded");
-        }
-        else
-        {
-            movementDir = transform.forward * verticalInput + transform.right * horizontalInput;
-            rb.AddForce(movementDir.normalized * speed / 3, ForceMode.Force);
-            Debug.Log("Not Grounded");
-        }
-
-        
-        if(rb.velocity.magnitude > 10)
-        {
-            //_rb.velocity = _rb.velocity.normalized * maxSpeed;
-        }
     }
 
     private void JumpPlayer()
@@ -183,17 +157,7 @@ public class PlayerMovement : MonoBehaviour
         yaw += Input.GetAxisRaw("Mouse X") * _sensitivity;
         transform.localRotation = Quaternion.Euler(0, yaw, 0);
         _cameraPivot.transform.localRotation = Quaternion.Euler(pitch, 0, 0);
-    }
-
-    
-
-    void Movement() //tuto ytb pour le mouvement (fonctionne en changant directement la vélocité) 
-    {
-        Vector2 axis = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")).normalized * speed; 
-        Vector3 forward = new Vector3(-Camera.main.transform.right.z, 0.0f, Camera.main.transform.right.x);
-        Vector3 direction = forward * axis.x + Camera.main.transform.right * axis.y + Vector3.up * rb.velocity.y;
-        rb.velocity = direction;
-    }
+    }  
 
     void OnTriggerEnter(Collider Liquid)
     {

@@ -4,44 +4,47 @@ using UnityEngine;
 
 public class Movements : MonoBehaviour
 {
+    public Material slideMaterial;
+    public Material originalMaterial;
+
     private Vector3 inputVelocity;
     private Vector3 inertieVelocity;
 
     private Rigidbody rb;
 
-    private float _verticalInput;
-    private float _horizontalInput;
+    private float verticalInput;
+    private float horizontalInput;
 
-    private float pitch, yaw;
+    [SerializeField] private bool jumping;
+    [SerializeField] private bool isGrounded;
+    [SerializeField] private bool isSliding;
 
-    private bool isGrounded;
-    private bool jumping;
+    public float lerpSlide;
 
     [Header("Controller")]
-    [SerializeField] private float speed = 10f;
-    [SerializeField] private float airDrag = 0.75f;
-    [SerializeField] private float sensitivity = 2;
+    [SerializeField] private float speed = 1.0f;
+    [SerializeField] private float maxSpeed = 200f;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float clamp;
 
-    private Vector3 movementDir;
+    public LayerMask groundLayer;
 
-    [Header("Camera")]
-    [Range(0.0f, 70.0f)] public float _cameraDistance;
-    public GameObject _cameraPivot;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        _horizontalInput = Input.GetAxisRaw("Horizontal");
-        _verticalInput = Input.GetAxisRaw("Vertical");
+        // Récuperation de données pour le mouvement
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
 
-        if (Physics.Raycast(rb.transform.position, Vector3.down, 2.5f))
+        // Récuperation des données pour le saut
+        if (Physics.Raycast(rb.transform.position, Vector3.down, 2.5f, groundLayer))
         {
+            Debug.Log("grounded2222");
             isGrounded = true;
         }
         else
@@ -53,34 +56,55 @@ public class Movements : MonoBehaviour
         {
             jumping = true;
         }
-        inertieVelocity = rb.velocity;
-        
 
-    }
-
-    private void FixedUpdate()
-    {
-        Look();
-        if (isGrounded)
+        if (Input.GetKey(KeyCode.C) && isGrounded)
         {
-            movementDir = transform.forward * _verticalInput + transform.right * _horizontalInput;
-            rb.AddForce(movementDir.normalized * speed, ForceMode.Force);
-            Debug.Log("Grounded");
+            Debug.Log("slides");
+            isSliding = true;
+            GetComponent<MeshRenderer>().material = slideMaterial;
         }
         else
         {
-            movementDir = (transform.forward * _verticalInput + transform.right * _horizontalInput) * airDrag;
-            rb.AddForce(movementDir.normalized * speed, ForceMode.Force);
-            Debug.Log("Not Grounded");
+            isSliding = false;
+            GetComponent<MeshRenderer>().material = originalMaterial;
         }
-        rb.velocity = inputVelocity + inertieVelocity;
     }
-    void Look() //tuto ytb pour la souris (fonctionnel)
+
+    void FixedUpdate()
     {
-        pitch -= Input.GetAxisRaw("Mouse Y") * sensitivity;
-        pitch = Mathf.Clamp(pitch, -90.0f, 90.0f); 
-        yaw += Input.GetAxisRaw("Mouse X") * sensitivity;
-        transform.localRotation = Quaternion.Euler(0, yaw, 0);
-        _cameraPivot.transform.localRotation = Quaternion.Euler(pitch,0 ,0);
+        //MovePlayer();
+        VelocityPlayer();
+        JumpPlayer();
+        Debug.Log(rb.velocity.magnitude);
+    }
+
+    private void VelocityPlayer()
+    {
+        inputVelocity = transform.forward * verticalInput + transform.right * horizontalInput;
+        inertieVelocity = rb.velocity;
+
+        if (isGrounded && !isSliding)
+        {
+            rb.velocity = Vector3.ClampMagnitude(inertieVelocity + inputVelocity.normalized * speed, clamp);
+        }
+
+        if (isGrounded && isSliding)
+        {
+            rb.velocity = Vector3.Lerp(inertieVelocity + inputVelocity.normalized * speed, Vector3.zero, lerpSlide);
+        }
+
+        if (!isGrounded)
+        {
+            rb.velocity = inertieVelocity + inputVelocity.normalized * speed;
+        }
+    }
+
+    private void JumpPlayer()
+    {
+        if (jumping)
+        {
+            rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+            jumping = false;
+        }
     }
 }

@@ -7,10 +7,12 @@ public class BlocVanish : MonoBehaviour
 {
     public float liquidVanish;
     public float bumperVanish;
+    public bool isActive;
     private float timer;
 
     public bool isResetOnCollision;
     public bool isResetOnTrigger;
+    
 
     private void Awake()
     {
@@ -29,7 +31,7 @@ public class BlocVanish : MonoBehaviour
     {
         timer -= Time.deltaTime;
 
-        if (timer <= 0)
+        if (timer <= 0 && isActive)
         {
             Destroy(gameObject);
         }

@@ -237,7 +237,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 _mirrorDirection = Vector3.Reflect(bumperVelocity.normalized, Bumper.contacts[0].normal); //Vecteur Miroir réfléchi sur la normale du bumper.
             Vector3 _bumpDirection = Vector3.Lerp(_mirrorDirection, Bumper.contacts[0].normal, _bumpInfluence); //Définition de l'influence de la direction du bumper (max 1) sur le vecteur miroir (min 0) réfléchi dessus.
 
-            _rb.velocity = _bumpDirection * _bumpSpeed; //application de la vélocité sur le player
+            _rb.velocity += _bumpDirection * _bumpSpeed; //application de la vélocité sur le player
 
         }
 

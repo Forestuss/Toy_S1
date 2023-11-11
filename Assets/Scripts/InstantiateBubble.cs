@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class InstantiateBubble : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject bubble;
-    [SerializeField]
-    private GameObject Target;
+    [SerializeField] private GameObject bubble;
+    [SerializeField] private GameObject Target;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;

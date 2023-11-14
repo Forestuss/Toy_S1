@@ -43,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Liquid")]
     public float _liquidSpeed; //multiplicateur de vitesse dans la bulle. 1 signifie que la vitesse est la même dans la bulle qu'a l'exterieur. 
     public float _liquidLook; //Sensivité de la caméra dans la bulle (ne pas mettre une sensibilité au dessus de la sensibilité de base) 
+    public float _liquidMinSpeed; //Magnitude min de la bulle.
+    public float _liquidMaxSpeed; //Magnitude max de la bulle.
     public bool _isLiquidBoostLinear; //fonctionnement alternatif de la bulle: le joueur n'accélère que dedans et perd ensuite sa vitesse gagnée. (fonctionnement plus "directionnel" de la bulle).
     public float _linearBoostRatio; //Facteur d'augmentation de la vélocité en sortie de bulle si isLiquidBoostLenear est true. Valeur de base = 1 (pas de changement de vélocité en sortie de bulle).
 
@@ -186,6 +188,8 @@ public class PlayerMovement : MonoBehaviour
             SpawnLiquidRefScript.isCollidedLiquid = true;
             SpawnBumperRefScript.isCollidedLiquid = true;
 
+            Debug.Log(_rb.GetComponent<Rigidbody>().velocity.magnitude);
+
             _rb.useGravity = false; //enlève la gravité dans le liquide de boost 
             _isBoosted = true; // annule la possibilité de mouvement 
             originalVelocity = _rb.velocity;
@@ -205,7 +209,17 @@ public class PlayerMovement : MonoBehaviour
             {
                 _rb.AddForce(_rb.velocity * _liquidSpeed, ForceMode.Force); //boost de la velocité 
             }
-            
+
+            if (_rb.velocity.magnitude > _liquidMaxSpeed)
+            {
+                _rb.velocity = _rb.velocity.normalized * _liquidMaxSpeed;
+            }
+
+            if (_rb.velocity.magnitude < _liquidMinSpeed)
+            {
+                _rb.velocity = _rb.velocity.normalized * _liquidMinSpeed;
+            }
+
             _sensitivity = Mathf.Min(_sensitivity / 1.05f, _liquidLook); //réduit la sensi de la souris dans le liquide de boost (pas néscessaire) 
 
         }
@@ -237,7 +251,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 _mirrorDirection = Vector3.Reflect(bumperVelocity.normalized, Bumper.contacts[0].normal); //Vecteur Miroir réfléchi sur la normale du bumper.
             Vector3 _bumpDirection = Vector3.Lerp(_mirrorDirection, Bumper.contacts[0].normal, _bumpInfluence); //Définition de l'influence de la direction du bumper (max 1) sur le vecteur miroir (min 0) réfléchi dessus.
 
-            _rb.velocity += _bumpDirection * _bumpSpeed; //application de la vélocité sur le player
+            _rb.velocity = _bumpDirection * _bumpSpeed; //application de la vélocité sur le player
 
         }
 

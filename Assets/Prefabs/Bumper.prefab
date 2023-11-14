@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4673420374624086984}
   - component: {fileID: 1015900807458801749}
   - component: {fileID: 8774363289345256695}
+  - component: {fileID: 8526527215584965902}
   - component: {fileID: 4744838298383475120}
   m_Layer: 0
   m_Name: Bumper
@@ -106,6 +107,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8526527215584965902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5208014263546810960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e340454bc0f945408dffa0b9e008809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeRatioOnSpeed: 0
+  sizeRatioOnTime: 0
+  VanishScript: {fileID: 0}
 --- !u!114 &4744838298383475120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,5 +136,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   liquidVanish: 0
   bumperVanish: 0
+  isActive: 0
   isResetOnCollision: 0
   isResetOnTrigger: 0

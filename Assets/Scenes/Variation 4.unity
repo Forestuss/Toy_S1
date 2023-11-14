@@ -1688,7 +1688,7 @@ Transform:
   m_GameObject: {fileID: 942965400}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1114.8, y: 17.6, z: 1334.6}
+  m_LocalPosition: {x: -1114.8, y: 17.6, z: 420}
   m_LocalScale: {x: 1.3005, y: 2.2032106, z: 1.3005}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1714,6 +1714,8 @@ MonoBehaviour:
   _AirResistence: 1.002
   _liquidSpeed: 1.5
   _liquidLook: 2
+  _liquidMinSpeed: 1
+  _liquidMaxSpeed: 100000
   _isLiquidBoostLinear: 0
   _linearBoostRatio: 1.2
   _bumpForce: 1

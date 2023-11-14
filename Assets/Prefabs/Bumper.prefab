@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e340454bc0f945408dffa0b9e008809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeRatioOnSpeed: 0
+  sizeRatioOnSpeed: 1
   sizeRatioOnTime: 0
   VanishScript: {fileID: 0}
 --- !u!114 &4744838298383475120

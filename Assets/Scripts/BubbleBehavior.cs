@@ -8,6 +8,8 @@ public class BubbleBehavior : MonoBehaviour
     public float mergeBubbleSpeed;
     public float mergeBubbleSizeRatio;
 
+    private bool isFirstTick = false;
+
     private void Start()
     {
         gameObject.AddComponent<Rigidbody>();
@@ -20,8 +22,16 @@ public class BubbleBehavior : MonoBehaviour
         if (other.gameObject.CompareTag("BoostLiquid"))
         {
             float maxPos = mergeBubbleSpeed/((transform.position - other.transform.position).magnitude);
-            Debug.Log("Max Pos:" + maxPos);
             transform.position = Vector3.MoveTowards(transform.position, other.transform.position, maxPos);    
+        }
+    }
+
+    private void Update()
+    {
+        if (isFirstTick == false)
+        {
+            Debug.Log("FirstTick");
+            Destroy(gameObject.GetComponent<Rigidbody>());
         }
     }
 }

@@ -5952,8 +5952,6 @@ GameObject:
   - component: {fileID: 1392003363}
   - component: {fileID: 1392003365}
   - component: {fileID: 1392003364}
-  - component: {fileID: 1392003361}
-  - component: {fileID: 1392003362}
   - component: {fileID: 1392003370}
   - component: {fileID: 1392003371}
   - component: {fileID: 1392003372}
@@ -5991,34 +5989,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
---- !u!114 &1392003361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1392003359}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f5c6b0eef628b94f841741dc10fc671, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bubble: {fileID: 8502394694348001283, guid: da404e642003e1e45ac5846406683c5e, type: 3}
-  Target: {fileID: 587576036}
---- !u!114 &1392003362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1392003359}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63f1bc1bc98d5b94d8a4ba6af1de42ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bloc: {fileID: 5208014263546810960, guid: 6ef197099bb792947a1f0fd9db109f15, type: 3}
-  Target: {fileID: 587576036}
 --- !u!114 &1392003363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6032,7 +6002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 2
-  cameraDistance: 70
+  cameraDistance: 0
   cameraHeight: 0
   cameraPivot: {fileID: 1841644205}
   cameraTarget: {fileID: 1677323158}
@@ -6051,10 +6021,10 @@ MonoBehaviour:
   bloc: {fileID: 5208014263546810960, guid: 6ef197099bb792947a1f0fd9db109f15, type: 3}
   Target: {fileID: 587576036}
   Player: {fileID: 1392003359}
-  _bumpForce: 0.9
+  _bumpForce: 0.7
   _bumpInfluence: 0.4
   _bumpMIN: 50
-  _bumpMAX: 200
+  _bumpMAX: 300
 --- !u!114 &1392003365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6209,7 +6179,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1e+9
+  m_Time: 1
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -6228,7 +6198,7 @@ TrailRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.74336284
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0

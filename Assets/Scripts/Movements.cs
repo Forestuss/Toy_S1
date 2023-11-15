@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class Movements : MonoBehaviour
 {
@@ -27,12 +28,17 @@ public class Movements : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float clamp;
 
+    [Header("Jump Tolerance")]
+    public float coyoteTime = 0.2f;
+    public float coyoteTimeCounter = 0f;
+
     public LayerMask groundLayer;
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        coyoteTimeCounter = coyoteTime;
     }
 
     void Update()
@@ -74,6 +80,7 @@ public class Movements : MonoBehaviour
     {
         //MovePlayer();
         VelocityPlayer();
+        // coyoteTimeChecking();
         JumpPlayer();
         Debug.Log(rb.velocity.magnitude);
     }
@@ -83,12 +90,12 @@ public class Movements : MonoBehaviour
         inputVelocity = transform.forward * verticalInput + transform.right * horizontalInput;
         inertieVelocity = rb.velocity;
 
-        if (isGrounded && !isSliding)
+        if (isGrounded && isSliding)
         {
             rb.velocity = Vector3.ClampMagnitude(inertieVelocity + inputVelocity.normalized * speed, clamp);
         }
 
-        if (isGrounded && isSliding)
+        if (isGrounded && !isSliding)
         {
             rb.velocity = Vector3.Lerp(inertieVelocity + inputVelocity.normalized * speed, Vector3.zero, lerpSlide);
         }
@@ -96,6 +103,10 @@ public class Movements : MonoBehaviour
         if (!isGrounded)
         {
             rb.velocity = inertieVelocity + inputVelocity.normalized * speed;
+        }
+        if(rb.velocity.magnitude > maxSpeed)
+        {
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
         }
     }
 
@@ -106,5 +117,20 @@ public class Movements : MonoBehaviour
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
             jumping = false;
         }
+    }
+
+    private void coyoteTimeChecking()
+    {
+        if (isGrounded)
+            coyoteTimeCounter = coyoteTime;
+        else
+            coyoteTimeCounter -= Time.deltaTime;
+
+
+        if (isGrounded && Input.GetButtonDown("Jump"))
+            jumping = true;
+
+        else if (!isGrounded && coyoteTimeCounter > 0 && Input.GetButtonDown("Jump"))
+            jumping = true;
     }
 }

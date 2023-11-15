@@ -188,7 +188,7 @@ public class PlayerMovement : MonoBehaviour
             SpawnLiquidRefScript.isCollidedLiquid = true;
             SpawnBumperRefScript.isCollidedLiquid = true;
 
-            Debug.Log(_rb.GetComponent<Rigidbody>().velocity.magnitude);
+            //Debug.Log(_rb.GetComponent<Rigidbody>().velocity.magnitude);
 
             _rb.useGravity = false; //enlève la gravité dans le liquide de boost 
             _isBoosted = true; // annule la possibilité de mouvement 

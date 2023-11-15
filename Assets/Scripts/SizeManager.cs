@@ -32,7 +32,6 @@ public class SizeManager : MonoBehaviour
         if (sizeRatioOnSpeed != 0)
         {
             force = Mathf.Clamp(sizeRatioOnSpeed * playerRB.GetComponent<Rigidbody>().velocity.magnitude / 100, 1, 10);
-            Debug.Log("BulleForce :" + force);
             Vector3 result = new Vector3(transform.localScale.x * force, transform.localScale.y * force, transform.localScale.z * force);
             transform.localScale = result;
         }

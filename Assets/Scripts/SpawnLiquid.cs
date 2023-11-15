@@ -53,7 +53,7 @@ public class SpawnLiquid : MonoBehaviour
             if (liquidCharge > 0) 
             {
                 liquidCharge -= 1;
-                Debug.Log("Bulles restantes: " +  liquidCharge);
+                //Debug.Log("Bulles restantes: " +  liquidCharge);
             }
 
         }
@@ -62,7 +62,7 @@ public class SpawnLiquid : MonoBehaviour
         {
             timerCharge = liquidChargeTime;
             liquidCharge = liquidChargeAmount;
-            Debug.Log(liquidChargeAmount + " Bulles rechargée ! (charge time)");
+            //Debug.Log(liquidChargeAmount + " Bulles rechargée ! (charge time)");
         }
 
 
@@ -98,21 +98,21 @@ public class SpawnLiquid : MonoBehaviour
         if (Type == "Bouncer")
         {
             liquidCharge = Mathf.Clamp(liquidCharge + liquidChargeOnBumper, 0, liquidMaxCharge);
-            Debug.Log(liquidChargeOnBumper + " Bulles rechargées ! (Bumper)");
+            //Debug.Log(liquidChargeOnBumper + " Bulles rechargées ! (Bumper)");
             isCollidedBumper = false;
         }
 
         if (Type == "Ground")
         {
             liquidCharge = Mathf.Clamp(liquidCharge + liquidChargeOnGround, 0, liquidMaxCharge);
-            Debug.Log(liquidChargeOnGround + " Bulles rechargées ! (Sol)");
+            //Debug.Log(liquidChargeOnGround + " Bulles rechargées ! (Sol)");
             isCollidedGround = false;
         }
 
         if (Type == "Liquid")
         {
             liquidCharge = Mathf.Clamp(liquidCharge + liquidChargeOnLiquid, 0, liquidMaxCharge);
-            Debug.Log(liquidChargeOnLiquid + " Bulles rechargées ! (Bulle)");
+            //Debug.Log(liquidChargeOnLiquid + " Bulles rechargées ! (Bulle)");
             isCollidedLiquid = false;
         }
     }

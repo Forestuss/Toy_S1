@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{57ce7b68-2d03-4408-a1b7-20089350481e}">
+		<property name="assetPath">
+			<value>Placed_bublle.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.2709297052154196</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{926fb53b-71a0-45f7-ad77-22595c18b303}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,4 +1,5 @@
 using UnityEngine;
+using FMODUnity;
 
 public class BubbleManager : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class BubbleManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             instanceBubble = Instantiate(bubble, Target.transform.position, Quaternion.identity);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Bubble/Placed_bublle");
         }
 
         /*if (Input.GetMouseButtonDown(0))

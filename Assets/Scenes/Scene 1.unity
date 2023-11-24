@@ -6002,7 +6002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 2
-  cameraDistance: 0
+  cameraDistance: 70
   cameraHeight: 0
   cameraPivot: {fileID: 1841644205}
   cameraTarget: {fileID: 1677323158}

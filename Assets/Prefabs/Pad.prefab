@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8544293461623972980}
@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 8544293461623972980}
   - component: {fileID: 4673420374624086984}
   - component: {fileID: 8774363289345256695}
+  - component: {fileID: 7103877724893350666}
   - component: {fileID: -1877772290263586835}
   m_Layer: 0
   m_Name: Pad
@@ -112,7 +113,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -977.07, y: 11.636689, z: 717.68}
-  m_LocalScale: {x: 18, y: 18, z: 1}
+  m_LocalScale: {x: 18, y: 18, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7399066521364541840}
@@ -147,6 +148,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7103877724893350666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5208014263546810960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 451d3497612b8364eba5c325492bba86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mergeSpeed: 0
+  mergeSizeRatio: 0
+  objectMergeResult: {fileID: 0}
+  fusionScript: {fileID: 0}
 --- !u!114 &-1877772290263586835
 MonoBehaviour:
   m_ObjectHideFlags: 0

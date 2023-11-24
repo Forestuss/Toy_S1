@@ -50,7 +50,7 @@ public class Movements : MonoBehaviour
         // Récuperation des données pour le saut
         if (Physics.Raycast(rb.transform.position, Vector3.down, 2.5f, groundLayer))
         {
-            Debug.Log("grounded2222");
+            //Debug.Log("grounded2222");
             isGrounded = true;
         }
         else
@@ -82,7 +82,7 @@ public class Movements : MonoBehaviour
         VelocityPlayer();
         // coyoteTimeChecking();
         JumpPlayer();
-        Debug.Log(rb.velocity.magnitude);
+        //Debug.Log(rb.velocity.magnitude);
     }
 
     private void VelocityPlayer()

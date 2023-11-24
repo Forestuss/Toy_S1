@@ -32,7 +32,7 @@ public class BumperManager : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             instancePad = Instantiate(bloc, Target.transform.position, Camera.main.transform.rotation);
-            Debug.Log("lol ou quoi la");
+            //Debug.Log("lol ou quoi la");
         }
 
 

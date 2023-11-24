@@ -94,7 +94,8 @@ GameObject:
   - component: {fileID: 8502394694348001311}
   - component: {fileID: 8502394694348001280}
   - component: {fileID: 8502394694348001282}
-  - component: {fileID: 4763446427505774065}
+  - component: {fileID: 2584905466450445106}
+  - component: {fileID: 4068317733687761419}
   - component: {fileID: 1365607635096139750}
   m_Layer: 0
   m_Name: Bubble
@@ -148,7 +149,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4763446427505774065
+--- !u!114 &2584905466450445106
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,7 +161,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc0e0c56a78abde4d92e0ec2b3838420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpSpeed: 0.08
+  lerpSpeed: 0.05
+--- !u!114 &4068317733687761419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8502394694348001283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 451d3497612b8364eba5c325492bba86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mergeSpeed: 0.1
+  mergeSizeRatio: 0
+  objectMergeResult: {fileID: 8502394694348001283}
+  fusionScript: {fileID: 0}
 --- !u!114 &1365607635096139750
 MonoBehaviour:
   m_ObjectHideFlags: 0

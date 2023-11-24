@@ -12,7 +12,7 @@ public class SpawnLiquid : MonoBehaviour
     private GameObject Target;
 
     [Header("Liquid Charges")]
-    public int liquidMaxCharge; //Nombre de charges maximum de Bubble à placer. Si 0: charges illimitées
+    public int liquidMaxCharge; //Nombre de charges maximum de otherFusionObject à placer. Si 0: charges illimitées
     public float liquidCooldown; //Le temps d'attente avant de pouvoir placer une autre bubble
 
     [Header("Liquid Time/Reset")]

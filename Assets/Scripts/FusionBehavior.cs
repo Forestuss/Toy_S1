@@ -6,53 +6,42 @@ public class FusionBehavior : MonoBehaviour
 {
     public float mergeSpeed;
     public float mergeSizeRatio;
+    public float mergeMinRange; //1 = la taille de la bulle, modulable
     public GameObject objectMergeResult;
     public FusionBehavior fusionScript;
 
     private bool isSecondTick = false;
     private bool isLerpActive = false;
     private bool isOriginalObject = false;
-    private GameObject otherFusionObject;
+    private float mergeRange;
+    private Transform otherObjectTransform;
 
     private void Start()
     {
-        gameObject.AddComponent<Rigidbody>();
-        gameObject.GetComponent<Rigidbody>().isKinematic = true;
-    }
-    private void OnTriggerEnter(Collider other) //active le script de fusion pour les deux bulles et maintient le rigidbody quand deux bulles se touchent à la première frame.
-    {
-        if (other.gameObject.CompareTag("BoostLiquid"))
+        mergeRange = transform.localScale.x/2 * mergeMinRange;
+        Debug.Log("Start");
+        Physics.SphereCast(transform.position, mergeRange, transform.forward, out RaycastHit otherObject);
+        if (otherObject.transform.CompareTag("BoostLiquid"))
         {
-            Debug.Log("TriggerEnter Detected");
-            isLerpActive = true;
-            isOriginalObject = true;
-            otherFusionObject = other.gameObject;
-            InvokeRepeating("LerpLiquid", 0f, 0.02f);
+            Debug.Log("SphereFound");
+            otherObjectTransform = otherObject.transform;
+            InvokeRepeating("LerpLiquid", 0, 0.02f);    
         }
-    }
 
-    private void FixedUpdate() //s'occupe de retirer le rigidbody quand la bulle est seule
-    {
-        if (isSecondTick == false)
-        {
-            Debug.Log("FirstTick");
-            isSecondTick = true;
-
-            if (isLerpActive == false)
-            {
-                Destroy(gameObject.GetComponent<Rigidbody>());
-            }
-        }
+        Debug.Log("Object: " + otherObject);
     }
 
     public void LerpLiquid()
     {
-        if (otherFusionObject != null)
+        Debug.Log("LerpActivated");
+        if (otherObjectTransform != null)
         {
-            float maxPos = mergeSpeed / ((transform.position - otherFusionObject.transform.position).magnitude);
-            transform.position = Vector3.MoveTowards(transform.position, otherFusionObject.transform.position, maxPos);
+            Debug.Log("LerpSimulated");
+            float maxPos = mergeSpeed / ((transform.position - otherObjectTransform.position).magnitude);
+            transform.position = Vector3.MoveTowards(transform.position, otherObjectTransform.position, maxPos);
+            Debug.Log("LerpValue" + maxPos);
 
-            if (Vector3.Distance(transform.position, otherFusionObject.transform.position) <= 0.1)
+            if (Vector3.Distance(transform.position, otherObjectTransform.position) <= 0.1)
             {
                 if (isOriginalObject)
                 {
@@ -62,5 +51,11 @@ public class FusionBehavior : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, transform.localScale.x / 2 * mergeMinRange);
     }
 }

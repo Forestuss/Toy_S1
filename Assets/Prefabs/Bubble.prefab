@@ -174,8 +174,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451d3497612b8364eba5c325492bba86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mergeSpeed: 0.1
-  mergeSizeRatio: 0
+  mergeSpeed: 1
+  mergeSizeRatio: 1
+  mergeMinRange: 1
   objectMergeResult: {fileID: 8502394694348001283}
   fusionScript: {fileID: 0}
 --- !u!114 &1365607635096139750
@@ -190,5 +191,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e340454bc0f945408dffa0b9e008809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeRatioOnSpeed: 1
+  sizeRatioOnSpeed: 2
   sizeRatioOnTime: 0

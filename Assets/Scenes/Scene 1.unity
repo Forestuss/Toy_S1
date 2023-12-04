@@ -5980,9 +5980,9 @@ MonoBehaviour:
   isGrounded: 0
   isSliding: 0
   lerpSlide: 0.02
-  speed: 2
-  maxSpeed: 500
-  jumpForce: 60
+  speed: 1
+  maxSpeed: 150
+  jumpForce: 40
   clamp: 50
   coyoteTime: 1
   coyoteTimeCounter: 0
@@ -6023,8 +6023,8 @@ MonoBehaviour:
   Player: {fileID: 1392003359}
   _bumpForce: 0.7
   _bumpInfluence: 0.4
-  _bumpMIN: 50
-  _bumpMAX: 300
+  _bumpMIN: 30
+  _bumpMAX: 500
 --- !u!114 &1392003365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6041,9 +6041,9 @@ MonoBehaviour:
   Target: {fileID: 1999543953}
   player: {fileID: 1392003359}
   isBoosted: 0
-  _liquidSpeed: 1
+  _liquidSpeed: 0.1
   _liquidLook: 0
-  maxSizeBubble: 20
+  maxSizeBubble: 50
 --- !u!23 &1392003367
 MeshRenderer:
   m_ObjectHideFlags: 0

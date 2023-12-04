@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using TMPro;
 using UnityEngine;
-using UnityEngine.XR;
 
 public class Movements : MonoBehaviour
 {
@@ -16,7 +15,7 @@ public class Movements : MonoBehaviour
     private float verticalInput;
     private float horizontalInput;
 
-    [SerializeField] private bool jumping;
+    [SerializeField]  bool jumping;
     [SerializeField] private bool isGrounded;
     [SerializeField] private bool isSliding;
 
@@ -33,7 +32,9 @@ public class Movements : MonoBehaviour
     public float coyoteTimeCounter = 0f;
 
     public LayerMask groundLayer;
+    public LayerMask pads;
 
+    public TextMeshProUGUI speedDisp;
 
     void Start()
     {
@@ -50,7 +51,12 @@ public class Movements : MonoBehaviour
         // Récuperation des données pour le saut
         if (Physics.Raycast(rb.transform.position, Vector3.down, 2.5f, groundLayer))
         {
-            Debug.Log("grounded2222");
+            //Debug.Log("grounded2222");
+            isGrounded = true;
+        }
+        else if (Physics.Raycast(rb.transform.position, Vector3.down, 2.5f, pads))
+        {
+            //Debug.Log("grounded2222");
             isGrounded = true;
         }
         else
@@ -65,7 +71,7 @@ public class Movements : MonoBehaviour
 
         if (Input.GetKey(KeyCode.C) && isGrounded)
         {
-            Debug.Log("slides");
+            //Debug.Log("slides");
             isSliding = true;
             GetComponent<MeshRenderer>().material = slideMaterial;
         }
@@ -78,11 +84,14 @@ public class Movements : MonoBehaviour
 
     void FixedUpdate()
     {
+        float actualSpeed = rb.velocity.magnitude;
+        speedDisp.SetText("speed : {0:1}", actualSpeed);
+
         //MovePlayer();
         VelocityPlayer();
         // coyoteTimeChecking();
         JumpPlayer();
-        Debug.Log(rb.velocity.magnitude);
+        // Debug.Log(rb.velocity.magnitude);
     }
 
     private void VelocityPlayer()
@@ -133,4 +142,12 @@ public class Movements : MonoBehaviour
         else if (!isGrounded && coyoteTimeCounter > 0 && Input.GetButtonDown("Jump"))
             jumping = true;
     }
+
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "Bouncer")
+    //    {
+    //        isGrounded = true;
+    //    }
+    //}
 }

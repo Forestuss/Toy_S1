@@ -20,12 +20,26 @@ public class FusionBehavior : MonoBehaviour
     {
         mergeRange = transform.localScale.x/2 * mergeMinRange;
         Debug.Log("Start");
-        Physics.SphereCast(transform.position, mergeRange, transform.forward, out RaycastHit otherObject);
-        if (otherObject.transform.CompareTag("BoostLiquid"))
+        //Physics.SphereCast(transform.position, mergeRange, new Vector3(0,0.001f,0), out RaycastHit otherObject);
+        var otherObject = Physics.OverlapSphere(transform.position, mergeRange);
+
+        for (var i = 0; i < otherObject.Length; i++)
         {
-            Debug.Log("SphereFound");
-            otherObjectTransform = otherObject.transform;
-            InvokeRepeating("LerpLiquid", 0, 0.02f);    
+            if (otherObject[i].transform.CompareTag("BoostLiquid"))
+            {
+                if (otherObject.Length == 0)
+                {
+                    break;
+                }
+                if (otherObject.Length == 1)
+                {
+                    otherObjectTransform = otherObject[i].transform;
+                    InvokeRepeating("LerpLiquid", 0, 0.02f);
+                }
+                Debug.Log("SphereFound");
+                //otherObjectTransform = otherObject;
+                InvokeRepeating("LerpLiquid", 0, 0.02f);
+            }
         }
 
         Debug.Log("Object: " + otherObject);

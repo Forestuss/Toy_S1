@@ -33,12 +33,15 @@ public class Movements : MonoBehaviour
     public float coyoteTimeCounter = 0f;
 
     public LayerMask groundLayer;
+    private FMOD.Studio.EventInstance soundMove;
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         coyoteTimeCounter = coyoteTime;
+        soundMove = FMODUnity.RuntimeManager.CreateInstance("Move");
+        soundMove.start();
     }
 
     void Update()
@@ -83,6 +86,18 @@ public class Movements : MonoBehaviour
         // coyoteTimeChecking();
         JumpPlayer();
         Debug.Log(rb.velocity.magnitude);
+        if (isGrounded && speed!=0)
+        {
+            soundMove.setParameterByName("IsGroundedAndMove", );
+        }
+        else if (isGrounded && speed == 0)
+        {
+            soundMove.setParameterByName("IsGroundedAndMove", 1);
+        }
+        else if (!isGrounded)
+        {
+            soundMove.setParameterByName("IsGroundedAndMove", 0);
+        }
     }
 
     private void VelocityPlayer()

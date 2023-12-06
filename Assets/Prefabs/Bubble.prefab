@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 8502394694348001282}
   - component: {fileID: 4763446427505774065}
   - component: {fileID: -1118705015719744139}
+  - component: {fileID: 6961116662111931156}
   m_Layer: 0
   m_Name: Bubble
   m_TagString: BoostLiquid
@@ -180,9 +181,40 @@ MonoBehaviour:
       Data2: 1134186775
       Data3: -1567204173
       Data4: 323440990
-    Path: event:/Bubble/Placed_bubble
+    Path: event:/BubbleBeheave/Place_Bubble
   Event: 
   PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &6961116662111931156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8502394694348001283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: Player
+  EventReference:
+    Guid:
+      Data1: 445821182
+      Data2: 1340579736
+      Data3: -1616126047
+      Data4: 1669913449
+    Path: event:/BubbleBeheave/Use_Bubble
+  Event: 
+  PlayEvent: 3
   StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0

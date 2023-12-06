@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{b963edcc-c22e-4a59-b93d-0dba2aa47086}">
+		<property name="name">
+			<value>IsGroundedAndMove</value>
+		</property>
+		<relationship name="folder">
+			<destination>{116b6485-e340-4ab6-9528-e3b4d831e174}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{91275157-6e3a-44c4-b5b4-cfadbb644634}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{91275157-6e3a-44c4-b5b4-cfadbb644634}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>False</value>
+			<value>True</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

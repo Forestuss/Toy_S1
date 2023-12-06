@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{44b55813-dbf8-4c21-9ff5-626b97bb2ba3}">
+		<property name="assetPath">
+			<value>rollonfloor2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.2594331065759636</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{926fb53b-71a0-45f7-ad77-22595c18b303}</destination>
+		</relationship>
+	</object>
+</objects>

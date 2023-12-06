@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{2781631b-647a-4089-b06d-73b0b70e70a4}">
+		<property name="assetPath">
+			<value>Voices, Alien, Slime, Beast, Growl, Hiss SND90569 2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.1078854166666665</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{926fb53b-71a0-45f7-ad77-22595c18b303}</destination>
+		</relationship>
+	</object>
+</objects>

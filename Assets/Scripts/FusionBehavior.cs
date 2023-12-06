@@ -14,48 +14,68 @@ public class FusionBehavior : MonoBehaviour
     private bool isLerpActive = false;
     private bool isOriginalObject = false;
     private float mergeRange;
-    private Transform otherObjectTransform;
+    private int nearestObjectIndex = 0;
+    private Transform nearestObjectTransform;
 
     private void Start()
     {
         mergeRange = transform.localScale.x/2 * mergeMinRange;
         Debug.Log("Start");
-        //Physics.SphereCast(transform.position, mergeRange, new Vector3(0,0.001f,0), out RaycastHit otherObject);
-        var otherObject = Physics.OverlapSphere(transform.position, mergeRange);
 
-        for (var i = 0; i < otherObject.Length; i++)
+        var otherObjects = Physics.OverlapSphere(transform.position, mergeRange);
+
+        if (otherObjects.Length == 0)
         {
-            if (otherObject[i].transform.CompareTag("BoostLiquid"))
-            {
-                if (otherObject.Length == 0)
-                {
-                    break;
-                }
-                if (otherObject.Length == 1)
-                {
-                    otherObjectTransform = otherObject[i].transform;
-                    InvokeRepeating("LerpLiquid", 0, 0.02f);
-                }
-                Debug.Log("SphereFound");
-                //otherObjectTransform = otherObject;
-                InvokeRepeating("LerpLiquid", 0, 0.02f);
-            }
+            Debug.Log("Pas de collider trouvés");
+            return;
         }
 
-        Debug.Log("Object: " + otherObject);
+        for (var i = 0; i < otherObjects.Length; i++)
+        {
+
+            Debug.Log("Index de Bulle actuel :" + i);
+
+            if (otherObjects[i].transform.CompareTag("BoostLiquid"))
+            {
+                Debug.Log("Tag BoostLiquid trouvé");
+
+                if (otherObjects.Length > 1)
+                {
+                                     
+                    Debug.Log("Multiples bulles trouvées :" + otherObjects.Length);
+
+                    if (Vector3.Distance(otherObjects[i].transform.position, transform.position) < Vector3.Distance(otherObjects[nearestObjectIndex].transform.position, transform.position))
+                    {
+                        nearestObjectIndex = i;
+                    }
+                    nearestObjectTransform = otherObjects[i].transform;
+                }
+
+                else
+                {
+                    nearestObjectTransform = otherObjects[0].transform;
+                    return;
+                }
+                Debug.Log("SphereFound");
+                nearestObjectTransform = otherObjects[1].transform;
+                InvokeRepeating("LerpLiquid", 0, 0.02f);
+            }
+        }                                              
+
+        Debug.Log("Object: " + otherObjects);
     }
 
     public void LerpLiquid()
     {
         Debug.Log("LerpActivated");
-        if (otherObjectTransform != null)
+        if (nearestObjectTransform != null)
         {
             Debug.Log("LerpSimulated");
-            float maxPos = mergeSpeed / ((transform.position - otherObjectTransform.position).magnitude);
-            transform.position = Vector3.MoveTowards(transform.position, otherObjectTransform.position, maxPos);
+            float maxPos = mergeSpeed / ((transform.position - nearestObjectTransform.position).magnitude);
+            transform.position = Vector3.MoveTowards(transform.position, nearestObjectTransform.position, maxPos);
             Debug.Log("LerpValue" + maxPos);
 
-            if (Vector3.Distance(transform.position, otherObjectTransform.position) <= 0.1)
+            if (Vector3.Distance(transform.position, nearestObjectTransform.position) <= 0.1)
             {
                 if (isOriginalObject)
                 {

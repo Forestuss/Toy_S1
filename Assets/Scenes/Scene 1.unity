@@ -8666,8 +8666,16 @@ PrefabInstance:
       value: Ring
       objectReference: {fileID: 0}
     - target: {fileID: 7314148245611310856, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
+      propertyPath: ringBoost
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314148245611310856, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
       propertyPath: ringDragMaxAngle
       value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314148245611310856, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
+      propertyPath: ringDragVelocityRatio
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

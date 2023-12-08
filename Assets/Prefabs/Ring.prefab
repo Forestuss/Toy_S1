@@ -81,6 +81,9 @@ PrefabInstance:
       addedObject: {fileID: 2484632413891923446}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e135ec239b1808f4982c8814600951b3, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1889571087422151776}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e135ec239b1808f4982c8814600951b3, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 7314148245611310856}
   m_SourcePrefab: {fileID: 100100000, guid: e135ec239b1808f4982c8814600951b3, type: 3}
 --- !u!1 &4176231084215175014 stripped
@@ -103,12 +106,26 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.0325
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1889571087422151776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4176231084215175014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e340454bc0f945408dffa0b9e008809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeRatioOnSpeed: 1.4
+  sizeRatioOnTime: 0
 --- !u!114 &7314148245611310856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ringBoost: 1.2
-  ringMaxSpeed: 300
+  ringMaxSpeed: 500
   ringMaxSpeedDivideRatio: 0
   ringDragMaxAngle: 75
-  ringDragVelocityRatio: 0
+  ringDragVelocityRatio: 1

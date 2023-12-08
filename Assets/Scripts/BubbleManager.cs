@@ -30,7 +30,7 @@ public class BubbleManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            instanceBubble = Instantiate(bubble, Target.transform.position, Quaternion.identity);
+            instanceBubble = Instantiate(bubble, Target.transform.position, Camera.main.transform.rotation);
         }
 
         /*if (Input.GetMouseButtonDown(0))

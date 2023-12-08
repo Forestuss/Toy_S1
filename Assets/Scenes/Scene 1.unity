@@ -5981,7 +5981,7 @@ MonoBehaviour:
   isSliding: 0
   lerpSlide: 0.02
   speed: 1
-  maxSpeed: 150
+  maxSpeed: 300
   jumpForce: 40
   clamp: 50
   coyoteTime: 1
@@ -6022,7 +6022,7 @@ MonoBehaviour:
   Target: {fileID: 587576036}
   Player: {fileID: 1392003359}
   _bumpForce: 0.7
-  _bumpInfluence: 0.4
+  _bumpInfluence: 0
   _bumpMIN: 30
   _bumpMAX: 500
 --- !u!114 &1392003365
@@ -6037,7 +6037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab70ab9bbabf6c347b6809616b59eab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubble: {fileID: 8502394694348001283, guid: da404e642003e1e45ac5846406683c5e, type: 3}
+  bubble: {fileID: 4176231084215175014, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
   Target: {fileID: 1999543953}
   player: {fileID: 1392003359}
   isBoosted: 0

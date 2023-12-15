@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class FusionBehavior : MonoBehaviour
 {
+    [Header("Merge")]
     public float mergeSpeed;
     public float mergeSizeRatio;
     public float mergeMinRange; //1 = la taille de la bulle, modulable
+
+    [Header("Power Merge")]
+    public float powerMergeMinAngle;
+    public float powerMergeMinDistance;
+    public float powerMergeMultiplier;
+
+    [Header("Merge Results")]
     public GameObject objectMergeResult;
     public FusionBehavior fusionScript;
 
@@ -15,7 +23,7 @@ public class FusionBehavior : MonoBehaviour
     private bool isOriginalObject = false;
     private float mergeRange;
     private int nearestObjectIndex = 0;
-    private Transform nearestObjectTransform;
+    private GameObject nearestObject;
 
     private void Start()
     {
@@ -42,40 +50,61 @@ public class FusionBehavior : MonoBehaviour
                 if (otherObjects.Length > 1)
                 {
                                      
-                    Debug.Log("Multiples bulles trouvées :" + otherObjects.Length);
+                    Debug.Log("Multiples ring trouvés :" + otherObjects.Length);
 
                     if (Vector3.Distance(otherObjects[i].transform.position, transform.position) < Vector3.Distance(otherObjects[nearestObjectIndex].transform.position, transform.position))
                     {
                         nearestObjectIndex = i;
                     }
-                    nearestObjectTransform = otherObjects[i].transform;
+                    nearestObject = otherObjects[i].gameObject;
                 }
 
                 else
                 {
-                    nearestObjectTransform = otherObjects[0].transform;
-                    return;
+                    nearestObject = otherObjects[0].gameObject;
+                    break;
                 }
-                Debug.Log("SphereFound");
-                nearestObjectTransform = otherObjects[1].transform;
-                InvokeRepeating("LerpLiquid", 0, 0.02f);
             }
-        }                                              
+        }
+        
+        if (nearestObject.CompareTag("BoostLiquid") && Vector3.Distance(transform.position, nearestObject.transform.position) < powerMergeMinDistance && ((Vector3.Angle(transform.forward, nearestObject.transform.forward) < powerMergeMinAngle) || Vector3.Angle(transform.forward, nearestObject.transform.forward) > 180 - powerMergeMinAngle))
+        {
+            Debug.Log("Power Merge Situation Detected");
+            PowerMergeRing();
+        }
 
-        Debug.Log("Object: " + otherObjects);
+        else if (nearestObject.CompareTag("BoostLiquid"))
+        {
+            Debug.Log("Normal Merge Situation Detected");
+            InvokeRepeating("MergeRing", 0, 0.02f);
+        }
     }
 
-    public void LerpLiquid()
+
+    public void PowerMergeRing()
     {
-        Debug.Log("LerpActivated");
-        if (nearestObjectTransform != null)
+        Debug.Log("Power Merge Activated");
+
+        if (nearestObject != null)
         {
-            Debug.Log("LerpSimulated");
-            float maxPos = mergeSpeed / ((transform.position - nearestObjectTransform.position).magnitude);
-            transform.position = Vector3.MoveTowards(transform.position, nearestObjectTransform.position, maxPos);
+            Instantiate(objectMergeResult, nearestObject.transform.position, nearestObject.transform.rotation);
+            Destroy(nearestObject);
+            Destroy(this.gameObject);
+            Debug.Log("Power Merge Executed");
+        }
+    }
+
+    public void MergeRing()
+    {
+        Debug.Log("Merge Activated");
+        if (nearestObject != null)
+        {
+            Debug.Log("Merge Ongoing");
+            float maxPos = mergeSpeed / ((transform.position - nearestObject.transform.position).magnitude);
+            transform.position = Vector3.MoveTowards(transform.position, nearestObject.transform.position, maxPos);
             Debug.Log("LerpValue" + maxPos);
 
-            if (Vector3.Distance(transform.position, nearestObjectTransform.position) <= 0.1)
+            if (Vector3.Distance(transform.position, nearestObject.transform.position) <= 0.1)
             {
                 if (isOriginalObject)
                 {

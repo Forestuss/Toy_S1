@@ -9,8 +9,6 @@ public class BubbleManager : MonoBehaviour
 
     [SerializeField] private GameObject player;
 
-    private GameObject instanceBubble;
-
     public bool isBoosted;
     private Vector3 originalVelocity;
 
@@ -28,14 +26,9 @@ public class BubbleManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            instanceBubble = Instantiate(bubble, Target.transform.position, Camera.main.transform.rotation);
-        }
-
         /*if (Input.GetMouseButtonDown(0))
         {
-            instanceBubble = Instantiate(bubble, Target.transform.position, Quaternion.identity, player.transform);
+            instanceBubble = Instantiate(ring, Target.transform.position, Quaternion.identity, player.transform);
         }
 
         if (Input.GetMouseButton(0) && instanceBubble.transform.localScale.x < maxSizeBubble)

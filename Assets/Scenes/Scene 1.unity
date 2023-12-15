@@ -1273,6 +1273,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 205207510141256229, guid: 6ef197099bb792947a1f0fd9db109f15, type: 3}
+      propertyPath: Target
+      value: 
+      objectReference: {fileID: 587576036}
     - target: {fileID: 5208014263546810960, guid: 6ef197099bb792947a1f0fd9db109f15, type: 3}
       propertyPath: m_Name
       value: Pad
@@ -5980,9 +5984,9 @@ MonoBehaviour:
   isGrounded: 0
   isSliding: 0
   lerpSlide: 0.02
-  speed: 1
+  speed: 2
   maxSpeed: 300
-  jumpForce: 40
+  jumpForce: 60
   clamp: 50
   coyoteTime: 1
   coyoteTimeCounter: 0
@@ -6022,9 +6026,9 @@ MonoBehaviour:
   Target: {fileID: 587576036}
   Player: {fileID: 1392003359}
   _bumpForce: 0.7
-  _bumpInfluence: 0
-  _bumpMIN: 30
-  _bumpMAX: 500
+  _bumpInfluence: 0.4
+  _bumpMIN: 50
+  _bumpMAX: 300
 --- !u!114 &1392003365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6041,9 +6045,9 @@ MonoBehaviour:
   Target: {fileID: 1999543953}
   player: {fileID: 1392003359}
   isBoosted: 0
-  _liquidSpeed: 0.1
+  _liquidSpeed: 1
   _liquidLook: 0
-  maxSizeBubble: 50
+  maxSizeBubble: 20
 --- !u!23 &1392003367
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8617,6 +8621,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 542153695719829127, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
+      propertyPath: Target
+      value: 
+      objectReference: {fileID: 1999543953}
+    - target: {fileID: 542153695719829127, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
+      propertyPath: isUnlimited
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 542153695719829127, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
+      propertyPath: ringCooldown
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542153695719829127, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
+      propertyPath: ringMaxCharge
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 542153695719829127, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
+      propertyPath: ringChargeOnBumper
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 542153695719829127, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
+      propertyPath: ringChargeOnGround
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2484632413891923446, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
       propertyPath: m_IsTrigger
       value: 1

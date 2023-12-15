@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 4673420374624086984}
   - component: {fileID: 8774363289345256695}
   - component: {fileID: 7103877724893350666}
+  - component: {fileID: 205207510141256229}
   - component: {fileID: -1877772290263586835}
   m_Layer: 0
   m_Name: Pad
@@ -162,8 +163,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mergeSpeed: 0
   mergeSizeRatio: 0
+  mergeMinRange: 0
+  powerMergeMinAngle: 0
+  powerMergeMinDistance: 0
+  powerMergeMultiplier: 0
   objectMergeResult: {fileID: 0}
   fusionScript: {fileID: 0}
+--- !u!114 &205207510141256229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5208014263546810960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20c60e582f3451d4183340436f01cfff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloc: {fileID: 5208014263546810960}
+  Target: {fileID: 0}
+  bumperMaxCharge: 0
+  bumperCooldown: 0
+  bumperChargeOnGround: 0
+  bumperChargeOnBumper: 0
+  bumperChargeOnLiquid: 0
+  bumperChargeTime: 0
+  bumperChargeAmount: 0
+  isUnlimited: 0
+  bumperCharge: 0
+  timerCooldown: 0
+  timerCharge: 0
 --- !u!114 &-1877772290263586835
 MonoBehaviour:
   m_ObjectHideFlags: 0

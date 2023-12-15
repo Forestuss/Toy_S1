@@ -8,10 +8,14 @@ public class RingBehavior : MonoBehaviour
     public float ringMaxSpeed; //vitesse maximale du joueur en sortie de drag
     public float ringMaxSpeedDivideRatio; 
     public float ringDragMaxAngle; //90 maximum, valeur de base supposée 70
-    public float ringDragVelocityRatio; //Puissance avec laquelle le ring détourne la direction du joueur (lerp de 0 à 1). Valeur de base supposée 0
+    public float ringThrowRadiusActivation;
+    public float ringThrowVelocityRatio; //Puissance avec laquelle le ring détourne la direction du joueur (lerp de 0 à 1). Valeur de base supposée 0
+    public float ringDragVelocityRatio; //Puissance avec laquelle le drag du ring détourne la vélocité du joueur vers son centre. 
 
     private Vector3 dragDirection;
     private float dragVelocity;
+    private int ringDirection;
+    private bool isRingBoostLocked = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -22,25 +26,60 @@ public class RingBehavior : MonoBehaviour
             if (Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) < ringDragMaxAngle) 
             {
                 Debug.Log("case 1");
-                dragVelocity = other.attachedRigidbody.velocity.magnitude;
-                dragDirection = Vector3.Lerp(other.attachedRigidbody.velocity.normalized, this.transform.forward, ringDragVelocityRatio);
-                other.attachedRigidbody.velocity = dragDirection * dragVelocity * ringBoost;
+                ringDirection = 0;
+                //dragVelocity = other.attachedRigidbody.velocity.magnitude;
+                //dragDirection = Vector3.Lerp(other.attachedRigidbody.velocity.normalized, this.transform.forward, ringThrowVelocityRatio);
+                //other.attachedRigidbody.velocity = dragDirection * dragVelocity * ringBoost;
 
             }
 
             else if (Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) > 180 - ringDragMaxAngle) 
             {
                 Debug.Log("case 2");
-                dragVelocity = other.attachedRigidbody.velocity.magnitude;
-                dragDirection = Vector3.Lerp(other.attachedRigidbody.velocity.normalized, -this.transform.forward, ringDragVelocityRatio);
-                other.attachedRigidbody.velocity = dragDirection * dragVelocity * ringBoost;
+                ringDirection = 1;
+                //dragVelocity = other.attachedRigidbody.velocity.magnitude;
+                //dragDirection = Vector3.Lerp(other.attachedRigidbody.velocity.normalized, -this.transform.forward, ringThrowVelocityRatio);
+                //other.attachedRigidbody.velocity = dragDirection * dragVelocity * ringBoost;
             }
 
             else
             {
                 Debug.Log("not in good angle");
+                isRingBoostLocked = true;
+            }
+
+            Vector3 ringDragCenterDirection = (transform.position - other.attachedRigidbody.position).normalized;
+
+            dragVelocity = other.attachedRigidbody.velocity.magnitude;
+            dragDirection = Vector3.Lerp(other.attachedRigidbody.velocity.normalized, ringDragCenterDirection, ringDragVelocityRatio);
+            other.attachedRigidbody.velocity = dragDirection * dragVelocity * ringBoost;
+
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (isRingBoostLocked == false)
+        {
+            if (other.CompareTag("Player") && Vector3.Distance(transform.position, other.transform.position) <= ringThrowRadiusActivation * transform.localScale.x / 100)
+            {
+                isRingBoostLocked = true;
+                dragVelocity = other.attachedRigidbody.velocity.magnitude;
+
+                if (ringDirection == 0)
+                {
+                    dragDirection = Vector3.Lerp(other.attachedRigidbody.velocity.normalized, this.transform.forward, ringThrowVelocityRatio);
+                }
+
+                else 
+                {
+                    dragDirection = Vector3.Lerp(other.attachedRigidbody.velocity.normalized, -this.transform.forward, ringThrowVelocityRatio);
+                }
+                
+                other.attachedRigidbody.velocity = dragDirection * dragVelocity;
             }
         }
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -48,7 +87,14 @@ public class RingBehavior : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.attachedRigidbody.useGravity = true;
+            isRingBoostLocked = false;
         }
             
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(transform.position, ringThrowRadiusActivation * transform.localScale.x / 100);
     }
 }

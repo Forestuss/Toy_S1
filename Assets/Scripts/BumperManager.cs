@@ -28,14 +28,6 @@ public class BumperManager : MonoBehaviour
 
     private void Update()
     {
-        bumperVelocity = rb.velocity;
-        if (Input.GetMouseButtonDown(1))
-        {
-            instancePad = Instantiate(bloc, Target.transform.position, Camera.main.transform.rotation);
-            //Debug.Log("lol ou quoi la");
-        }
-
-
         /* Preview placement bumper
         if (Input.GetMouseButtonDown(1))
         {

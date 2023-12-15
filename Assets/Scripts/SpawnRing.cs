@@ -28,10 +28,6 @@ public class SpawnRing : MonoBehaviour
     [SerializeField] private float timerCooldown;
     [SerializeField] private float timerCharge;
 
-    [NonSerialized] public bool isCollidedRing;
-    [NonSerialized] public bool isCollidedBumper;
-    [NonSerialized] public bool isCollidedGround;
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -63,20 +59,6 @@ public class SpawnRing : MonoBehaviour
             ringCharge = ringChargeAmount;
             //Debug.Log(ringChargeAmount + " Ring rechargés ! (charge time)");
         }
-
-
-        if (isCollidedBumper)
-        {
-            CheckRingReset("Bouncer");
-        }
-        if (isCollidedGround)
-        {
-            CheckRingReset("Ground");
-        }
-        if (isCollidedRing)
-        {
-            CheckRingReset("Ring");
-        }
     }
 
     private void FixedUpdate()
@@ -97,22 +79,19 @@ public class SpawnRing : MonoBehaviour
         if (Type == "Bouncer")
         {
             ringCharge = Mathf.Clamp(ringCharge + ringChargeOnBumper, 0, ringMaxCharge);
-            Debug.Log(ringChargeOnBumper + " Ring rechargés ! (Bumper)");
-            isCollidedBumper = false;
+            //Debug.Log(ringChargeOnBumper + " Ring rechargés ! (Bumper)");
         }
 
         if (Type == "Ground")
         {
             ringCharge = Mathf.Clamp(ringCharge + ringChargeOnGround, 0, ringMaxCharge);
-            Debug.Log(ringChargeOnGround + " Ring rechargés ! (Sol)");
-            isCollidedGround = false;
+            //Debug.Log(ringChargeOnGround + " Ring rechargés ! (Sol)");
         }
 
         if (Type == "Ring")
         {
             ringCharge = Mathf.Clamp(ringCharge + ringChargeOnRing, 0, ringMaxCharge);
-            Debug.Log(ringChargeOnRing + " Ring rechargés ! (Ring)");
-            isCollidedRing = false;
+            //Debug.Log(ringChargeOnRing + " Ring rechargés ! (Ring)");
         }
     }
 
@@ -127,15 +106,18 @@ public class SpawnRing : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            CheckRingReset("Ground");
-            return;
-        }
-
         if (other.gameObject.CompareTag("Bouncer"))
         {
             CheckRingReset("Bouncer");
+            return;
+        }
+    }
+
+    private void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            CheckRingReset("Ground");
             return;
         }
     }

@@ -25,7 +25,6 @@ public class RingBehavior : MonoBehaviour
 
             if (Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) < ringDragMaxAngle) 
             {
-                Debug.Log("case 1");
                 ringDirection = 0;
                 //dragVelocity = other.attachedRigidbody.velocity.magnitude;
                 //dragDirection = Vector3.Lerp(other.attachedRigidbody.velocity.normalized, this.transform.forward, ringThrowVelocityRatio);
@@ -35,7 +34,6 @@ public class RingBehavior : MonoBehaviour
 
             else if (Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) > 180 - ringDragMaxAngle) 
             {
-                Debug.Log("case 2");
                 ringDirection = 1;
                 //dragVelocity = other.attachedRigidbody.velocity.magnitude;
                 //dragDirection = Vector3.Lerp(other.attachedRigidbody.velocity.normalized, -this.transform.forward, ringThrowVelocityRatio);
@@ -44,7 +42,6 @@ public class RingBehavior : MonoBehaviour
 
             else
             {
-                Debug.Log("not in good angle");
                 isRingBoostLocked = true;
             }
 

@@ -28,6 +28,7 @@ public class BumperManager : MonoBehaviour
 
     private void Update()
     {
+        bumperVelocity = rb.velocity;
         /* Preview placement bumper
         if (Input.GetMouseButtonDown(1))
         {
@@ -59,12 +60,6 @@ public class BumperManager : MonoBehaviour
             Vector3 _bumpDirection = Vector3.Lerp(_mirrorDirection, Bumper.contacts[0].normal, _bumpInfluence); //Définition de l'influence de la direction du bumper (max 1) sur le vecteur miroir (min 0) réfléchi dessus.
 
             rb.velocity = _bumpDirection * _bumpSpeed; //application de la vélocité sur le player
-
-            //_velovityBug = _bumpDirection * _bumpSpeed; //Debug
-            //Debug.Log("Bumper Direction: " + _bumpDirection);
-            //Debug.Log("Reflect Result: " + _velovityBug);
-            //Debug.Log("Final Velocity: " + _rb.velocity);
-            //_debugIsFrameCollide = true;
         }
     }
 }

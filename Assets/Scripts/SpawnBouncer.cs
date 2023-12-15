@@ -28,10 +28,6 @@ public class SpawnBouncer : MonoBehaviour
     [SerializeField] private float timerCooldown;
     [SerializeField] private float timerCharge;
 
-    [NonSerialized] public bool isCollidedLiquid;
-    [NonSerialized] public bool isCollidedBumper;
-    [NonSerialized] public bool isCollidedGround;
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -63,22 +59,7 @@ public class SpawnBouncer : MonoBehaviour
             timerCharge = bumperChargeTime;
             bumperCharge = bumperChargeAmount;
             Debug.Log(bumperChargeAmount + " Bumper rechargé ! (charge time)");
-        }
-
-        
-        if (isCollidedBumper)
-        {
-            CheckBumperReset("Bouncer");
-        }
-        if (isCollidedGround)
-        {
-            CheckBumperReset("Ground");
-        }
-        if (isCollidedLiquid)
-        {
-            CheckBumperReset("Liquid");
-        }
-        
+        }    
     }
 
     private void FixedUpdate()
@@ -99,22 +80,19 @@ public class SpawnBouncer : MonoBehaviour
         if (Type == "Bouncer")
         {
             bumperCharge = Mathf.Clamp(bumperCharge + bumperChargeOnBumper, 0, bumperMaxCharge);
-            Debug.Log(bumperChargeOnBumper + " Bumper rechargés ! (Bumper)");
-            isCollidedBumper = false;
+            //Debug.Log(bumperChargeOnBumper + " Bumper rechargés ! (Bumper)");
         }
 
         if (Type == "Ground")
         {
             bumperCharge = Mathf.Clamp(bumperCharge + bumperChargeOnGround, 0, bumperMaxCharge);
-            Debug.Log(bumperChargeOnGround + " Bumper rechargés ! (Sol)");
-            isCollidedGround = false;
+            //Debug.Log(bumperChargeOnGround + " Bumper rechargés ! (Sol)");
         }
 
-        if (Type == "Liquid")
+        if (Type == "Ring")
         {
             bumperCharge = Mathf.Clamp(bumperCharge + bumperChargeOnLiquid, 0, bumperMaxCharge);
-            Debug.Log(bumperChargeOnLiquid + " Bumper rechargés ! (Bulle)");
-            isCollidedLiquid = false;
+            //Debug.Log(bumperChargeOnLiquid + " Bumper rechargés ! (Ring)");
         }
     }
 
@@ -129,15 +107,18 @@ public class SpawnBouncer : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            CheckBumperReset("Ground");
-            return;
-        }
-
         if (other.gameObject.CompareTag("Bouncer"))
         {
             CheckBumperReset("Bouncer");
+            return;
+        }
+    }
+
+    private void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            CheckBumperReset("Ground");
             return;
         }
     }

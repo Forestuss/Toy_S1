@@ -6029,7 +6029,7 @@ MonoBehaviour:
   Player: {fileID: 1392003359}
   _bumpForce: 0.7
   _bumpInfluence: 0.4
-  _bumpMIN: 50
+  _bumpMIN: 40
   _bumpMAX: 300
 --- !u!114 &1392003365
 MonoBehaviour:
@@ -6294,7 +6294,7 @@ MonoBehaviour:
   bloc: {fileID: 5208014263546810960, guid: 6ef197099bb792947a1f0fd9db109f15, type: 3}
   Target: {fileID: 587576036}
   bumperMaxCharge: 4
-  bumperCooldown: 0.1
+  bumperCooldown: 0.2
   bumperChargeOnGround: 4
   bumperChargeOnBumper: 0
   bumperChargeOnLiquid: 0
@@ -6319,7 +6319,7 @@ MonoBehaviour:
   ring: {fileID: 4176231084215175014, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
   Target: {fileID: 587576036}
   ringMaxCharge: 4
-  ringCooldown: 0.1
+  ringCooldown: 0.2
   ringChargeOnGround: 4
   ringChargeOnBumper: 4
   ringChargeOnRing: 0

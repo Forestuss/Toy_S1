@@ -85,9 +85,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e135ec239b1808f4982c8814600951b3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7314148245611310856}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e135ec239b1808f4982c8814600951b3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 542153695719829127}
   m_SourcePrefab: {fileID: 100100000, guid: e135ec239b1808f4982c8814600951b3, type: 3}
 --- !u!1 &4176231084215175014 stripped
 GameObject:
@@ -148,28 +145,3 @@ MonoBehaviour:
   ringThrowRadiusActivation: 1
   ringThrowVelocityRatio: 1
   ringDragVelocityRatio: 1
---- !u!114 &542153695719829127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4176231084215175014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecd7221abc74c964a8dedab0cb817309, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ring: {fileID: 4176231084215175014}
-  Target: {fileID: 0}
-  ringMaxCharge: 0
-  ringCooldown: 0
-  ringChargeOnGround: 0
-  ringChargeOnBumper: 0
-  ringChargeOnRing: 0
-  ringChargeTime: 0
-  ringChargeAmount: 0
-  isUnlimited: 0
-  ringCharge: 0
-  timerCooldown: 0
-  timerCharge: 0

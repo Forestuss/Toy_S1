@@ -117,4 +117,28 @@ public class SpawnBouncer : MonoBehaviour
             isCollidedLiquid = false;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Ring"))
+        {
+            CheckBumperReset("Ring");
+            return;
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            CheckBumperReset("Ground");
+            return;
+        }
+
+        if (other.gameObject.CompareTag("Bouncer"))
+        {
+            CheckBumperReset("Bouncer");
+            return;
+        }
+    }
 }

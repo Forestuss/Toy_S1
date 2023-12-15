@@ -45,8 +45,9 @@ public class SpawnRing : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && (timerCooldown <= 0 || isUnlimited) && (ringCharge > 0 || isUnlimited || ringMaxCharge == 0))
         {
-            Instantiate(ring, Target.transform.position, Quaternion.identity);
+            Instantiate(ring, Target.transform.position, Camera.main.transform.rotation);
             timerCooldown = ringCooldown;
+            Debug.Log("Instantiate Ring");
 
             if (ringCharge > 0) 
             {
@@ -66,15 +67,15 @@ public class SpawnRing : MonoBehaviour
 
         if (isCollidedBumper)
         {
-            CheckLiquidReset("Bouncer");
+            CheckRingReset("Bouncer");
         }
         if (isCollidedGround)
         {
-            CheckLiquidReset("Ground");
+            CheckRingReset("Ground");
         }
         if (isCollidedRing)
         {
-            CheckLiquidReset("Ring");
+            CheckRingReset("Ring");
         }
     }
 
@@ -91,7 +92,7 @@ public class SpawnRing : MonoBehaviour
         }   
     }
 
-    public void CheckLiquidReset(string Type)
+    public void CheckRingReset(string Type)
     {
         if (Type == "Bouncer")
         {
@@ -112,6 +113,30 @@ public class SpawnRing : MonoBehaviour
             ringCharge = Mathf.Clamp(ringCharge + ringChargeOnRing, 0, ringMaxCharge);
             Debug.Log(ringChargeOnRing + " Ring rechargés ! (Ring)");
             isCollidedRing = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Ring"))
+        {
+            CheckRingReset("Ring");
+            return;
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            CheckRingReset("Ground");
+            return;
+        }
+
+        if (other.gameObject.CompareTag("Bouncer"))
+        {
+            CheckRingReset("Bouncer");
+            return;
         }
     }
 }

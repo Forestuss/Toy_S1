@@ -5956,6 +5956,8 @@ GameObject:
   - component: {fileID: 1392003363}
   - component: {fileID: 1392003365}
   - component: {fileID: 1392003364}
+  - component: {fileID: 1392003374}
+  - component: {fileID: 1392003373}
   - component: {fileID: 1392003370}
   - component: {fileID: 1392003371}
   - component: {fileID: 1392003372}
@@ -6277,6 +6279,56 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1392003373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392003359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20c60e582f3451d4183340436f01cfff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloc: {fileID: 5208014263546810960, guid: 6ef197099bb792947a1f0fd9db109f15, type: 3}
+  Target: {fileID: 587576036}
+  bumperMaxCharge: 4
+  bumperCooldown: 0.1
+  bumperChargeOnGround: 4
+  bumperChargeOnBumper: 0
+  bumperChargeOnLiquid: 0
+  bumperChargeTime: 0
+  bumperChargeAmount: 0
+  isUnlimited: 0
+  bumperCharge: 0
+  timerCooldown: 0
+  timerCharge: 0
+--- !u!114 &1392003374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392003359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd7221abc74c964a8dedab0cb817309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ring: {fileID: 4176231084215175014, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
+  Target: {fileID: 587576036}
+  ringMaxCharge: 4
+  ringCooldown: 0.1
+  ringChargeOnGround: 4
+  ringChargeOnBumper: 4
+  ringChargeOnRing: 0
+  ringChargeTime: 0
+  ringChargeAmount: 0
+  isUnlimited: 0
+  ringCharge: 0
+  timerCooldown: 0
+  timerCharge: 0
 --- !u!1 &1487275537
 GameObject:
   m_ObjectHideFlags: 0
@@ -8027,7 +8079,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1999543954}
   m_Layer: 0
-  m_Name: TargetBubble
+  m_Name: TargetRing
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -8705,7 +8757,8 @@ PrefabInstance:
       propertyPath: ringDragVelocityRatio
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 542153695719829127, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

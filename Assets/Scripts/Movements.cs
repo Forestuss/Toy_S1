@@ -86,18 +86,7 @@ public class Movements : MonoBehaviour
         // coyoteTimeChecking();
         JumpPlayer();
         Debug.Log(rb.velocity.magnitude);
-        if (isGrounded && speed!=0)
-        {
-            soundMove.setParameterByName("IsGroundedAndMove", );
-        }
-        else if (isGrounded && speed == 0)
-        {
-            soundMove.setParameterByName("IsGroundedAndMove", 1);
-        }
-        else if (!isGrounded)
-        {
-            soundMove.setParameterByName("IsGroundedAndMove", 0);
-        }
+       
     }
 
     private void VelocityPlayer()

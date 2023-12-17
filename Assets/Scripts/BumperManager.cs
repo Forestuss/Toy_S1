@@ -7,6 +7,13 @@ public class BumperManager : MonoBehaviour
     private Rigidbody rb;
     private Vector3 bumperVelocity;
 
+    private float _originalFOV = 80f;
+    private float _newFOV = 70f;
+    private float _tempoFOV;
+
+    private bool collisionPad;
+    private bool tempoBool;
+
     [SerializeField] private GameObject bloc;
     [SerializeField] private GameObject Target;
     [SerializeField] private GameObject Player;
@@ -32,29 +39,23 @@ public class BumperManager : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             instancePad = Instantiate(bloc, Target.transform.position, Camera.main.transform.rotation);
-            Debug.Log("lol ou quoi la");
+            //Debug.Log("lol ou quoi la");
         }
 
-
-        /* Preview placement bumper
-        if (Input.GetMouseButtonDown(1))
+        if (collisionPad)
         {
-            instancePad = Instantiate(bloc, Target.transform.position, Camera.main.transform.rotation, Player.transform);
-            instancePad.GetComponent<Collider>().enabled = false;
+            tempoBool = true;
+            collisionPad = false;
         }
 
-        if (Input.GetMouseButton(1))
+        if(tempoBool)
         {
-            instancePad.transform.rotation = Camera.main.transform.rotation;
-            instancePad.transform.position = Target.transform.position;
+            if(Camera.main.fieldOfView >= _originalFOV - 0.1f)
+            {
+
+            }
         }
 
-        if (Input.GetMouseButtonUp(1))
-        {
-            instancePad.GetComponent<Collider>().enabled = true;
-            instancePad.transform.SetParent(null);
-        }
-        */
     }
 
 

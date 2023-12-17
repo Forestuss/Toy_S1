@@ -10,6 +10,10 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float sensitivity;
     private float yaw = 0.0f, pitch = 0.0f;
 
+    public float smoothTime = 0.5f;
+
+    private Vector3 refVelocity = Vector3.zero;
+
     [Header("Camera")]
     [Range(0.0f, 70.0f)] public float cameraDistance;
     [Range(-2.0f, 2.0f)] public float cameraHeight;
@@ -26,24 +30,28 @@ public class CameraController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        Look();
-        
-        //cameraDistance = Mathf.Clamp(cameraDistance,70f, 90f);
-        // cameraDistance = Mathf.SmoothDamp(cameraDistance, rb.velocity.magnitude, ref velocityf, 0.001f);
-        Camera.main.transform.localPosition = new Vector3(0, cameraHeight, -cameraDistance);
+        LookValues();
 
-        //Camera.main.transform.localPosition = Vector3.SmoothDamp(Camera.main.transform.localPosition, cameraTarget.transform.position, ref velocity, 0.1f);
-        //Camera.main.transform.localRotation = cameraTarget.transform.rotation;
+    }
+
+    void FixedUpdate()
+    {
+
+        Look();
         
     }
 
-    void Look() //tuto ytb pour la souris (fonctionnel)
+    void LookValues()
     {
         pitch -= Input.GetAxisRaw("Mouse Y") * sensitivity;
         pitch = Mathf.Clamp(pitch, -90.0f, 90.0f);
         yaw += Input.GetAxisRaw("Mouse X") * sensitivity;
+    }
+
+    void Look() //tuto ytb pour la souris (fonctionnel)
+    {
         transform.localRotation = Quaternion.Euler(0, yaw, 0);
         cameraPivot.transform.localRotation = Quaternion.Euler(pitch, 0, 0);
     }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7399066521364541840}
   - component: {fileID: 539864411283052936}
   - component: {fileID: 5604379316589928146}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CubeVisuel
   m_TagString: Bouncer
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4673420374624086984}
   - component: {fileID: 8774363289345256695}
   - component: {fileID: -1877772290263586835}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Pad
   m_TagString: Bouncer
   m_Icon: {fileID: 0}

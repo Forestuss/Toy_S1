@@ -18,7 +18,6 @@ public class LerpPad : MonoBehaviour
         if(transform.GetChild(0).localScale != new Vector3(1f, 1f, 1f))
         {
             transform.GetChild(0).localScale = Vector3.Lerp(transform.GetChild(0).localScale, new Vector3(1f, 1f, 1f), lerpSpeed);
-        }
-        
+        } 
     }
 }

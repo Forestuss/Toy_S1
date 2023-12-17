@@ -7,13 +7,6 @@ public class BumperManager : MonoBehaviour
     private Rigidbody rb;
     private Vector3 bumperVelocity;
 
-    private float _originalFOV = 80f;
-    private float _newFOV = 70f;
-    private float _tempoFOV;
-
-    private bool collisionPad;
-    private bool tempoBool;
-
     [SerializeField] private GameObject bloc;
     [SerializeField] private GameObject Target;
     [SerializeField] private GameObject Player;
@@ -36,26 +29,25 @@ public class BumperManager : MonoBehaviour
     private void Update()
     {
         bumperVelocity = rb.velocity;
+        /* Preview placement bumper
         if (Input.GetMouseButtonDown(1))
         {
-            instancePad = Instantiate(bloc, Target.transform.position, Camera.main.transform.rotation);
-            //Debug.Log("lol ou quoi la");
+            instancePad = Instantiate(bloc, Target.transform.position, Camera.main.transform.rotation, Player.transform);
+            instancePad.GetComponent<Collider>().enabled = false;
         }
 
-        if (collisionPad)
+        if (Input.GetMouseButton(1))
         {
-            tempoBool = true;
-            collisionPad = false;
+            instancePad.transform.rotation = Camera.main.transform.rotation;
+            instancePad.transform.position = Target.transform.position;
         }
 
-        if(tempoBool)
+        if (Input.GetMouseButtonUp(1))
         {
-            if(Camera.main.fieldOfView >= _originalFOV - 0.1f)
-            {
-
-            }
+            instancePad.GetComponent<Collider>().enabled = true;
+            instancePad.transform.SetParent(null);
         }
-
+        */
     }
 
 
@@ -68,12 +60,6 @@ public class BumperManager : MonoBehaviour
             Vector3 _bumpDirection = Vector3.Lerp(_mirrorDirection, Bumper.contacts[0].normal, _bumpInfluence); //Définition de l'influence de la direction du bumper (max 1) sur le vecteur miroir (min 0) réfléchi dessus.
 
             rb.velocity = _bumpDirection * _bumpSpeed; //application de la vélocité sur le player
-
-            //_velovityBug = _bumpDirection * _bumpSpeed; //Debug
-            //Debug.Log("Bumper Direction: " + _bumpDirection);
-            //Debug.Log("Reflect Result: " + _velovityBug);
-            //Debug.Log("Final Velocity: " + _rb.velocity);
-            //_debugIsFrameCollide = true;
         }
     }
 }

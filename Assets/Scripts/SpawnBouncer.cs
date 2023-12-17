@@ -27,7 +27,7 @@ public class SpawnBouncer : MonoBehaviour
     [SerializeField] private float bumperCharge;
     [SerializeField] private float timerCooldown;
     [SerializeField] private float timerCharge;
-
+    private FMOD.Studio.EventInstance StartSoundPad;
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -35,6 +35,9 @@ public class SpawnBouncer : MonoBehaviour
         bumperCharge = bumperMaxCharge;
         timerCooldown = bumperCooldown;
         timerCharge = bumperChargeTime;
+        StartSoundPad = FMODUnity.RuntimeManager.CreateInstance("event:/BounceBehave/CreateBounce");
+        
+
     }
 
     void Update()
@@ -42,13 +45,14 @@ public class SpawnBouncer : MonoBehaviour
         if (Input.GetMouseButtonDown(1) && (timerCooldown <= 0 || isUnlimited) && (bumperCharge > 0 || isUnlimited || bumperMaxCharge == 0))
         {
             Instantiate(bloc, Target.transform.position, Camera.main.transform.rotation);
-
+            
             timerCooldown = bumperCooldown;
 
             if (bumperCharge > 0)
             {
                 bumperCharge -= 1;
                 Debug.Log("Bump restants: " + bumperCharge);
+                StartSoundPad.setParameterByName("Charge", bumperCharge);
             }
 
         }
@@ -59,6 +63,7 @@ public class SpawnBouncer : MonoBehaviour
             timerCharge = bumperChargeTime;
             bumperCharge = bumperChargeAmount;
             Debug.Log(bumperChargeAmount + " Bumper rechargé ! (charge time)");
+            StartSoundPad.setParameterByName("Charge", bumperCharge);
         }    
     }
 

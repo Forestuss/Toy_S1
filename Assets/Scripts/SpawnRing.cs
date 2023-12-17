@@ -27,7 +27,7 @@ public class SpawnRing : MonoBehaviour
     [SerializeField] private float ringCharge;
     [SerializeField] private float timerCooldown;
     [SerializeField] private float timerCharge;
-
+    private FMOD.Studio.EventInstance StartSoundRing;
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -35,6 +35,7 @@ public class SpawnRing : MonoBehaviour
         ringCharge = ringMaxCharge;
         timerCooldown = ringCooldown;
         timerCharge = ringChargeTime;
+        StartSoundRing = FMODUnity.RuntimeManager.CreateInstance("event:/RingBehave/CreateRing");
     }
 
     void Update()
@@ -49,6 +50,7 @@ public class SpawnRing : MonoBehaviour
             {
                 ringCharge -= 1;
                 Debug.Log("Bulles restantes: " +  ringCharge);
+                StartSoundRing.setParameterByName("Charge", ringCharge);
             }
 
         }
@@ -58,6 +60,7 @@ public class SpawnRing : MonoBehaviour
             timerCharge = ringChargeTime;
             ringCharge = ringChargeAmount;
             //Debug.Log(ringChargeAmount + " Ring rechargés ! (charge time)");
+            StartSoundRing.setParameterByName("Charge", ringCharge);
         }
     }
 

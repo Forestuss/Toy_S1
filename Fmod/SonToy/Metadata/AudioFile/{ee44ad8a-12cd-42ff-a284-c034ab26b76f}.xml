@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{ee44ad8a-12cd-42ff-a284-c034ab26b76f}">
+		<property name="assetPath">
+			<value>activation ring.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>11.287913832199546</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{63ec7353-d003-422c-908e-1c2e81d41bac}</destination>
+		</relationship>
+	</object>
+</objects>

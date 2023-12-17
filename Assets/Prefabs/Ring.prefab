@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e135ec239b1808f4982c8814600951b3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 250
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e135ec239b1808f4982c8814600951b3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 250
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e135ec239b1808f4982c8814600951b3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 250
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e135ec239b1808f4982c8814600951b3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -81,9 +81,6 @@ PrefabInstance:
       addedObject: {fileID: 2484632413891923446}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e135ec239b1808f4982c8814600951b3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1889571087422151776}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e135ec239b1808f4982c8814600951b3, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7314148245611310856}
   m_SourcePrefab: {fileID: 100100000, guid: e135ec239b1808f4982c8814600951b3, type: 3}
 --- !u!1 &4176231084215175014 stripped
@@ -112,20 +109,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.0325
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1889571087422151776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4176231084215175014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e340454bc0f945408dffa0b9e008809, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sizeRatioOnSpeed: 1.1
-  sizeRatioOnTime: 0
 --- !u!114 &7314148245611310856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,4 +127,4 @@ MonoBehaviour:
   ringDragMaxAngle: 75
   ringThrowRadiusActivation: 1
   ringThrowVelocityRatio: 1
-  ringDragVelocityRatio: 1
+  ringDragVelocityRatio: 0.5

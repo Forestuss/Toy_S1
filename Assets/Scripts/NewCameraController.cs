@@ -15,7 +15,6 @@ public class NewCameraController : MonoBehaviour
     [SerializeField] private GameObject cameraPivot;
     [SerializeField] private GameObject cameraTarget;
     [SerializeField] private GameObject player;
-    [SerializeField] private GameObject playerVisual;
 
     private Vector2 turn;
 
@@ -41,12 +40,6 @@ public class NewCameraController : MonoBehaviour
 
         cameraPivot.transform.position = player.transform.position;
         cameraPivot.transform.localRotation = Quaternion.Euler(verticalRotation, horizontalRotation, 0);
-
-        playerVisual.transform.position = player.transform.position;
-
-        // Vector3 direction = player.GetComponent<Rigidbody>().velocity - player.transform.position;
-
-        playerVisual.transform.LookAt(player.GetComponent<Rigidbody>().velocity, Vector3.up);
     }
 
     private void FixedUpdate()

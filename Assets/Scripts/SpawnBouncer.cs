@@ -24,7 +24,7 @@ public class SpawnBouncer : MonoBehaviour
     [SerializeField] private bool isUnlimited; //yolo, pas de restrictions
 
     [Header("Debug")]
-    [SerializeField] private float bumperCharge;
+    public float bumperCharge;
     [SerializeField] private float timerCooldown;
     [SerializeField] private float timerCharge;
 

@@ -24,7 +24,7 @@ public class SpawnRing : MonoBehaviour
     [SerializeField] private bool isUnlimited; //yolo, pas de restrictions
 
     [Header("Debug")]
-    [SerializeField] private float ringCharge;
+    public float ringCharge;
     [SerializeField] private float timerCooldown;
     [SerializeField] private float timerCharge;
 

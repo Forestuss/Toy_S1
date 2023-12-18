@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,10 +13,18 @@ public class RingBehavior : MonoBehaviour
     public float ringThrowVelocityRatio; //Puissance avec laquelle le ring détourne la direction du joueur (lerp de 0 à 1). Valeur de base supposée 0
     public float ringDragVelocityRatio; //Puissance avec laquelle le drag du ring détourne la vélocité du joueur vers son centre. 
 
-    private Vector3 dragDirection;
+    [NonSerialized] public bool isRingThrowTriggerStay;
+    [NonSerialized] public ThrowTriggerBehavior ThrowTrigger;
+
+    private Vector3 dragDirection; 
     private float dragVelocity;
     private int ringDirection;
     private bool isRingBoostLocked = false;
+
+    private void Start()
+    {
+        ThrowTrigger = GetComponentInChildren<ThrowTriggerBehavior>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -58,7 +67,7 @@ public class RingBehavior : MonoBehaviour
     {
         if (isRingBoostLocked == false)
         {
-            if (other.CompareTag("Player") && Vector3.Distance(transform.position, other.transform.position) <= ringThrowRadiusActivation * transform.localScale.x / 100)
+            if (ThrowTrigger.isTriggerStay)
             {
                 isRingBoostLocked = true;
                 dragVelocity = other.attachedRigidbody.velocity.magnitude;
@@ -68,12 +77,18 @@ public class RingBehavior : MonoBehaviour
                     dragDirection = Vector3.Lerp(other.attachedRigidbody.velocity.normalized, this.transform.forward, ringThrowVelocityRatio);
                 }
 
-                else 
+                else
                 {
                     dragDirection = Vector3.Lerp(other.attachedRigidbody.velocity.normalized, -this.transform.forward, ringThrowVelocityRatio);
                 }
-                
+
                 other.attachedRigidbody.velocity = dragDirection * dragVelocity;
+            }
+
+
+            //if (other.CompareTag("Player") && Vector3.Distance(transform.position, other.transform.position) <= ringThrowRadiusActivation * transform.localScale.x / 100)
+            {
+               
             }
         }
 
@@ -94,4 +109,5 @@ public class RingBehavior : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(transform.position, ringThrowRadiusActivation * transform.localScale.x / 100);
     }
+
 }

@@ -8757,6 +8757,10 @@ PrefabInstance:
       propertyPath: ringDragVelocityRatio
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7314148245611310856, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
+      propertyPath: ringThrowRadiusActivation
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 542153695719829127, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
     m_RemovedGameObjects: []

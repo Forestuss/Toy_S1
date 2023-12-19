@@ -15,12 +15,6 @@ public class VisualIndicators : MonoBehaviour
     public GameObject indicatorRing3;
     public GameObject indicatorRing4;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {

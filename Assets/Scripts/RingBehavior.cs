@@ -32,7 +32,7 @@ public class RingBehavior : MonoBehaviour
          {
             other.attachedRigidbody.useGravity = false;
 
-            if (Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) < ringDragMaxAngle) 
+            if (Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) < ringDragMaxAngle && Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) < 180)
             {
                 ringDirection = 0;
                 //dragVelocity = other.attachedRigidbody.velocity.magnitude;

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ThrowTriggerBehavior : MonoBehaviour
 {
-    [NonSerialized] public bool isTriggerStay;
+    [NonSerialized] public bool isTriggerStay = false;
 
     private void OnTriggerEnter(Collider other)
     {

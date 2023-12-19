@@ -152,7 +152,7 @@ MonoBehaviour:
   ringDragMaxAngle: 75
   ringThrowRadiusActivation: 1
   ringThrowVelocityRatio: 1
-  ringDragVelocityRatio: 1
+  ringDragVelocityRatio: 0.5
 --- !u!1001 &4609422794492515374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -232,6 +232,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c649e75c42d586c4a88c09c54536d4ae, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6423127024909491238}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c649e75c42d586c4a88c09c54536d4ae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3856930071202634047}
   m_SourcePrefab: {fileID: 100100000, guid: c649e75c42d586c4a88c09c54536d4ae, type: 3}
 --- !u!1 &3690308803386780031 stripped
 GameObject:
@@ -260,6 +263,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2534964839176971238, guid: c649e75c42d586c4a88c09c54536d4ae, type: 3}
+--- !u!114 &3856930071202634047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3690308803386780031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d28413f782d2778409b2f911d280d10d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4070494169140687813 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c649e75c42d586c4a88c09c54536d4ae, type: 3}

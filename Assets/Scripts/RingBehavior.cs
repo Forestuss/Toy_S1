@@ -31,37 +31,38 @@ public class RingBehavior : MonoBehaviour
          if (other.CompareTag("Player"))
          {
             other.attachedRigidbody.useGravity = false;
+            Vector3 dotDirection = (other.transform.position - transform.position).normalized;
 
-            if (Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) < ringDragMaxAngle && Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) < 180)
+
+            if (Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) < ringDragMaxAngle && Vector3.Dot(dotDirection, other.attachedRigidbody.velocity.normalized) < 0)
             {
+                Debug.Log("C1 | dotDirection:" + Vector3.Dot(dotDirection, other.attachedRigidbody.velocity.normalized));
                 ringDirection = 0;
-                //dragVelocity = other.attachedRigidbody.velocity.magnitude;
-                //dragDirection = Vector3.Lerp(other.attachedRigidbody.velocity.normalized, this.transform.forward, ringThrowVelocityRatio);
-                //other.attachedRigidbody.velocity = dragDirection * dragVelocity * ringBoost;
-
             }
 
-            else if (Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) > 180 - ringDragMaxAngle) 
+            else if (Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) > 180 - ringDragMaxAngle && Vector3.Dot(dotDirection, other.attachedRigidbody.velocity.normalized) < 0)
             {
+                Debug.Log("C2 | dotDirection:" + Vector3.Dot(dotDirection, other.attachedRigidbody.velocity.normalized));
                 ringDirection = 1;
-                //dragVelocity = other.attachedRigidbody.velocity.magnitude;
-                //dragDirection = Vector3.Lerp(other.attachedRigidbody.velocity.normalized, -this.transform.forward, ringThrowVelocityRatio);
-                //other.attachedRigidbody.velocity = dragDirection * dragVelocity * ringBoost;
             }
 
             else
             {
                 isRingBoostLocked = true;
+                Debug.Log("NC | dotDirection:" + Vector3.Dot(dotDirection, other.attachedRigidbody.velocity.normalized));
             }
 
-            Vector3 ringDragCenterDirection = (transform.position - other.attachedRigidbody.position).normalized;
+            if (!isRingBoostLocked)
+            {
+                Vector3 ringDragCenterDirection = (transform.position - other.attachedRigidbody.position).normalized;
+                dragVelocity = other.attachedRigidbody.velocity.magnitude;
+                dragDirection = Vector3.Lerp(other.attachedRigidbody.velocity.normalized, ringDragCenterDirection, ringDragVelocityRatio);
+                other.attachedRigidbody.velocity = dragDirection * dragVelocity * ringBoost;
+            }
 
-            dragVelocity = other.attachedRigidbody.velocity.magnitude;
-            dragDirection = Vector3.Lerp(other.attachedRigidbody.velocity.normalized, ringDragCenterDirection, ringDragVelocityRatio);
-            other.attachedRigidbody.velocity = dragDirection * dragVelocity * ringBoost;
-
-        }
+         }
     }
+
 
     private void OnTriggerStay(Collider other)
     {
@@ -104,10 +105,10 @@ public class RingBehavior : MonoBehaviour
             
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(transform.position, ringThrowRadiusActivation * transform.localScale.x / 100);
-    }
+    }*/
 
 }

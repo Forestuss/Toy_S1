@@ -1,3 +1,5 @@
+using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -11,25 +13,23 @@ public class NewCameraController : MonoBehaviour
     private float verticalRotation;
 
     public float sensitivity = 2f;
+    public float smoothTime = 0.01f;
+
+    [SerializeField] private CinemachineVirtualCamera cineMachineCamera;
 
     [SerializeField] private GameObject cameraPivot;
     [SerializeField] private GameObject cameraTarget;
     [SerializeField] private GameObject player;
 
-    private Vector2 turn;
-
     private bool playerGrounded;
+    private bool playerBoosted;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         playerGrounded = player.GetComponent<Movements>().isGrounded;
+        playerBoosted = player.GetComponent<Movements>().inRing;
 
         horizontal = Input.GetAxisRaw("Mouse X") * sensitivity;
         horizontalRotation += horizontal;
@@ -40,6 +40,8 @@ public class NewCameraController : MonoBehaviour
 
         cameraPivot.transform.position = player.transform.position;
         cameraPivot.transform.localRotation = Quaternion.Euler(verticalRotation, horizontalRotation, 0);
+
+        FOVMangaer();
     }
 
     private void FixedUpdate()
@@ -47,4 +49,18 @@ public class NewCameraController : MonoBehaviour
         transform.position = cameraTarget.transform.position;
         player.transform.localRotation = Quaternion.Euler(0, horizontalRotation, 0);
     }
+
+    void FOVMangaer()
+    {
+        if(playerBoosted)
+        {
+            cineMachineCamera.m_Lens.FieldOfView = Mathf.Lerp(cineMachineCamera.m_Lens.FieldOfView, 80, smoothTime);
+        }
+
+        else
+        {
+            cineMachineCamera.m_Lens.FieldOfView = Mathf.Lerp(cineMachineCamera.m_Lens.FieldOfView, 70, smoothTime);
+        }
+    }
+  
 }

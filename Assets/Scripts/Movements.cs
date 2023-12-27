@@ -13,9 +13,9 @@ public class Movements : MonoBehaviour
     private float verticalInput;
     private float horizontalInput;
 
-    [SerializeField]  bool jumping;
+    private bool jumping;
     
-    [SerializeField] private bool isSliding;
+    private bool isSliding;
 
     [DoNotSerialize] public bool isGrounded;
 
@@ -27,19 +27,16 @@ public class Movements : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float clamp;
 
-    [Header("Jump Tolerance")]
-    public float coyoteTime = 0.2f;
-    public float coyoteTimeCounter = 0f;
-
     public LayerMask groundLayer;
     public LayerMask padsLayer;
 
     public TextMeshProUGUI speedDisp;
 
+    public bool inRing;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        coyoteTimeCounter = coyoteTime;
     }
 
     void Update()
@@ -53,28 +50,23 @@ public class Movements : MonoBehaviour
 
         // Récuperation des données pour le saut
         if (Physics.Raycast(rb.transform.position, Vector3.down, 2.5f, groundLayer))
-        {
-            isGrounded = true;
-        }
+           isGrounded = true;
 
         else
-        {
             isGrounded = false;
-        }
 
+
+        // Récuperation des inputs pour le saut
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
             jumping = true;
-        }
 
+
+        // Récuperation des inputs pour le slide
         if (Input.GetKey(KeyCode.C) && isGrounded)
-        {
             isSliding = true;
-        }
+
         else
-        {
             isSliding = false;
-        }
     }
 
     void FixedUpdate()
@@ -117,19 +109,15 @@ public class Movements : MonoBehaviour
         }
     }
 
-    private void coyoteTimeChecking()
+    private void OnTriggerEnter(Collider other)
     {
-        if (isGrounded)
-            coyoteTimeCounter = coyoteTime;
-        else
-            coyoteTimeCounter -= Time.deltaTime;
-
-
-        if (isGrounded && Input.GetButtonDown("Jump"))
-            jumping = true;
-
-        else if (!isGrounded && coyoteTimeCounter > 0 && Input.GetButtonDown("Jump"))
-            jumping = true;
+        if (other.transform.CompareTag("Ring"))
+            inRing = true;
+    }    
+    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.transform.CompareTag("Ring"))
+            inRing = false;
     }
-
 }

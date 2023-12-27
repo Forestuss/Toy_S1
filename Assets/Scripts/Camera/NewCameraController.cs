@@ -14,6 +14,8 @@ public class NewCameraController : MonoBehaviour
 
     public float sensitivity = 2f;
     public float smoothTime = 0.01f;
+    public float cameraHeight = 2f;
+    public float cameraHeightSmoothTime = 0.01f;
 
     [SerializeField] private CinemachineVirtualCamera cineMachineCamera;
 
@@ -38,7 +40,20 @@ public class NewCameraController : MonoBehaviour
         verticalRotation -= vertical;
         verticalRotation = Mathf.Clamp(verticalRotation, -90.0f, 90.0f);
 
-        cameraPivot.transform.position = player.transform.position;
+        if (playerGrounded)
+        {
+            cameraHeight = Mathf.Lerp(cameraHeight, 2, cameraHeightSmoothTime);
+            cameraPivot.transform.position = player.transform.position + new Vector3(0, cameraHeight, 0);
+        }
+
+        else
+        {
+            cameraHeight = Mathf.Lerp(cameraHeight, 0, cameraHeightSmoothTime);
+            cameraPivot.transform.position = player.transform.position + new Vector3(0, cameraHeight, 0);
+        }
+
+        //else
+        //    cameraPivot.transform.position = player.transform.position;
         cameraPivot.transform.localRotation = Quaternion.Euler(verticalRotation, horizontalRotation, 0);
 
         FOVMangaer();
@@ -46,7 +61,8 @@ public class NewCameraController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position = cameraTarget.transform.position;
+        
+            transform.position = cameraTarget.transform.position;
         player.transform.localRotation = Quaternion.Euler(0, horizontalRotation, 0);
     }
 

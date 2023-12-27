@@ -17,61 +17,64 @@ public class SpawnRing : MonoBehaviour
     public int ringChargeOnBumper; //Nombre de charges récupérées en touchant un Bumper
     public int ringChargeOnRing; //Nombre de charges récupérées en touchant un Ring
 
-    public float ringChargeTime; //Temps avant que X nombre de ring nous soit donné (une fois le timer arrivé au max, le système attend que le joueur n'est plus de ring). Mettre 0 pour désactiver
-    public float ringChargeAmount; //X nombre de ring donnés par le ChargeTime (préférablement le nombre de ring max)
-
     [Header("Have Fun")]
     [SerializeField] private bool isUnlimited; //yolo, pas de restrictions
 
     [Header("Debug")]
     [SerializeField] private float ringCharge;
     [SerializeField] private float timerCooldown;
-    [SerializeField] private float timerCharge;
+
+    private Movements movementScript;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
 
+        movementScript = GetComponent<Movements>();
+
         ringCharge = ringMaxCharge;
         timerCooldown = ringCooldown;
-        timerCharge = ringChargeTime;
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && (timerCooldown <= 0 || isUnlimited) && (ringCharge > 0 || isUnlimited || ringMaxCharge == 0))
         {
-            Instantiate(ring, Target.transform.position, Camera.main.transform.rotation);
+            Vector3 rayDirection = (Target.transform.position - transform.position).normalized;
+            RaycastHit hit;
+
+            if (Physics.Raycast(transform.position, rayDirection, out hit, 10))
+            {
+                Instantiate(ring, hit.point, Camera.main.transform.rotation);
+                Debug.Log("special instantiate");
+            }
+
+            else
+            {
+                Instantiate(ring, Target.transform.position, Camera.main.transform.rotation); 
+            }
+
             timerCooldown = ringCooldown;
-            Debug.Log("Instantiate Ring");
 
             if (ringCharge > 0) 
             {
                 ringCharge -= 1;
                 Debug.Log("Bulles restantes: " +  ringCharge);
             }
-
-        }
-
-        if (ringCharge == 0 && timerCharge <= 0 && ringChargeTime != 0)
-        {
-            timerCharge = ringChargeTime;
-            ringCharge = ringChargeAmount;
-            //Debug.Log(ringChargeAmount + " Ring rechargés ! (charge time)");
         }
     }
 
     private void FixedUpdate()
     {
+        if (movementScript.isGrounded)
+        {
+            CheckRingReset("Ground");
+        }
+
         if (timerCooldown > 0)
         {
             timerCooldown -= Time.deltaTime;
         }
-
-        if (timerCharge > 0) 
-        {
-            timerCharge -= Time.deltaTime;
-        }   
     }
 
     public void CheckRingReset(string Type)
@@ -86,12 +89,6 @@ public class SpawnRing : MonoBehaviour
         {
             ringCharge = Mathf.Clamp(ringCharge + ringChargeOnGround, 0, ringMaxCharge);
             //Debug.Log(ringChargeOnGround + " Ring rechargés ! (Sol)");
-        }
-
-        if (Type == "Ring")
-        {
-            ringCharge = Mathf.Clamp(ringCharge + ringChargeOnRing, 0, ringMaxCharge);
-            //Debug.Log(ringChargeOnRing + " Ring rechargés ! (Ring)");
         }
     }
 
@@ -109,15 +106,6 @@ public class SpawnRing : MonoBehaviour
         if (other.gameObject.CompareTag("Bouncer"))
         {
             CheckRingReset("Bouncer");
-            return;
-        }
-    }
-
-    private void OnCollisionStay(Collision other)
-    {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            CheckRingReset("Ground");
             return;
         }
     }

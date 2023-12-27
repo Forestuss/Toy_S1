@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ring
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e135ec239b1808f4982c8814600951b3, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -224,6 +228,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c649e75c42d586c4a88c09c54536d4ae, type: 3}
       propertyPath: m_Name
       value: RingThrowTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c649e75c42d586c4a88c09c54536d4ae, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

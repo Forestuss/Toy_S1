@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 41718542}
   - component: {fileID: 41718541}
   - component: {fileID: 41718540}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -2399,7 +2399,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 587576037}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TargetPad
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
@@ -5961,7 +5961,7 @@ GameObject:
   - component: {fileID: 1392003370}
   - component: {fileID: 1392003371}
   - component: {fileID: 1392003372}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -6298,12 +6298,9 @@ MonoBehaviour:
   bumperChargeOnGround: 4
   bumperChargeOnBumper: 0
   bumperChargeOnLiquid: 0
-  bumperChargeTime: 0
-  bumperChargeAmount: 0
   isUnlimited: 0
   bumperCharge: 0
   timerCooldown: 0
-  timerCharge: 0
 --- !u!114 &1392003374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6323,12 +6320,9 @@ MonoBehaviour:
   ringChargeOnGround: 4
   ringChargeOnBumper: 4
   ringChargeOnRing: 0
-  ringChargeTime: 0
-  ringChargeAmount: 0
   isUnlimited: 0
   ringCharge: 0
   timerCooldown: 0
-  timerCharge: 0
 --- !u!1 &1487275537
 GameObject:
   m_ObjectHideFlags: 0
@@ -6758,7 +6752,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1677323159}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cameraTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7385,7 +7379,7 @@ GameObject:
   - component: {fileID: 1841644209}
   - component: {fileID: 1841644208}
   - component: {fileID: 1841644207}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cameraPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8095,7 +8089,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1999543954}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TargetRing
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
@@ -8758,9 +8752,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3690308803386780031, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4176231084215175014, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
       propertyPath: m_Name
       value: Ring
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176231084215175014, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7314148245611310856, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
       propertyPath: ringBoost

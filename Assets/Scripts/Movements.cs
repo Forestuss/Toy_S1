@@ -17,7 +17,7 @@ public class Movements : MonoBehaviour
     private float horizontalInput;
 
     [SerializeField] private bool jumping;
-    [SerializeField] private bool isGrounded;
+    [SerializeField] public bool isGrounded;
     [SerializeField] private bool isSliding;
 
     public float lerpSlide;

@@ -18196,7 +18196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 587576037}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TargetBumper
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -21914,7 +21914,7 @@ GameObject:
   - component: {fileID: 819987505}
   - component: {fileID: 819987504}
   - component: {fileID: 819987507}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PlayerVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25194,7 +25194,7 @@ GameObject:
   - component: {fileID: 947017446}
   - component: {fileID: 947017445}
   - component: {fileID: 947017444}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CameraTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31051,7 +31051,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1260633872}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34136,7 +34136,7 @@ GameObject:
   - component: {fileID: 1392003370}
   - component: {fileID: 1392003372}
   - component: {fileID: 1392003371}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PlayerPhysics
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -40917,7 +40917,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1841644206}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cameraPivot
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -42288,6 +42288,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.6494
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -7493596028755563170, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_LocalScale.x
       value: 90.277
@@ -42312,13 +42316,29 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.0468
       objectReference: {fileID: 0}
+    - target: {fileID: -7134098227804940920, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -7013975035670149124, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9847f67b1a9974241a2f9ee73d57654e, type: 2}
+    - target: {fileID: -6733177361254619370, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -6216704798861418764, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_Name
       value: Charge 3 Bumper
+      objectReference: {fileID: 0}
+    - target: {fileID: -6216704798861418764, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5790331476105811431, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -5718608718130224077, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_LocalScale.y
@@ -42335,6 +42355,10 @@ PrefabInstance:
     - target: {fileID: -5718608718130224077, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.56211
+      objectReference: {fileID: 0}
+    - target: {fileID: -5568371526223589888, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -5477749408508380018, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_LocalScale.x
@@ -42364,6 +42388,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9847f67b1a9974241a2f9ee73d57654e, type: 2}
+    - target: {fileID: -5190090645586632096, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -5102194494962648640, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_LocalScale.x
       value: 90.277
@@ -42404,6 +42432,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9847f67b1a9974241a2f9ee73d57654e, type: 2}
+    - target: {fileID: -3756473180518285571, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2885438903517860115, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2836563040601200813, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -2577548232221058511, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_LocalScale.x
       value: 90.277
@@ -42460,6 +42500,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.6596
       objectReference: {fileID: 0}
+    - target: {fileID: -2295443477597383894, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -2231939348429462970, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -42480,6 +42524,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9847f67b1a9974241a2f9ee73d57654e, type: 2}
+    - target: {fileID: -516098083770646512, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -462209410475889350, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -399332655290937753, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 17330062676665839, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -42520,9 +42576,25 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.8698
       objectReference: {fileID: 0}
+    - target: {fileID: 527986321260358946, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 597536959904810614, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_Name
       value: Charge 1 Bumper
+      objectReference: {fileID: 0}
+    - target: {fileID: 597536959904810614, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 632639664833459757, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 833498932508521986, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 882129737928793925, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -42532,6 +42604,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285708551777934105, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1635574816639542815, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2453872202131936956, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -42540,6 +42624,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9847f67b1a9974241a2f9ee73d57654e, type: 2}
+    - target: {fileID: 3311693495047185633, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3316992658331686828, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_LocalScale.x
       value: 90.277
@@ -42616,10 +42704,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Charge 2 Bumper
       objectReference: {fileID: 0}
+    - target: {fileID: 4443029054543088483, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4871130370370540639, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5087730676108667578, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9847f67b1a9974241a2f9ee73d57654e, type: 2}
+    - target: {fileID: 5148817236446094103, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233112405309087440, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5489436327675537225, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_LocalScale.x
       value: 128.68028
@@ -42672,6 +42776,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.67335
       objectReference: {fileID: 0}
+    - target: {fileID: 6507901977716847365, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7071182760956848314, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -42688,6 +42796,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9847f67b1a9974241a2f9ee73d57654e, type: 2}
+    - target: {fileID: 8513859187771203891, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8908240302633977150, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_LocalScale.x
       value: 128.68027
@@ -48425,7 +48537,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1999543954}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TargetRing
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}

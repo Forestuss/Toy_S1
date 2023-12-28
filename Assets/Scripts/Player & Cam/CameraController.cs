@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class NewCameraController : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     private float horizontal;
     private float horizontalRotation;
@@ -23,6 +23,8 @@ public class NewCameraController : MonoBehaviour
     [SerializeField] private GameObject cameraTarget;
     [SerializeField] private GameObject player;
 
+    private Vector3 playerPos;
+
     private bool playerGrounded;
     private bool playerBoosted;
 
@@ -30,6 +32,8 @@ public class NewCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playerPos = player.transform.position;
+
         playerGrounded = player.GetComponent<Movements>().isGrounded;
         playerBoosted = player.GetComponent<Movements>().inRing;
 
@@ -52,17 +56,17 @@ public class NewCameraController : MonoBehaviour
             cameraPivot.transform.position = player.transform.position + new Vector3(0, cameraHeight, 0);
         }
 
-        //else
-        //    cameraPivot.transform.position = player.transform.position;
         cameraPivot.transform.localRotation = Quaternion.Euler(verticalRotation, horizontalRotation, 0);
+
+
+        CameraHeight();
 
         FOVMangaer();
     }
 
     private void FixedUpdate()
     {
-        
-            transform.position = cameraTarget.transform.position;
+        transform.position = cameraTarget.transform.position;
         player.transform.localRotation = Quaternion.Euler(0, horizontalRotation, 0);
     }
 
@@ -78,5 +82,28 @@ public class NewCameraController : MonoBehaviour
             cineMachineCamera.m_Lens.FieldOfView = Mathf.Lerp(cineMachineCamera.m_Lens.FieldOfView, 70, smoothTime);
         }
     }
-  
+    
+    void CameraHeight()
+    {
+        if (playerGrounded)
+        {
+            cameraHeight = Mathf.Lerp(cameraHeight, 2, cameraHeightSmoothTime);
+            cameraPivot.transform.position = player.transform.position + new Vector3(0, cameraHeight, 0);
+        }
+
+        else
+        {
+            cameraHeight = Mathf.Lerp(cameraHeight, 0, cameraHeightSmoothTime);
+            cameraPivot.transform.position = player.transform.position + new Vector3(0, cameraHeight, 0);
+        }
+    }
+
+    void PlayerDistanceDisplay()
+    {
+        if (playerPos.x - Camera.main.transform.position.x < 2f || playerPos.y - Camera.main.transform.position.y < 2f || playerPos.z - Camera.main.transform.position.z < 2f)
+        {
+
+        }
+    }
+
 }

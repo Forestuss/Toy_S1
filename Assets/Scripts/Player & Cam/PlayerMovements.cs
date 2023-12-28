@@ -16,7 +16,7 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] private float _maxSpeed = 200f;
     [SerializeField] private float _clampGroundSpeed = 50f;
     private bool _isSliding;
-    private float _lerpSlide;    
+    private float _lerpSlide = 0.02f;    
     
     private Vector3 inertieVelocity;
     private Vector3 inputVelocity;

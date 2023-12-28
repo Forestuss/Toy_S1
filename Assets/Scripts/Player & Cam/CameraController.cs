@@ -38,8 +38,8 @@ public class CameraController : MonoBehaviour
     {
         _playerPos = _player.transform.position;
 
-        _playerGrounded = _player.GetComponent<Movements>().isGrounded;
-        _playerBoosted = _player.GetComponent<Movements>().inRing;
+        _playerGrounded = _player.GetComponent<PlayerMovements>().isGrounded;
+        _playerBoosted = _player.GetComponent<PlayerMovements>().inRing;
 
         _horizontal = Input.GetAxisRaw("Mouse X") * camSensitivity;
         _horizontalRotation += _horizontal;

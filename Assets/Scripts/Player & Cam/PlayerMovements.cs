@@ -3,7 +3,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Movements : MonoBehaviour
+public class PlayerMovements : MonoBehaviour
 {
     [Space]
     [Header("Player Inputs")]

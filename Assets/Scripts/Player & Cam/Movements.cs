@@ -5,68 +5,71 @@ using UnityEngine;
 
 public class Movements : MonoBehaviour
 {
-    private Vector3 inputVelocity;
-    [DoNotSerialize] public Vector3 inertieVelocity;
+    [Space]
+    [Header("Player Inputs")]
+    private float _verticalInput;
+    private float _horizontalInput;
 
-    private Rigidbody rb;
-
-    private float verticalInput;
-    private float horizontalInput;
-
-    private bool jumping;
+    [Space]
+    [Header("Player Speed")]
+    [SerializeField] private float _speedMultiplier = 2f;
+    [SerializeField] private float _maxSpeed = 200f;
+    [SerializeField] private float _clampGroundSpeed = 50f;
+    private bool _isSliding;
+    private float _lerpSlide;    
     
-    private bool isSliding;
+    private Vector3 inertieVelocity;
+    private Vector3 inputVelocity;
 
+    [Space]
+    [Header("Jump")]    
     [DoNotSerialize] public bool isGrounded;
+    [SerializeField] private float _jumpForce = 60f;
+    private bool _jumping;
+    
+    [Space]
+    [Header("Layers")]
+    [SerializeField] private LayerMask _groundLayer;
 
-    public float lerpSlide;
-
-    [Header("Controller")]
-    [SerializeField] private float speed = 1.0f;
-    [SerializeField] private float maxSpeed = 200f;
-    [SerializeField] private float jumpForce;
-    [SerializeField] private float clamp;
-
-    public LayerMask groundLayer;
-    public LayerMask padsLayer;
-
+    [Space]
+    [Header("Speed Display")]
     public TextMeshProUGUI speedDisp;
 
-    public bool inRing;
+    [Space]
+    [Header("Others")]
+    [DoNotSerialize] public bool inRing;
+    private Rigidbody _rb;
+
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
         // Récuperation de données pour le mouvement
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        _horizontalInput = Input.GetAxisRaw("Horizontal");
+        _verticalInput = Input.GetAxisRaw("Vertical");
 
-        inputVelocity = transform.forward * verticalInput + transform.right * horizontalInput;
-        inertieVelocity = rb.velocity;
+        inputVelocity = transform.forward * _verticalInput + transform.right * _horizontalInput;
+        inertieVelocity = _rb.velocity;
 
         // Récuperation des données pour le saut
-        if (Physics.Raycast(rb.transform.position, Vector3.down, 2.5f, groundLayer))
+        if (Physics.Raycast(_rb.transform.position, Vector3.down, 2.5f, _groundLayer))
            isGrounded = true;
-
         else
             isGrounded = false;
 
-
         // Récuperation des inputs pour le saut
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-            jumping = true;
-
+            _jumping = true;
 
         // Récuperation des inputs pour le slide
         if (Input.GetKey(KeyCode.C) && isGrounded)
-            isSliding = true;
-
+            _isSliding = true;
         else
-            isSliding = false;
+            _isSliding = false;
     }
 
     void FixedUpdate()
@@ -77,35 +80,36 @@ public class Movements : MonoBehaviour
 
     private void VelocityPlayer()
     {
-        if (isGrounded && isSliding)
+        if (isGrounded && _isSliding)
         {
-            rb.velocity = Vector3.ClampMagnitude(inertieVelocity + inputVelocity.normalized * speed, clamp);
+            _rb.velocity = Vector3.ClampMagnitude(inertieVelocity + inputVelocity.normalized * _speedMultiplier, _clampGroundSpeed);
         }
 
-        if (isGrounded && !isSliding)
+        if (isGrounded && !_isSliding)
         {
-            rb.velocity = Vector3.Lerp(inertieVelocity + inputVelocity.normalized * speed, Vector3.zero, lerpSlide);
+            _rb.velocity = Vector3.Lerp(inertieVelocity + inputVelocity.normalized * _speedMultiplier, Vector3.zero, _lerpSlide);
         }
 
         if (!isGrounded)
         {
-            rb.velocity = inertieVelocity + inputVelocity.normalized * speed;
-        }
-        if(rb.velocity.magnitude > maxSpeed)
-        {
-            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+            _rb.velocity = inertieVelocity + inputVelocity.normalized * _speedMultiplier;
         }
 
-        float actualSpeed = rb.velocity.magnitude;
+        if(_rb.velocity.magnitude > _maxSpeed)
+        {
+            _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, _maxSpeed);
+        }
+
+        float actualSpeed = _rb.velocity.magnitude;
         speedDisp.SetText("speed : {0:1}", actualSpeed);
     }
 
     private void JumpPlayer()
     {
-        if (jumping)
+        if (_jumping)
         {
-            rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
-            jumping = false;
+            _rb.velocity = new Vector3(_rb.velocity.x, _jumpForce, _rb.velocity.z);
+            _jumping = false;
         }
     }
 

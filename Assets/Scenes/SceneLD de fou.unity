@@ -18197,7 +18197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 587576037}
   m_Layer: 0
-  m_Name: TargetPad
+  m_Name: TargetBumper
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -22000,9 +22000,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1392003359}
-  indicatorPad1: {fileID: 1818453504}
-  indicatorPad2: {fileID: 739894519}
-  indicatorPad3: {fileID: 1182353969}
+  indicatorBumper1: {fileID: 1182353969}
+  indicatorBumper2: {fileID: 739894519}
+  indicatorBumper3: {fileID: 1818453504}
   indicatorRing1: {fileID: 828209532}
   indicatorRing2: {fileID: 2058192961}
   indicatorRing3: {fileID: 18061657}
@@ -34375,19 +34375,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c60e582f3451d4183340436f01cfff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloc: {fileID: 5208014263546810960, guid: 6ef197099bb792947a1f0fd9db109f15, type: 3}
-  Target: {fileID: 587576036}
+  _Bumper: {fileID: 5208014263546810960, guid: 6ef197099bb792947a1f0fd9db109f15, type: 3}
+  _Target: {fileID: 587576036}
   bumperMaxCharge: 3
   bumperCooldown: 0.2
   bumperChargeOnGround: 3
   bumperChargeOnBumper: 0
-  bumperChargeOnLiquid: 0
-  bumperChargeTime: 0
-  bumperChargeAmount: 0
-  isUnlimited: 0
   bumperCharge: 0
-  timerCooldown: 0
-  timerCharge: 0
+  _timerCooldown: 0
+  _isUnlimited: 0
 --- !u!114 &1392003374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34400,19 +34396,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecd7221abc74c964a8dedab0cb817309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ring: {fileID: 4176231084215175014, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
-  Target: {fileID: 1999543953}
+  _Ring: {fileID: 4176231084215175014, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
+  _Target: {fileID: 1999543953}
   ringMaxCharge: 4
   ringCooldown: 0.2
   ringChargeOnGround: 4
   ringChargeOnBumper: 4
-  ringChargeOnRing: 0
-  ringChargeTime: 0
-  ringChargeAmount: 0
-  isUnlimited: 0
   ringCharge: 0
-  timerCooldown: 0
-  timerCharge: 0
+  _timerCooldown: 0
+  _isUnlimited: 0
 --- !u!1 &1398084455 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 12c8cf745bb5e28448b52a815f56406b, type: 3}
@@ -42324,6 +42316,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9847f67b1a9974241a2f9ee73d57654e, type: 2}
+    - target: {fileID: -6216704798861418764, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Name
+      value: Charge 3 Bumper
+      objectReference: {fileID: 0}
     - target: {fileID: -5718608718130224077, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_LocalScale.y
       value: 94.201
@@ -42524,6 +42520,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.8698
       objectReference: {fileID: 0}
+    - target: {fileID: 597536959904810614, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Name
+      value: Charge 1 Bumper
+      objectReference: {fileID: 0}
     - target: {fileID: 882129737928793925, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -42611,6 +42611,10 @@ PrefabInstance:
     - target: {fileID: 4314054611136627458, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.58571
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443029054543088483, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
+      propertyPath: m_Name
+      value: Charge 2 Bumper
       objectReference: {fileID: 0}
     - target: {fileID: 5087730676108667578, guid: 2bb0d3226f71e034e80e1f4a165a8b83, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -48422,7 +48426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1999543954}
   m_Layer: 0
-  m_Name: TargetBubble
+  m_Name: TargetRing
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

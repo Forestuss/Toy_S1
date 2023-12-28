@@ -6,35 +6,34 @@ public class VisualIndicators : MonoBehaviour
 {
     public GameObject player;
 
-    public GameObject indicatorPad1;
-    public GameObject indicatorPad2;
-    public GameObject indicatorPad3;
+    public GameObject indicatorBumper1;
+    public GameObject indicatorBumper2;
+    public GameObject indicatorBumper3;
 
     public GameObject indicatorRing1;
     public GameObject indicatorRing2;
     public GameObject indicatorRing3;
     public GameObject indicatorRing4;
 
-    // Update is called once per frame
     void Update()
     {
-        if(player.GetComponent<SpawnBouncer>().bumperCharge == 3)
+        if(player.GetComponent<SpawnBumper>().bumperCharge == 3)
         {
-            indicatorPad1.transform.GetComponent<Renderer>().enabled = true;
-            indicatorPad2.transform.GetComponent<Renderer>().enabled = true;
-            indicatorPad3.transform.GetComponent<Renderer>().enabled = true;
+            indicatorBumper1.transform.GetComponent<Renderer>().enabled = true;
+            indicatorBumper2.transform.GetComponent<Renderer>().enabled = true;
+            indicatorBumper3.transform.GetComponent<Renderer>().enabled = true;
         } 
-        if(player.GetComponent<SpawnBouncer>().bumperCharge == 2)
+        if(player.GetComponent<SpawnBumper>().bumperCharge == 2)
         {
-            indicatorPad1.transform.GetComponent<Renderer>().enabled = false;
+            indicatorBumper1.transform.GetComponent<Renderer>().enabled = false;
         }
-        if(player.GetComponent<SpawnBouncer>().bumperCharge == 1)
+        if(player.GetComponent<SpawnBumper>().bumperCharge == 1)
         {
-            indicatorPad2.transform.GetComponent<Renderer>().enabled = false;
+            indicatorBumper2.transform.GetComponent<Renderer>().enabled = false;
         }
-        if(player.GetComponent<SpawnBouncer>().bumperCharge == 0)
+        if(player.GetComponent<SpawnBumper>().bumperCharge == 0)
         {
-            indicatorPad3.transform.GetComponent<Renderer>().enabled = false;
+            indicatorBumper3.transform.GetComponent<Renderer>().enabled = false;
         }
 
 

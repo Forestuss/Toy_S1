@@ -181,7 +181,8 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -1018664272722485354, guid: 7b1ccb0018d74354f8dff7710ef8d61f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -6763858364670572316, guid: 7b1ccb0018d74354f8dff7710ef8d61f, type: 3}
@@ -229,9 +230,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9141816029861474070, guid: 7b1ccb0018d74354f8dff7710ef8d61f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3430853786136395920}
-    - targetCorrespondingSourceObject: {fileID: -1018664272722485354, guid: 7b1ccb0018d74354f8dff7710ef8d61f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5194501394596002423}
   m_SourcePrefab: {fileID: 100100000, guid: 7b1ccb0018d74354f8dff7710ef8d61f, type: 3}
 --- !u!1 &67685038831028535 stripped
 GameObject:
@@ -422,33 +420,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8936622394817868014, guid: 7b1ccb0018d74354f8dff7710ef8d61f, type: 3}
---- !u!1 &4164081592729866937 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -1018664272722485354, guid: 7b1ccb0018d74354f8dff7710ef8d61f, type: 3}
-  m_PrefabInstance: {fileID: 5194110628110175535}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &5194501394596002423
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4164081592729866937}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4711208715938537054, guid: 7b1ccb0018d74354f8dff7710ef8d61f, type: 3}
 --- !u!1 &4455278359458736983 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8485173162082002552, guid: 7b1ccb0018d74354f8dff7710ef8d61f, type: 3}

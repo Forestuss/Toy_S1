@@ -52,9 +52,9 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _WiggleOffset: 3
-    - _WindSpeed: 2
-    - _WindStrength: 0
+    - _WiggleOffset: 0.4
+    - _WindSpeed: 1.2
+    - _WindStrength: 0.3
     m_Colors:
     - _BottomColor: {r: 0.49446273, g: 0.6509434, b: 0.01535244, a: 0}
     - _TopColor: {r: 0.6906458, g: 0.7924528, b: 0.08597366, a: 0}

@@ -23,10 +23,13 @@ public class SpawnRing : MonoBehaviour
     [SerializeField] private bool _isUnlimited;
 
     private PlayerMovements movementScript;
+    private bool reload = true;
+    private FMOD.Studio.EventInstance SonReload;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        SonReload = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerBehave/RechargeRing");
 
         movementScript = GetComponent<PlayerMovements>();
 
@@ -44,12 +47,14 @@ public class SpawnRing : MonoBehaviour
             if (Physics.Raycast(transform.position, rayDirection, out hit, 10))
             {
                 Instantiate(_Ring, hit.point, Camera.main.transform.rotation);
+                reload = false;
                 //Debug.Log("special instantiate");
             }
 
             else
             {
                 Instantiate(_Ring, _Target.transform.position, Camera.main.transform.rotation);
+                reload = false;
             }
 
             _timerCooldown = ringCooldown;
@@ -80,6 +85,11 @@ public class SpawnRing : MonoBehaviour
         if (Type == "Bouncer")
         {
             ringCharge = Mathf.Clamp(ringCharge + ringChargeOnBumper, 0, ringMaxCharge);
+            if (!reload)
+            {
+                SonReload.start();
+                reload = true;
+            }
             //Debug.Log(ringChargeOnBumper + " Ring rechargés ! (Bumper)");
         }
 

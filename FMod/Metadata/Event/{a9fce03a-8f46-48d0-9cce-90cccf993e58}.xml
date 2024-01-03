@@ -146,8 +146,8 @@
 		</relationship>
 	</object>
 	<object class="MultiSound" id="{5a3dc22b-22dc-4859-8c6f-df7f259e72c1}">
-		<property name="start">
-			<value>1</value>
+		<property name="length">
+			<value>2</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{20a821f9-24a5-47c7-9ee5-425bb373cf28}</destination>

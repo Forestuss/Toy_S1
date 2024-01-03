@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17556289, g: 0.21967517, b: 0.30199912, a: 1}
+  m_IndirectSpecularColor: {r: 0.17556289, g: 0.21967517, b: 0.30199915, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -823,8 +823,8 @@ GameObject:
   - component: {fileID: 41718542}
   - component: {fileID: 41718541}
   - component: {fileID: 41718544}
-  - component: {fileID: 41718540}
   - component: {fileID: 41718543}
+  - component: {fileID: 41718545}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -832,14 +832,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &41718540
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 41718539}
-  m_Enabled: 1
 --- !u!20 &41718541
 Camera:
   m_ObjectHideFlags: 0
@@ -960,6 +952,19 @@ MonoBehaviour:
   _cameraPivot: {fileID: 1841644205}
   _cameraTarget: {fileID: 947017442}
   _player: {fileID: 1392003359}
+--- !u!114 &41718545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41718539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1 &51399838 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ddb9d85739c813f4b8a18735b452daed, type: 3}
@@ -12623,7 +12628,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809263511}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.74392664, y: -0.0037376424, z: 0.005642234, w: 0.6682271}
+  m_LocalRotation: {x: 0.7439267, y: -0.003737628, z: 0.0056422497, w: 0.66822714}
   m_LocalPosition: {x: -0.000030040741, y: 0, z: 8.99996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18310,6 +18315,8 @@ GameObject:
   - component: {fileID: 1392003370}
   - component: {fileID: 1392003372}
   - component: {fileID: 1392003371}
+  - component: {fileID: 1392003375}
+  - component: {fileID: 1392003376}
   m_Layer: 2
   m_Name: PlayerPhysics
   m_TagString: Player
@@ -18579,6 +18586,31 @@ MonoBehaviour:
   ringCharge: 0
   _timerCooldown: 0
   _isUnlimited: 0
+--- !u!114 &1392003375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392003359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+--- !u!114 &1392003376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392003359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e335fd599e2ce1244b474f059667f49c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1401640926
 PrefabInstance:
   m_ObjectHideFlags: 0

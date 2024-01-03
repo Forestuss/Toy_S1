@@ -8,7 +8,7 @@
 			<value>RechargeRing</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{682038fb-abd6-4ff9-b0c6-270e4ab96356}</destination>
@@ -96,7 +96,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{d2792324-9447-4819-9cf6-22e82ccea292}">
 		<property name="volume">
-			<value>-14.5</value>
+			<value>-10</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{acc1c026-b339-4068-a76f-2290bf836acd}</destination>
@@ -212,7 +212,6 @@
 	<object class="MixerBusEffectChain" id="{acc1c026-b339-4068-a76f-2290bf836acd}">
 		<relationship name="effects">
 			<destination>{d9900953-7c16-4d45-be41-e1a6c75ec88f}</destination>
-			<destination>{98b108bc-25fa-46bf-a04a-1cdcc4186546}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{1c274af8-164e-4b92-861d-42dc3e1d3154}" />
@@ -372,7 +371,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{e546be4f-fb81-4b78-a9e0-8990411f4f83}" />
 	<object class="MixerBusFader" id="{d9900953-7c16-4d45-be41-e1a6c75ec88f}" />
-	<object class="SpatialiserEffect" id="{98b108bc-25fa-46bf-a04a-1cdcc4186546}" />
 	<object class="MixerBusFader" id="{1001d409-a2b0-419e-b14d-d030aa0a30db}" />
 	<object class="MixerBusFader" id="{661a0e0d-f0dd-41d6-a8a2-c522f396d137}" />
 	<object class="MixerBusFader" id="{7232ec31-463a-454d-b76b-5547f7dd2444}" />

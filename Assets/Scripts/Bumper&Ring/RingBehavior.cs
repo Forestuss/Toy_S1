@@ -26,6 +26,8 @@ public class RingBehavior : MonoBehaviour
             if (Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) < ringDragMaxAngle) 
             {
                 ringDirection = 0;
+                gameObject.GetComponentInChildren<RingRotate>().SpeedRotate();
+                other.gameObject.GetComponent<PlayerMovements>().MaxSpeedAugment();
                 //dragVelocity = other.attachedRigidbody.velocity.magnitude;
                 //dragDirection = Vector3.Lerp(other.attachedRigidbody.velocity.normalized, this.transform.forward, ringThrowVelocityRatio);
                 //other.attachedRigidbody.velocity = dragDirection * dragVelocity * ringBoost;
@@ -35,6 +37,8 @@ public class RingBehavior : MonoBehaviour
             else if (Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) > 180 - ringDragMaxAngle) 
             {
                 ringDirection = 1;
+                gameObject.GetComponentInChildren<RingRotate>().SpeedRotate();
+                other.gameObject.GetComponent<PlayerMovements>().MaxSpeedAugment();
                 //dragVelocity = other.attachedRigidbody.velocity.magnitude;
                 //dragDirection = Vector3.Lerp(other.attachedRigidbody.velocity.normalized, -this.transform.forward, ringThrowVelocityRatio);
                 //other.attachedRigidbody.velocity = dragDirection * dragVelocity * ringBoost;
@@ -60,6 +64,7 @@ public class RingBehavior : MonoBehaviour
         {
             if (other.CompareTag("Player") && Vector3.Distance(transform.position, other.transform.position) <= ringThrowRadiusActivation * transform.localScale.x / 100)
             {
+
                 isRingBoostLocked = true;
                 dragVelocity = other.attachedRigidbody.velocity.magnitude;
 

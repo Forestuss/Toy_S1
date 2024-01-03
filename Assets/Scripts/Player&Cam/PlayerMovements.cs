@@ -14,6 +14,7 @@ public class PlayerMovements : MonoBehaviour
     [Header("Player Speed")]
     [SerializeField] private float _speedMultiplier = 2f;
     [SerializeField] private float _maxSpeed = 200f;
+    [SerializeField] private float _maxSpeedOutRing = 300f;
     [SerializeField] private float _clampGroundSpeed = 50f;
     private bool _isSliding;
     private float _lerpSlide = 0.02f;    
@@ -76,6 +77,8 @@ public class PlayerMovements : MonoBehaviour
     {
         VelocityPlayer();
         JumpPlayer();
+
+        _maxSpeed = _maxSpeed - 1;
     }
 
     private void VelocityPlayer()
@@ -123,5 +126,10 @@ public class PlayerMovements : MonoBehaviour
     {
         if (other.transform.CompareTag("Ring"))
             inRing = false;
+    }
+
+    public void MaxSpeedAugment()
+    {
+        _maxSpeed = _maxSpeedOutRing;       
     }
 }

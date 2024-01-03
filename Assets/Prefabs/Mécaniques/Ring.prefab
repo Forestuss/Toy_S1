@@ -239,6 +239,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e135ec239b1808f4982c8814600951b3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7314148245611310856}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e135ec239b1808f4982c8814600951b3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6135079445298929180}
   m_SourcePrefab: {fileID: 100100000, guid: e135ec239b1808f4982c8814600951b3, type: 3}
 --- !u!4 &3656681726289599964 stripped
 Transform:
@@ -290,3 +293,34 @@ MonoBehaviour:
   ringThrowRadiusActivation: 1
   ringThrowVelocityRatio: 1
   ringDragVelocityRatio: 0.9
+--- !u!114 &6135079445298929180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4176231084215175014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -252320964
+      Data2: 1309702058
+      Data3: -722369383
+      Data4: -594288415
+    Path: event:/RingBehave/UseRing
+  Event: 
+  PlayEvent: 3
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20

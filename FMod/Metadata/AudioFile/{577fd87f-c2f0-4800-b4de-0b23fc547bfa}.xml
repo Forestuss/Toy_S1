@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{577fd87f-c2f0-4800-b4de-0b23fc547bfa}">
+		<property name="assetPath">
+			<value>pigeons-flying-6351.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>24</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.4960000000000004</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{c8970981-f1d5-48a9-a430-b6af7f2c6d92}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{62704cf0-f99d-4c03-b02a-e6dae6e653f1}">
+		<property name="assetPath">
+			<value>hitrock7.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>19.134467120181405</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{c8970981-f1d5-48a9-a430-b6af7f2c6d92}</destination>
+		</relationship>
+	</object>
+</objects>

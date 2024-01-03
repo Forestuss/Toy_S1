@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{cc662756-de74-4087-9001-a855b16a8326}">
+		<property name="name">
+			<value>F2V</value>
+		</property>
+		<relationship name="folder">
+			<destination>{d98d13d8-ac5f-470e-934d-23e174ea8c4e}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{bb7679b4-129b-4744-bcfd-2e22d6da9e80}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{bb7679b4-129b-4744-bcfd-2e22d6da9e80}">
+		<property name="maximum">
+			<value>300</value>
+		</property>
+		<property name="initialValue">
+			<value>150</value>
+		</property>
+	</object>
+</objects>

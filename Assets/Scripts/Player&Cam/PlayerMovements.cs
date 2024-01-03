@@ -78,7 +78,7 @@ public class PlayerMovements : MonoBehaviour
         VelocityPlayer();
         JumpPlayer();
 
-        _maxSpeed = _maxSpeed - 1;
+        _maxSpeed = Mathf.Clamp(_maxSpeed - 3, 200, _maxSpeedOutRing);
     }
 
     private void VelocityPlayer()

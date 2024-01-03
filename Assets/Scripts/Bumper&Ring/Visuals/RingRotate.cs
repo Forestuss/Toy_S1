@@ -15,7 +15,7 @@ public class RingRotate : MonoBehaviour
         if (_isRotating)
         {
             _rotateTimer = _rotateTimer - Time.deltaTime;
-            float _rotateAngle = _rotateSpeed * _playerSpeed *_rotateTimer;
+            float _rotateAngle = _rotateSpeed * _playerSpeed * (_rotateTimer/_playerSpeed);
             transform.Rotate(new Vector3(_rotateAngle, 0, 0), Space.Self);
 
             if (_rotateTimer <= 0)
@@ -28,8 +28,8 @@ public class RingRotate : MonoBehaviour
     public void SpeedRotate()
     {
         _playerSpeed = Mathf.Clamp(GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Rigidbody>().velocity.magnitude/50, 1, 5);
+        _rotateTimer = _playerSpeed;
         Debug.Log("RotateSpeed: " +  _playerSpeed);
         _isRotating = true;
-        _rotateTimer = 1;
     }
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{c846163e-c8c7-4965-a2f2-04443d3207bc}">
+		<property name="assetPath">
+			<value>ambient-metal-whoosh-1-174460.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.544</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{c8970981-f1d5-48a9-a430-b6af7f2c6d92}</destination>
+		</relationship>
+	</object>
+</objects>

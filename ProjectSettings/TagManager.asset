@@ -8,6 +8,8 @@ TagManager:
   - BoostLiquid
   - Bouncer
   - Ring
+  - RingsSound
+  - Ringss
   layers:
   - Default
   - TransparentFX

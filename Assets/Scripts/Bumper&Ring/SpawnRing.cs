@@ -25,10 +25,12 @@ public class SpawnRing : MonoBehaviour
     private PlayerMovements movementScript;
     private bool reload = true;
     private FMOD.Studio.EventInstance SonReload;
+    private FMOD.Studio.EventInstance SonPlaced;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        SonPlaced = FMODUnity.RuntimeManager.CreateInstance("event:/RingBehave/CreateRing");
         SonReload = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerBehave/RechargeRing");
 
         movementScript = GetComponent<PlayerMovements>();
@@ -47,6 +49,7 @@ public class SpawnRing : MonoBehaviour
             if (Physics.Raycast(transform.position, rayDirection, out hit, 10))
             {
                 Instantiate(_Ring, hit.point, Camera.main.transform.rotation);
+                SonPlaced.start();
                 reload = false;
                 //Debug.Log("special instantiate");
             }
@@ -54,6 +57,7 @@ public class SpawnRing : MonoBehaviour
             else
             {
                 Instantiate(_Ring, _Target.transform.position, Camera.main.transform.rotation);
+                SonPlaced.start();
                 reload = false;
             }
 
@@ -61,6 +65,7 @@ public class SpawnRing : MonoBehaviour
 
             if (ringCharge > 0)
             {
+                SonPlaced.setParameterByName("Charge", ringCharge);
                 ringCharge -= 1;
                 Debug.Log("Bulles restantes: " + ringCharge);
             }
@@ -88,6 +93,7 @@ public class SpawnRing : MonoBehaviour
             if (!reload)
             {
                 SonReload.start();
+                SonPlaced.setParameterByName("Charge", ringCharge);
                 reload = true;
             }
             //Debug.Log(ringChargeOnBumper + " Ring rechargés ! (Bumper)");
@@ -96,6 +102,7 @@ public class SpawnRing : MonoBehaviour
         if (Type == "Ground")
         {
             ringCharge = Mathf.Clamp(ringCharge + ringChargeOnGround, 0, ringMaxCharge);
+            SonPlaced.setParameterByName("Charge", ringCharge);
             //Debug.Log(ringChargeOnGround + " Ring rechargés ! (Sol)");
         }
     }

@@ -33450,10 +33450,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Bumper: {fileID: 5208014263546810960, guid: 6ef197099bb792947a1f0fd9db109f15, type: 3}
   _Target: {fileID: 587576036}
-  bumperMaxCharge: 3
-  bumperCooldown: 0.2
-  bumperChargeOnGround: 3
-  bumperChargeOnBumper: 0
+  _bumperMaxCharge: 3
+  _bumperCooldown: 0.2
+  _bumperChargeOnGround: 3
+  _bumperChargeOnBumper: 0
   bumperCharge: 0
   _timerCooldown: 0
   _isUnlimited: 0
@@ -33471,10 +33471,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Ring: {fileID: 4176231084215175014, guid: dbed2e0c9841e814e82ce53e51056a67, type: 3}
   _Target: {fileID: 1999543953}
-  ringMaxCharge: 4
-  ringCooldown: 0.2
-  ringChargeOnGround: 4
-  ringChargeOnBumper: 4
+  _ringMaxCharge: 4
+  _ringCooldown: 0.2
+  _ringChargeOnGround: 4
+  _ringChargeOnBumper: 4
   ringCharge: 0
   _timerCooldown: 0
   _isUnlimited: 0

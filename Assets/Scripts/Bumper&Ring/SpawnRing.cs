@@ -10,17 +10,17 @@ public class SpawnRing : MonoBehaviour
     [SerializeField] private GameObject _Target;
 
     [Header("Ring Charges")]
-    public int ringMaxCharge; //Nombre de charges maximum de ring à placer. Si 0: charges illimitées
-    public float ringCooldown; //Le temps d'attente avant de pouvoir placer un autre ring
+    [SerializeField] private int _ringMaxCharge; //Nombre de charges maximum de ring à placer. Si 0: charges illimitées
+    [SerializeField] private float _ringCooldown; //Le temps d'attente avant de pouvoir placer un autre ring
 
     [Header("Ring Reset")]
-    public int ringChargeOnGround; //Nombre de charges récupérées en touchant le sol
-    public int ringChargeOnBumper; //Nombre de charges récupérées en touchant un Bumper
+    [SerializeField] private int _ringChargeOnGround; //Nombre de charges récupérées en touchant le sol
+    [SerializeField] private int _ringChargeOnBumper; //Nombre de charges récupérées en touchant un Bumper
 
     [Header("Debug")]
     public float ringCharge;
-    [SerializeField] private float _timerCooldown;
-    [SerializeField] private bool _isUnlimited;
+    [SerializeField] private float _timerCooldown; //Cooldown entre 2 possible poses de ring
+    [SerializeField] private bool _isUnlimited; //Debug qui retire les limitations
 
     private PlayerMovements movementScript;
 
@@ -30,13 +30,13 @@ public class SpawnRing : MonoBehaviour
 
         movementScript = GetComponent<PlayerMovements>();
 
-        ringCharge = ringMaxCharge;
-        _timerCooldown = ringCooldown;
+        ringCharge = _ringMaxCharge;
+        _timerCooldown = _ringCooldown;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && (_timerCooldown <= 0 || _isUnlimited) && (ringCharge > 0 || _isUnlimited || ringMaxCharge == 0))
+        if (Input.GetMouseButtonDown(0) && (_timerCooldown <= 0 || _isUnlimited) && (ringCharge > 0 || _isUnlimited || _ringMaxCharge == 0))
         {
             Vector3 rayDirection = (_Target.transform.position - transform.position).normalized;
             RaycastHit hit;
@@ -44,7 +44,6 @@ public class SpawnRing : MonoBehaviour
             if (Physics.Raycast(transform.position, rayDirection, out hit, 10))
             {
                 Instantiate(_Ring, hit.point, Camera.main.transform.rotation);
-                //Debug.Log("special instantiate");
             }
 
             else
@@ -52,7 +51,7 @@ public class SpawnRing : MonoBehaviour
                 Instantiate(_Ring, _Target.transform.position, Camera.main.transform.rotation);
             }
 
-            _timerCooldown = ringCooldown;
+            _timerCooldown = _ringCooldown;
 
             if (ringCharge > 0)
             {
@@ -79,14 +78,12 @@ public class SpawnRing : MonoBehaviour
     {
         if (Type == "Bouncer")
         {
-            ringCharge = Mathf.Clamp(ringCharge + ringChargeOnBumper, 0, ringMaxCharge);
-            //Debug.Log(ringChargeOnBumper + " Ring rechargés ! (Bumper)");
+            ringCharge = Mathf.Clamp(ringCharge + _ringChargeOnBumper, 0, _ringMaxCharge);
         }
 
         if (Type == "Ground")
         {
-            ringCharge = Mathf.Clamp(ringCharge + ringChargeOnGround, 0, ringMaxCharge);
-            //Debug.Log(ringChargeOnGround + " Ring rechargés ! (Sol)");
+            ringCharge = Mathf.Clamp(ringCharge + _ringChargeOnGround, 0, _ringMaxCharge);
         }
     }
 

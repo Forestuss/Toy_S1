@@ -29,7 +29,7 @@ public class RingRotate : MonoBehaviour
     {
         _playerSpeed = Mathf.Clamp(GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Rigidbody>().velocity.magnitude/50, 1, 5);
         _rotateTimer = _playerSpeed;
-        Debug.Log("RotateSpeed: " +  _playerSpeed);
+        //Debug.Log("RotateSpeed: " +  _playerSpeed);
         _isRotating = true;
     }
 }

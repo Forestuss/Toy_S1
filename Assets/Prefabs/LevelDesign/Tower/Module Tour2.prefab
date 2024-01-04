@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2929717178979146321
+--- !u!1001 &1214129014225045339
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,27 +10,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ffb30f9e64047d74980ae5fdc12c49f3, type: 3}
       propertyPath: m_LocalScale.x
-      value: -14329.9
+      value: -12055.696
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ffb30f9e64047d74980ae5fdc12c49f3, type: 3}
       propertyPath: m_LocalScale.y
-      value: -14329.9
+      value: -12055.696
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ffb30f9e64047d74980ae5fdc12c49f3, type: 3}
       propertyPath: m_LocalScale.z
-      value: -13354.038
+      value: -11234.707
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ffb30f9e64047d74980ae5fdc12c49f3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -300
+      value: -1901.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ffb30f9e64047d74980ae5fdc12c49f3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2690
+      value: -100.16
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ffb30f9e64047d74980ae5fdc12c49f3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2100
+      value: -155.08
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ffb30f9e64047d74980ae5fdc12c49f3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -60,10 +60,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ffb30f9e64047d74980ae5fdc12c49f3, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ffb30f9e64047d74980ae5fdc12c49f3, type: 3}
       propertyPath: m_Name
       value: Module Tour2
@@ -75,5 +71,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ffb30f9e64047d74980ae5fdc12c49f3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8251829991477959865}
   m_SourcePrefab: {fileID: 100100000, guid: ffb30f9e64047d74980ae5fdc12c49f3, type: 3}
+--- !u!1 &2024396852680210954 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ffb30f9e64047d74980ae5fdc12c49f3, type: 3}
+  m_PrefabInstance: {fileID: 1214129014225045339}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &8251829991477959865
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024396852680210954}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5512361600001258384, guid: ffb30f9e64047d74980ae5fdc12c49f3, type: 3}

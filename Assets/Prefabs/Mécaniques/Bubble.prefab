@@ -177,6 +177,9 @@ MonoBehaviour:
   mergeSpeed: 1
   mergeSizeRatio: 1
   mergeMinRange: 1
+  powerMergeMinAngle: 0
+  powerMergeMinDistance: 0
+  powerMergeMultiplier: 0
   objectMergeResult: {fileID: 8502394694348001283}
   fusionScript: {fileID: 0}
 --- !u!114 &1365607635096139750

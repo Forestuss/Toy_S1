@@ -1,0 +1,453 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5020489580105741520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/CreateBounce/Charge
+  m_EditorClassIdentifier: 
+  Name: Charge
+  StudioPath: 
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 2614895980
+    data2: 3665913695
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - 1
+  - 2
+  - 3
+  - 4
+  Exists: 1
+--- !u!114 &-4304258682432125156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMod/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638398816075194367
+  FileSizes:
+  - Name: Desktop
+    Value: 7677728
+  Exists: 1
+--- !u!114 &-3882260209827422036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/WorldBehave/Bird
+  m_EditorClassIdentifier: 
+  Path: event:/WorldBehave/Bird
+  Guid:
+    Data1: 866759819
+    Data2: 1320560497
+    Data3: 882677905
+    Data4: 1609528076
+  Banks:
+  - {fileID: -4304258682432125156}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 19500
+--- !u!114 &-3622273857586046723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerBehave/RechargeBounce
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerBehave/RechargeBounce
+  Guid:
+    Data1: 356381490
+    Data2: 1114124163
+    Data3: 1880859293
+    Data4: 1001692008
+  Banks:
+  - {fileID: -4304258682432125156}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 600
+--- !u!114 &-519526525668202489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerBehave/RechargeRing
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerBehave/RechargeRing
+  Guid:
+    Data1: 1289048711
+    Data2: 1140265998
+    Data3: -577937024
+    Data4: -1434633838
+  Banks:
+  - {fileID: -4304258682432125156}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 500
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 5733993692725046453}
+  - {fileID: -4304258682432125156}
+  EditorEvents:
+  - {fileID: -3622273857586046723}
+  - {fileID: 1941008746936975216}
+  - {fileID: 3231108832463289638}
+  - {fileID: 7254351158573183883}
+  - {fileID: 1358717130131373793}
+  - {fileID: 4417596391950173712}
+  - {fileID: -519526525668202489}
+  - {fileID: -3882260209827422036}
+  - {fileID: 480562203348160194}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: -4304258682432125156}
+  StringsBanks:
+  - {fileID: 5733993692725046453}
+  cacheTime: 638398816075224446
+  cacheVersion: 131616
+--- !u!114 &480562203348160194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/RingBehave/CreateRing
+  m_EditorClassIdentifier: 
+  Path: event:/RingBehave/CreateRing
+  Guid:
+    Data1: -22432111
+    Data2: 1241099495
+    Data3: -1444381257
+    Data4: -413990403
+  Banks:
+  - {fileID: -4304258682432125156}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 7817356366162267634}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &1358717130131373793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerBehave/SoundSpeed
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerBehave/SoundSpeed
+  Guid:
+    Data1: 1211850345
+    Data2: 1260810746
+    Data3: 1623533707
+    Data4: -1493530329
+  Banks:
+  - {fileID: -4304258682432125156}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 7572468635558723420}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &1941008746936975216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerBehave/Hit
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerBehave/Hit
+  Guid:
+    Data1: -1443045318
+    Data2: 1221627718
+    Data3: -862925156
+    Data4: 1480497615
+  Banks:
+  - {fileID: -4304258682432125156}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 8835698134925927809}
+  - {fileID: 6316589434869529549}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &3231108832463289638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/RingBehave/UseRing
+  m_EditorClassIdentifier: 
+  Path: event:/RingBehave/UseRing
+  Guid:
+    Data1: -252320964
+    Data2: 1309702058
+    Data3: -722369383
+    Data4: -594288415
+  Banks:
+  - {fileID: -4304258682432125156}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 550
+--- !u!114 &4417596391950173712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BounceBehave/UseBounce
+  m_EditorClassIdentifier: 
+  Path: event:/BounceBehave/UseBounce
+  Guid:
+    Data1: 478516604
+    Data2: 1081081336
+    Data3: -109809511
+    Data4: 1951378775
+  Banks:
+  - {fileID: -4304258682432125156}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
+--- !u!114 &5733993692725046453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: FMod/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638398816075224446
+  FileSizes:
+  - Name: Desktop
+    Value: 1430
+  Exists: 1
+--- !u!114 &6316589434869529549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Hit/Type
+  m_EditorClassIdentifier: 
+  Name: Type
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 3254955723
+    data2: 2259607891
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Herbe
+  - Roche
+  - Nope
+  Exists: 1
+--- !u!114 &7254351158573183883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BounceBehave/CreateBounce
+  m_EditorClassIdentifier: 
+  Path: event:/BounceBehave/CreateBounce
+  Guid:
+    Data1: 217058885
+    Data2: 1263050631
+    Data3: 481206154
+    Data4: 132360999
+  Banks:
+  - {fileID: -4304258682432125156}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -5020489580105741520}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 389
+--- !u!114 &7572468635558723420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SoundSpeed/Vitesse
+  m_EditorClassIdentifier: 
+  Name: Vitesse
+  StudioPath: 
+  Min: 0
+  Max: 300
+  Default: 0
+  ID:
+    data1: 1226368379
+    data2: 2841582515
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &7817356366162267634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/CreateRing/Charge
+  m_EditorClassIdentifier: 
+  Name: Charge
+  StudioPath: 
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 2614895980
+    data2: 3665913695
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - 1
+  - 2
+  - 3
+  - 4
+  Exists: 1
+--- !u!114 &8835698134925927809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Hit/F2V
+  m_EditorClassIdentifier: 
+  Name: F2V
+  StudioPath: 
+  Min: 0
+  Max: 300
+  Default: 150
+  ID:
+    data1: 2421027659
+    data2: 485113580
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1

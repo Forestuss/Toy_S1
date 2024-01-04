@@ -8,6 +8,7 @@ TagManager:
   - BoostLiquid
   - Bouncer
   - Ring
+  - CloudZone
   layers:
   - Default
   - TransparentFX

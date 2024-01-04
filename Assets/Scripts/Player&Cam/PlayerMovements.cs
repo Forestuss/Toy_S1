@@ -16,8 +16,13 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] private float _maxSpeed = 200f;
     [SerializeField] private float _maxSpeedOutRing = 300f;
     [SerializeField] private float _clampGroundSpeed = 50f;
+
     private bool _isSliding;
-    private float _lerpSlide = 0.02f;    
+    private float _lerpSlide = 0.02f;
+
+    private bool _isCloud;
+    private float _cloudTimer;
+    private float _cloudRingResetTimer;
     
     private Vector3 inertieVelocity;
     private Vector3 inputVelocity;
@@ -49,6 +54,13 @@ public class PlayerMovements : MonoBehaviour
 
     void Update()
     {
+        //Update du timer cloud (vitesse vers le haut augmentant selon le temps passé à l'intérieur des nuages, pour éviter que le joueur ne tombe trop bas)
+        if (_isCloud)
+        {
+            _cloudTimer += Time.deltaTime;
+            _cloudRingResetTimer -= Time.deltaTime;
+        }
+
         // Récuperation de données pour le mouvement
         _horizontalInput = Input.GetAxisRaw("Horizontal");
         _verticalInput = Input.GetAxisRaw("Vertical");
@@ -98,7 +110,12 @@ public class PlayerMovements : MonoBehaviour
             _rb.velocity = inertieVelocity + inputVelocity.normalized * _speedMultiplier;
         }
 
-        if(_rb.velocity.magnitude > _maxSpeed)
+        if (_isCloud)
+        {
+            _rb.velocity = _rb.velocity + Vector3.up * 10 * _cloudTimer;
+        }
+
+        if (_rb.velocity.magnitude > _maxSpeed)
         {
             _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, _maxSpeed);
         }
@@ -119,13 +136,46 @@ public class PlayerMovements : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("Ring"))
+        {
             inRing = true;
-    }    
-    
+        }
+
+
+        if (other.transform.CompareTag("CloudZone"))
+        {
+            _isCloud = true;
+            _cloudTimer = 0;
+            _cloudRingResetTimer = 1f;
+        }
+
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("CloudZone"))
+        {
+            if (_cloudRingResetTimer < 0)
+            {
+                _cloudRingResetTimer = 0.5f;
+                GetComponent<SpawnRing>().CheckRingReset("CloudZone");
+                Debug.Log("CloudZone + 1 Ring");
+            }
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.transform.CompareTag("Ring"))
+        {
             inRing = false;
+        }
+
+        if (other.transform.CompareTag("CloudZone"))
+        {
+            _isCloud = false;
+            _cloudTimer = 0;
+        }
+
     }
 
     public void MaxSpeedAugment()

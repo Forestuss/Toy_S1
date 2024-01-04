@@ -85,6 +85,11 @@ public class SpawnRing : MonoBehaviour
         {
             ringCharge = Mathf.Clamp(ringCharge + _ringChargeOnGround, 0, _ringMaxCharge);
         }
+
+        if (Type == "CloudZone")
+        {
+            ringCharge = Mathf.Clamp(ringCharge + 1, 0, _ringMaxCharge);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

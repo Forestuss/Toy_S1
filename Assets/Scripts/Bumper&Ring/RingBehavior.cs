@@ -18,8 +18,6 @@ public class RingBehavior : MonoBehaviour
     private float _dragVelocity; //Puissance du drag
     private int _ringDirection; //0 ou 1 indiquant la direction du drag et du throw selon la position d'entrée du joueur
     private bool _isRingBoostLocked = false; //Empêche une activation en boucle du drag ou du throw, ou une activation dans des conditions que la vélocité + position du joueur ne remplie pas
-    
-    [DoNotSerialize] public bool _isRingDragAngleZoneActive; //Bool permettant de savoir si le joueur se trouve dans la zone où le check d'angle n'est pas activité (fluidification des mouvements tout en empêchant des activations de Drag trop illogiques ou provoquants des comportements physiques anormaux)
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,7 +26,7 @@ public class RingBehavior : MonoBehaviour
             other.attachedRigidbody.useGravity = false;
             Vector3 _dotDirection = (other.transform.position - transform.position).normalized;
 
-            if ((Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) < _ringDragMaxAngle /*|| !_isRingDragAngleZoneActive*/) && Vector3.Dot(_dotDirection, other.attachedRigidbody.velocity.normalized) < _ringDragDotDirectionMax)
+            if (Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) < _ringDragMaxAngle && Vector3.Dot(_dotDirection, other.attachedRigidbody.velocity.normalized) < _ringDragDotDirectionMax)
             {
                 _ringDirection = 0;
                 gameObject.GetComponentInChildren<RingRotate>().SpeedRotate();
@@ -36,7 +34,7 @@ public class RingBehavior : MonoBehaviour
                 Debug.Log("RIGHT anglezone/outzone and dotDirection n°1: " + Vector3.Dot(_dotDirection, other.attachedRigidbody.velocity.normalized));
             }
 
-            else if ((Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) > 180 - _ringDragMaxAngle /*|| !_isRingDragAngleZoneActive*/) && Vector3.Dot(_dotDirection, other.attachedRigidbody.velocity.normalized) < _ringDragDotDirectionMax)
+            else if (Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) > 180 - _ringDragMaxAngle && Vector3.Dot(_dotDirection, other.attachedRigidbody.velocity.normalized) < _ringDragDotDirectionMax)
             {
                 _ringDirection = 1;
                 gameObject.GetComponentInChildren<RingRotate>().SpeedRotate();
@@ -54,7 +52,7 @@ public class RingBehavior : MonoBehaviour
 
             if (!_isRingBoostLocked)
             {
-                _dragVelocity = Mathf.Min(other.attachedRigidbody.velocity.magnitude, _ringMinSpeed);
+                _dragVelocity = Mathf.Max(other.attachedRigidbody.velocity.magnitude, _ringMinSpeed);
                 _dragDirection = Vector3.Lerp(other.attachedRigidbody.velocity.normalized, _ringDragCenterDirection, _ringDragVelocityRatio);
                 other.attachedRigidbody.velocity = _dragDirection * _dragVelocity * _ringBoost;
             }
@@ -69,7 +67,7 @@ public class RingBehavior : MonoBehaviour
             {
 
                 _isRingBoostLocked = true;
-                _dragVelocity = other.attachedRigidbody.velocity.magnitude;
+                _dragVelocity = Mathf.Max(other.attachedRigidbody.velocity.magnitude, _ringMinSpeed);
 
                 if (_ringDirection == 0)
                 {

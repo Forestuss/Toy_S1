@@ -64,6 +64,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -1823322365421230674, guid: 089e7c6e222d90e48b087bd4725851a5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8a4423662f8c40246826b4f082eb0d8e, type: 2}
+    - target: {fileID: 137163846023927305, guid: 089e7c6e222d90e48b087bd4725851a5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8a4423662f8c40246826b4f082eb0d8e, type: 2}
     - target: {fileID: 919132149155446097, guid: 089e7c6e222d90e48b087bd4725851a5, type: 3}
       propertyPath: m_Name
       value: RoundBridge (1)

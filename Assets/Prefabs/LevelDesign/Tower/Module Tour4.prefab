@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fca28178cce0276499d24fc35adb31f6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8a4423662f8c40246826b4f082eb0d8e, type: 2}
     - target: {fileID: 919132149155446097, guid: fca28178cce0276499d24fc35adb31f6, type: 3}
       propertyPath: m_Name
       value: Module Tour4

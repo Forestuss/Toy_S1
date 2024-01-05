@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4673420374624086984}
   - component: {fileID: 8774363289345256695}
   - component: {fileID: -1877772290263586835}
-  - component: {fileID: 3688175721919994730}
+  - component: {fileID: 5159947343295517894}
   m_Layer: 6
   m_Name: Bumper
   m_TagString: Bouncer
@@ -63,7 +63,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.95, y: 0.95, z: 0.95}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-1877772290263586835
 MonoBehaviour:
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 0.05
---- !u!114 &3688175721919994730
+--- !u!114 &5159947343295517894
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

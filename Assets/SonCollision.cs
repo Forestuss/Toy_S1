@@ -29,6 +29,7 @@ public class SonCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+
         
         if (!collision.gameObject.CompareTag("Bouncer"))
         {
@@ -36,7 +37,7 @@ public class SonCollision : MonoBehaviour
             if (movementscript.isGrounded)
             {
 
-                
+                    
 
             }
             

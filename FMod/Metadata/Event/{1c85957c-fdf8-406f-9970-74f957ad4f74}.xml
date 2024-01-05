@@ -8,7 +8,7 @@
 			<value>UseBounce</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{6cbb565a-8fcf-4cc7-9efa-5e08fadaa62f}</destination>
@@ -115,9 +115,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{eec80e6c-1534-49da-a2ca-64e47d844fad}">
-		<property name="volume">
-			<value>10</value>
-		</property>
 		<relationship name="effectChain">
 			<destination>{cee95aee-560c-4a0d-af9d-8d14366128f7}</destination>
 		</relationship>
@@ -296,7 +293,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{a0e26a00-f71f-4a31-a032-f0c5a255c5a1}">
 		<property name="volume">
-			<value>10</value>
+			<value>-14.5</value>
 		</property>
 		<property name="name">
 			<value>Audio 5</value>
@@ -314,7 +311,6 @@
 	<object class="MixerBusEffectChain" id="{cee95aee-560c-4a0d-af9d-8d14366128f7}">
 		<relationship name="effects">
 			<destination>{67673560-d403-4d4a-a3b9-21a853c537b5}</destination>
-			<destination>{e03efa07-d30b-4df3-89eb-cb038078c040}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{7add2d43-8df9-4ced-9519-cd60fdc96205}" />
@@ -583,21 +579,13 @@
 	</object>
 	<object class="MixerBusPanner" id="{5a2f3ca7-33e6-4c3a-9ef5-448dc047728f}" />
 	<object class="MixerBusFader" id="{67673560-d403-4d4a-a3b9-21a853c537b5}" />
-	<object class="SpatialiserEffect" id="{e03efa07-d30b-4df3-89eb-cb038078c040}">
-		<property name="maximumDistance">
-			<value>60</value>
-		</property>
-		<property name="overrideRange">
-			<value>true</value>
-		</property>
-	</object>
 	<object class="MixerBusFader" id="{4bf2106f-c51a-4913-8c10-c2a31fef5106}" />
 	<object class="MixerBusFader" id="{b865e77f-6be5-4ce0-9708-3eabc771ad49}" />
 	<object class="MixerBusFader" id="{b3a64272-74cb-4792-8ada-dbe8b0a103f3}" />
 	<object class="MixerBusFader" id="{b0c5d311-472e-436b-b789-c4573c697379}" />
 	<object class="AutomationPoint" id="{a2a1298f-4ba7-4cb8-be16-a42e460e6e79}">
 		<property name="position">
-			<value>0.02</value>
+			<value>0</value>
 		</property>
 		<property name="value">
 			<value>1</value>

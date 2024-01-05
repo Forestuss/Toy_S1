@@ -16,7 +16,7 @@ public class ScriptSon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Music.start();
         Music.setParameterByName("Hateur", transform.position.y);
     }
 }

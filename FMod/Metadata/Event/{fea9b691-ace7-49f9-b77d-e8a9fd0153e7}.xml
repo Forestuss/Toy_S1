@@ -222,7 +222,7 @@
 			<value>pitch</value>
 		</property>
 		<property name="amount">
-			<value>7</value>
+			<value>2.5</value>
 		</property>
 	</object>
 	<object class="RandomizerModulator" id="{dd9c74b2-020b-4a70-9b58-4aafbdc11b46}">
@@ -230,7 +230,7 @@
 			<value>pitch</value>
 		</property>
 		<property name="amount">
-			<value>7</value>
+			<value>2.5</value>
 		</property>
 	</object>
 	<object class="RandomizerModulator" id="{45d6f39a-1c6b-4f6c-a4e2-69286ebdaf33}">
@@ -238,7 +238,7 @@
 			<value>pitch</value>
 		</property>
 		<property name="amount">
-			<value>7</value>
+			<value>2.5</value>
 		</property>
 	</object>
 	<object class="RandomizerModulator" id="{28f266d8-1b62-423b-ae4a-8da084a2db77}">
@@ -246,7 +246,7 @@
 			<value>pitch</value>
 		</property>
 		<property name="amount">
-			<value>7</value>
+			<value>2.5</value>
 		</property>
 	</object>
 	<object class="MixerBusEffectChain" id="{000bebfc-7ad4-4888-b371-eba456ae3b55}">

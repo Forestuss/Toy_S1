@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e860f68ee8f5bc34092861be03483042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotateSpeed: 1.5
+  _rotateSpeed: 1.2
 --- !u!1 &1113175019921368051 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8153468022190502949, guid: 1b0986c7619e76542b6f970bfa3eca0b, type: 3}
@@ -517,7 +517,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Ring
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -7511558181221131132, guid: e135ec239b1808f4982c8814600951b3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: e135ec239b1808f4982c8814600951b3, type: 3}
@@ -581,4 +582,3 @@ MonoBehaviour:
   _ringThrowRadiusActivation: 1
   _ringThrowVelocityRatio: 1
   _ringDragVelocityRatio: 0.9
-  _isRingDragAngleZoneActive: 0

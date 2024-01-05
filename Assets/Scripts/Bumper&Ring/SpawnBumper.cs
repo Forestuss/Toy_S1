@@ -23,9 +23,14 @@ public class SpawnBumper : MonoBehaviour
     [SerializeField] private bool _isUnlimited;
 
     private PlayerMovements movementScript;
+    private bool reload=true;
+    private FMOD.Studio.EventInstance SonReload;
+    private FMOD.Studio.EventInstance SonPlaced;
 
     private void Start()
     {
+        SonReload = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerBehave/RechargeBounce");
+        SonPlaced = FMODUnity.RuntimeManager.CreateInstance("event:/BounceBehave/CreateBounce");
         Cursor.lockState = CursorLockMode.Locked;
 
         movementScript = GetComponent<PlayerMovements>();
@@ -43,13 +48,18 @@ public class SpawnBumper : MonoBehaviour
 
             if (Physics.Raycast(transform.position, rayDirection, out hit, 10))
             {
+                
                 Instantiate(_Bumper, hit.point, Camera.main.transform.rotation);
+                SonPlaced.start();
+                reload = false;
                 //Debug.Log("special instantiate");
             }
 
             else
             {
                 Instantiate(_Bumper, _Target.transform.position, Camera.main.transform.rotation);
+                SonPlaced.start();
+                reload = false;
             }
 
             _timerCooldown = bumperCooldown;
@@ -57,6 +67,7 @@ public class SpawnBumper : MonoBehaviour
             if (bumperCharge > 0)
             {
                 bumperCharge -= 1;
+                SonPlaced.setParameterByName("Charge", bumperCharge);
                 Debug.Log("Bumper restantes: " + bumperCharge);
             }
         }
@@ -86,6 +97,13 @@ public class SpawnBumper : MonoBehaviour
         if (Type == "Ground")
         {
             bumperCharge = Mathf.Clamp(bumperCharge + bumperChargeOnGround, 0, bumperMaxCharge);
+            if(!reload)
+            {
+                SonReload.start();
+                reload = true;
+                SonPlaced.setParameterByName("Charge", bumperCharge);
+
+            }
             //Debug.Log(bumperChargeOnGround + " Bumper rechargés ! (Sol)");
         }
     }

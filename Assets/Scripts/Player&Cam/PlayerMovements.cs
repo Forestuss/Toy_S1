@@ -40,9 +40,13 @@ public class PlayerMovements : MonoBehaviour
     [DoNotSerialize] public bool inRing;
     private Rigidbody _rb;
 
+    private FMOD.Studio.EventInstance SonSpeed;
+
 
     void Start()
     {
+        SonSpeed = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerBehave/SoundSpeed");
+        SonSpeed.start();
         _rb = GetComponent<Rigidbody>();
     }
 
@@ -101,6 +105,7 @@ public class PlayerMovements : MonoBehaviour
         }
 
         float actualSpeed = _rb.velocity.magnitude;
+        SonSpeed.setParameterByName("Vitesse", actualSpeed);
         speedDisp.SetText("speed : {0:1}", actualSpeed);
     }
 

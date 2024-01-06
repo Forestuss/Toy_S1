@@ -395,8 +395,8 @@ GameObject:
   - component: {fileID: 41718542}
   - component: {fileID: 41718541}
   - component: {fileID: 41718544}
-  - component: {fileID: 41718540}
   - component: {fileID: 41718543}
+  - component: {fileID: 41718545}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -404,14 +404,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &41718540
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 41718539}
-  m_Enabled: 1
 --- !u!20 &41718541
 Camera:
   m_ObjectHideFlags: 0
@@ -532,6 +524,50 @@ MonoBehaviour:
   _cameraPivot: {fileID: 1841644205}
   _cameraTarget: {fileID: 947017442}
   _player: {fileID: 1392003359}
+--- !u!114 &41718545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41718539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!4 &42211294 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1824666653646111210, guid: ee586ce65b7c6bd4cb39f4a6350cb8c8, type: 3}
@@ -12957,6 +12993,8 @@ GameObject:
   - component: {fileID: 1392003370}
   - component: {fileID: 1392003372}
   - component: {fileID: 1392003371}
+  - component: {fileID: 1392003375}
+  - component: {fileID: 1392003376}
   m_Layer: 2
   m_Name: PlayerPhysics
   m_TagString: Player
@@ -13226,6 +13264,31 @@ MonoBehaviour:
   ringCharge: 0
   _timerCooldown: 0
   _isUnlimited: 0
+--- !u!114 &1392003375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392003359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e335fd599e2ce1244b474f059667f49c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1392003376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392003359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1 &1409412802
 GameObject:
   m_ObjectHideFlags: 0

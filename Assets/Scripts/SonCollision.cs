@@ -34,6 +34,7 @@ public class SonCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        SonHit.setParameterByName("F2V", velocity);
         if (collision.gameObject.CompareTag("Ground"))
         {
             if (movementscript.isGrounded)
@@ -53,7 +54,7 @@ public class SonCollision : MonoBehaviour
             SonHit.setParameterByName("Type", 1);
             SonHit.start();
         }
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Bouncer"))
         {
             SonHit.setParameterByName("Type", 2);
         }

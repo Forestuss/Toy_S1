@@ -103,6 +103,12 @@ public class SpawnRing : MonoBehaviour
         {
             ringCharge = Mathf.Clamp(ringCharge + ringChargeOnGround, 0, ringMaxCharge);
             SonPlaced.setParameterByName("Charge", ringCharge);
+            if (!reload)
+            {
+                SonReload.start();
+                SonPlaced.setParameterByName("Charge", ringCharge);
+                reload = true;
+            }
             //Debug.Log(ringChargeOnGround + " Ring rechargés ! (Sol)");
         }
     }

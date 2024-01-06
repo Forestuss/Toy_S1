@@ -21,6 +21,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private GameObject _cameraPivot;
     [SerializeField] private GameObject _cameraTarget;
     [SerializeField] private GameObject _player;
+    private Rigidbody _rb;
     private Vector3 _playerPos;
     private bool _playerGrounded;
     private bool _playerBoosted;
@@ -32,6 +33,21 @@ public class CameraController : MonoBehaviour
     private float _vertical;
     private float _verticalRotation;
 
+    [Space]
+    [Header("FOV Manager")]
+    [SerializeField] private float _fovMin = 70;
+    [SerializeField] private float _fovBoosted = 80;
+    // [SerializeField] private float _fovMaxSpeed = 100;
+
+    [SerializeField] private float _maxFovLerp = 0.02f;
+    [SerializeField] private float _minFovLerp = 0.01f;
+    // [SerializeField] private float _fovMaxSpeedLerp = 0.01f;
+
+
+    private void Start()
+    {
+        _rb = _player.transform.GetComponent<Rigidbody>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -76,17 +92,17 @@ public class CameraController : MonoBehaviour
 
     void FOVMangaer()
     {
-        if(_playerBoosted)
+        if (_playerBoosted)
         {
-            _cineMachineCamera.m_Lens.FieldOfView = Mathf.Lerp(_cineMachineCamera.m_Lens.FieldOfView, 80, positionSmoothTime);
+            _cineMachineCamera.m_Lens.FieldOfView = Mathf.Lerp(_cineMachineCamera.m_Lens.FieldOfView, _fovBoosted, _maxFovLerp);
         }
 
         else
         {
-            _cineMachineCamera.m_Lens.FieldOfView = Mathf.Lerp(_cineMachineCamera.m_Lens.FieldOfView, 70, positionSmoothTime);
-        }
+            _cineMachineCamera.m_Lens.FieldOfView = Mathf.Lerp(_cineMachineCamera.m_Lens.FieldOfView, _fovMin, _minFovLerp);
+        }       
     }
-    
+
     void CameraHeight()
     {
         if (_playerGrounded)

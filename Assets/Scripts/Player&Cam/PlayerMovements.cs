@@ -13,9 +13,9 @@ public class PlayerMovements : MonoBehaviour
     [Space]
     [Header("Player Speed")]
     [SerializeField] private float _speedMultiplier = 2f;
-    [SerializeField] private float _maxSpeed = 200f;
-    [SerializeField] private float _maxSpeedOutRing = 300f;
     [SerializeField] private float _clampGroundSpeed = 50f;
+    [DoNotSerialize] public float _maxSpeed = 200f;
+    [DoNotSerialize] public float _maxSpeedOutRing = 300f;
 
     private bool _isSliding;
     private float _lerpSlide = 0.02f;

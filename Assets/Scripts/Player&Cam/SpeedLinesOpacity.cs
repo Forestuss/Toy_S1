@@ -9,13 +9,13 @@ public class SpeedLinesOpacity : MonoBehaviour
     public Material speedLinesMaterial;
     public GameObject player;
 
-    private Rigidbody rb;
+    private Rigidbody _rb;
 
     public float radiusTempo;
     // Start is called before the first frame update
     void Start()
     {
-        rb = player.transform.GetComponent<Rigidbody>();
+        _rb = player.transform.GetComponent<Rigidbody>();
         
     }
 
@@ -23,7 +23,7 @@ public class SpeedLinesOpacity : MonoBehaviour
     void Update()
     {
         var emission = particle.emission;
-        var vitesse = rb.velocity.magnitude / 300;
+        var vitesse = _rb.velocity.magnitude / 300;
         var radius = particle.shape;
         
         

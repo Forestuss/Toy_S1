@@ -7,9 +7,11 @@ public class SonCollision : MonoBehaviour
     private FMOD.Studio.EventInstance SonHit;
     private FMOD.Studio.EventInstance SonUseRing;
     private FMOD.Studio.EventInstance Music;
+    private FMOD.Studio.EventInstance PiedMarche;
     private Rigidbody rb;
     private float velocity;
     private PlayerMovements movementscript;
+
 
 
     // Start is called before the first frame update
@@ -66,5 +68,9 @@ public class SonCollision : MonoBehaviour
             SonUseRing.setParameterByName("F2V", velocity);
             SonUseRing.start();
         }
+    }
+    private void Footstep()
+    {
+
     }
 }

@@ -41,6 +41,7 @@ public class PlayerMovements : MonoBehaviour
     private Rigidbody _rb;
 
     private FMOD.Studio.EventInstance SonSpeed;
+    public Animator _animator;
 
 
     void Start()
@@ -105,6 +106,10 @@ public class PlayerMovements : MonoBehaviour
         }
 
         float actualSpeed = _rb.velocity.magnitude;
+        _animator.SetFloat("Speed", actualSpeed);
+        _animator.SetBool("IsGrounded", isGrounded);
+        _animator.SetBool("IsSliding", _isSliding);
+
         SonSpeed.setParameterByName("Vitesse", actualSpeed);
         speedDisp.SetText("speed : {0:1}", actualSpeed);
     }

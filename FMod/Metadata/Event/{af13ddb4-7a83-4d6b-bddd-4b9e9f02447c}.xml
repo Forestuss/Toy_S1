@@ -8,7 +8,7 @@
 			<value>MoveOnFloor</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{682038fb-abd6-4ff9-b0c6-270e4ab96356}</destination>
@@ -225,7 +225,6 @@
 	<object class="MixerBusEffectChain" id="{ae4bdbde-0fa5-482d-b468-41ed60c7e1c1}">
 		<relationship name="effects">
 			<destination>{16fdab26-4e92-40d5-88e1-20fb9f423499}</destination>
-			<destination>{59863b38-3d28-4a85-8cf8-03f6572dff7c}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{b4a66522-a2e9-4770-aca6-1161ec9ff631}" />
@@ -519,7 +518,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{33fa2673-deb8-4b7c-aeb2-cbe9dd7ae082}" />
 	<object class="MixerBusFader" id="{16fdab26-4e92-40d5-88e1-20fb9f423499}" />
-	<object class="SpatialiserEffect" id="{59863b38-3d28-4a85-8cf8-03f6572dff7c}" />
 	<object class="MixerBusFader" id="{8f51813c-d3bc-456b-ab0a-a70f44c566d0}" />
 	<object class="MixerBusFader" id="{fc9863c2-2107-46d2-80b6-5d53c4da2cc7}" />
 </objects>

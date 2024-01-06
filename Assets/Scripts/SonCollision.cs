@@ -20,6 +20,7 @@ public class SonCollision : MonoBehaviour
         SonHit = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerBehave/Hit");
         SonUseRing = FMODUnity.RuntimeManager.CreateInstance("event:/RingBehave/UseRing");
         Music = FMODUnity.RuntimeManager.CreateInstance("event:/WorldBehave/Ambiance");
+        PiedMarche = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerBehave/MoveOnFloor");
         Music.start();
         rb = GetComponent<Rigidbody>();
         movementscript = GetComponent<PlayerMovements>();
@@ -43,11 +44,13 @@ public class SonCollision : MonoBehaviour
             {
                 SonHit.setParameterByName("Type", 0);
                 SonHit.start();
+                PiedMarche.setParameterByName("TypeSol", 0);
             }
             else
             {
                 SonHit.setParameterByName("Type", 1);
                 SonHit.start();
+                PiedMarche.setParameterByName("TypeSol", 1);
             }
             
         }
@@ -71,6 +74,6 @@ public class SonCollision : MonoBehaviour
     }
     private void Footstep()
     {
-
+        PiedMarche.start();
     }
 }

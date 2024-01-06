@@ -142,10 +142,10 @@
 			<value>true</value>
 		</property>
 		<property name="start">
-			<value>-500</value>
+			<value>-1000</value>
 		</property>
 		<property name="length">
-			<value>300</value>
+			<value>700</value>
 		</property>
 		<property name="looping">
 			<value>true</value>
@@ -161,6 +161,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{a5214c22-2a32-40a8-ba36-d5ceb058d7d3}">
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<property name="name">
 			<value>Lvl-1</value>
 		</property>
@@ -441,7 +444,6 @@
 		</relationship>
 		<relationship name="automationPoints">
 			<destination>{b4c83f52-164a-4e6f-8cca-8518fe02c114}</destination>
-			<destination>{ab084b82-7a8b-476e-92c1-b61b4d1e6f7e}</destination>
 			<destination>{aada97a6-a064-4800-8d28-63633350d676}</destination>
 			<destination>{9294a326-9b36-4f9e-89a2-3f4379fd05f9}</destination>
 			<destination>{60c70ae1-8dae-49c9-8c09-cacab7f62675}</destination>
@@ -453,7 +455,7 @@
 	<object class="MixerBusFader" id="{c14d821e-78ba-4eca-bdfd-e3de2a0d88c4}" />
 	<object class="AutomationPoint" id="{b4c83f52-164a-4e6f-8cca-8518fe02c114}">
 		<property name="position">
-			<value>-499.99997916666666</value>
+			<value>-1000</value>
 		</property>
 		<property name="value">
 			<value>-80</value>
@@ -462,20 +464,9 @@
 			<value>-0.364852637</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{ab084b82-7a8b-476e-92c1-b61b4d1e6f7e}">
-		<property name="position">
-			<value>-500</value>
-		</property>
-		<property name="value">
-			<value>-80</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.346227825</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{aada97a6-a064-4800-8d28-63633350d676}">
 		<property name="position">
-			<value>-200</value>
+			<value>-300</value>
 		</property>
 		<property name="value">
 			<value>-10</value>

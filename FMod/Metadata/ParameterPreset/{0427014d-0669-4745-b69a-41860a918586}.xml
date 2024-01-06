@@ -13,16 +13,13 @@
 	</object>
 	<object class="GameParameter" id="{6e5d3688-c745-4b40-a2a3-ccd5f3f143b2}">
 		<property name="minimum">
-			<value>-500</value>
+			<value>-1000</value>
 		</property>
 		<property name="maximum">
 			<value>2500</value>
 		</property>
 		<property name="initialValue">
 			<value>0</value>
-		</property>
-		<property name="seekSpeed">
-			<value>1000</value>
 		</property>
 	</object>
 </objects>

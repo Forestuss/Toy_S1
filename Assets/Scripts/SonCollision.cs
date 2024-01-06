@@ -30,7 +30,8 @@ public class SonCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Music.setParameterByName("Hauteur", transform.position.y);
+        Music.setParameterByName("Hauteur", transform.position.y-250f);
+
         velocity = rb.velocity.magnitude;
 
     }

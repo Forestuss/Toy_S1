@@ -10,6 +10,7 @@ TagManager:
   - Ring
   - RingsSound
   - Ringss
+  - Wall
   layers:
   - Default
   - TransparentFX

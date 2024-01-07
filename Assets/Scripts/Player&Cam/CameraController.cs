@@ -32,6 +32,18 @@ public class CameraController : MonoBehaviour
     private float _vertical;
     private float _verticalRotation;
 
+    [Space]
+    [Header("FOV Manager")]
+    [SerializeField] private float _fovMin = 70;
+    [SerializeField] private float _fovBoosted = 85;
+    //[SerializeField] private float _fovMaxSpeed = 100;
+
+    [SerializeField] private float _maxFovLerp = 0.025f;
+    [SerializeField] private float _minFovLerp = 0.01f;
+    //[SerializeField] private float _fovMaxSpeedLerp = 0.01f;
+
+
+
 
     // Update is called once per frame
     void Update()
@@ -78,12 +90,12 @@ public class CameraController : MonoBehaviour
     {
         if(_playerBoosted)
         {
-            _cineMachineCamera.m_Lens.FieldOfView = Mathf.Lerp(_cineMachineCamera.m_Lens.FieldOfView, 80, positionSmoothTime);
+            _cineMachineCamera.m_Lens.FieldOfView = Mathf.Lerp(_cineMachineCamera.m_Lens.FieldOfView, _fovBoosted, _maxFovLerp);
         }
 
         else
         {
-            _cineMachineCamera.m_Lens.FieldOfView = Mathf.Lerp(_cineMachineCamera.m_Lens.FieldOfView, 70, positionSmoothTime);
+            _cineMachineCamera.m_Lens.FieldOfView = Mathf.Lerp(_cineMachineCamera.m_Lens.FieldOfView, _fovMin, _minFovLerp);
         }
     }
     

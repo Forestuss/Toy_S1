@@ -14,10 +14,10 @@ public class PlayerMovements : MonoBehaviour
     [Header("Player Speed")]
     [SerializeField] private float _speedMultiplier = 2f;
     [SerializeField] private float _maxSpeed = 200f;
+    [SerializeField] private float _maxSpeedOutRing = 300f;
     [SerializeField] private float _clampGroundSpeed = 50f;
     private bool _isSliding;
-    private float _lerpSlide = 0.02f;    
-    
+    private float _lerpSlide = 0.02f;     
     private Vector3 inertieVelocity;
     private Vector3 inputVelocity;
 
@@ -26,7 +26,14 @@ public class PlayerMovements : MonoBehaviour
     [DoNotSerialize] public bool isGrounded;
     [SerializeField] private float _jumpForce = 60f;
     private bool _jumping;
-    
+
+
+    [Space]
+    [Header("Cloud")]
+    private bool _isCloud;
+    private float _cloudTimer;
+    private float _cloudRingResetTimer;
+
     [Space]
     [Header("Layers")]
     [SerializeField] private LayerMask _groundLayer;
@@ -53,6 +60,13 @@ public class PlayerMovements : MonoBehaviour
 
     void Update()
     {
+        //Update du timer cloud (vitesse vers le haut augmentant selon le temps passé à l'intérieur des nuages, pour éviter que le joueur ne tombe trop bas)
+        if (_isCloud)
+        {
+            _cloudTimer += Time.deltaTime;
+            _cloudRingResetTimer -= Time.deltaTime;
+        }
+
         // Récuperation de données pour le mouvement
         _horizontalInput = Input.GetAxisRaw("Horizontal");
         _verticalInput = Input.GetAxisRaw("Vertical");
@@ -81,6 +95,8 @@ public class PlayerMovements : MonoBehaviour
     {
         VelocityPlayer();
         JumpPlayer();
+
+        _maxSpeed = Mathf.Clamp(_maxSpeed - 3, 200, _maxSpeedOutRing);
     }
 
     private void VelocityPlayer()
@@ -105,13 +121,21 @@ public class PlayerMovements : MonoBehaviour
             _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, _maxSpeed);
         }
 
+        if (_isCloud)
+        {
+            _rb.velocity = _rb.velocity + Vector3.up * 10 * _cloudTimer;
+        }
+
+
         float actualSpeed = _rb.velocity.magnitude;
+        Debug.Log(actualSpeed);
+        speedDisp.SetText("speed : {0:1}", actualSpeed);
+
         _animator.SetFloat("Speed", actualSpeed);
         _animator.SetBool("IsGrounded", isGrounded);
         _animator.SetBool("IsSliding", _isSliding);
 
         SonSpeed.setParameterByName("Vitesse", actualSpeed);
-        speedDisp.SetText("speed : {0:1}", actualSpeed);
     }
 
     private void JumpPlayer()
@@ -127,11 +151,44 @@ public class PlayerMovements : MonoBehaviour
     {
         if (other.transform.CompareTag("Ring"))
             inRing = true;
-    }    
-    
+
+        if (other.transform.CompareTag("CloudZone"))
+        {
+            _isCloud = true;
+            _cloudTimer = 0;
+            _cloudRingResetTimer = 1f;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("CloudZone"))
+        {
+            if (_cloudRingResetTimer < 0)
+            {
+                _cloudRingResetTimer = 0.5f;
+                GetComponent<SpawnRing>().CheckRingReset("CloudZone");
+                Debug.Log("CloudZone + 1 Ring");
+            }
+        }
+    }
+
+
     private void OnTriggerExit(Collider other)
     {
         if (other.transform.CompareTag("Ring"))
             inRing = false;
+
+        if (other.transform.CompareTag("CloudZone"))
+        {
+            _isCloud = false;
+            _cloudTimer = 0;
+        }
+    }
+
+
+    public void MaxSpeedAugment()
+    {
+        _maxSpeed = _maxSpeedOutRing;
     }
 }

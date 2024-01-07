@@ -12,6 +12,7 @@ TagManager:
   - Ringss
   - Wall
   - Tree
+  - CloudZone
   layers:
   - Default
   - TransparentFX

@@ -9,28 +9,33 @@ public class SpeedLinesOpacity : MonoBehaviour
     public Material speedLinesMaterial;
     public GameObject player;
 
-    private Rigidbody rb;
+    private Rigidbody _rb;
+
+    public float radiusTempo;
     // Start is called before the first frame update
     void Start()
     {
-        rb = player.transform.GetComponent<Rigidbody>();
+        _rb = player.transform.GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         var emission = particle.emission;
-        var vitesse = rb.velocity.magnitude;
+        var vitesse = _rb.velocity.magnitude / 300;
+        var radius = particle.shape;
 
-        if (vitesse > 100)
-            speedLinesMaterial.color = new Color(speedLinesMaterial.color.r, speedLinesMaterial.color.g, speedLinesMaterial.color.b, vitesse/300);
+
+        if (vitesse > 0.2)
+            speedLinesMaterial.color = new Color(speedLinesMaterial.color.r, speedLinesMaterial.color.g, speedLinesMaterial.color.b, vitesse);
         else
             speedLinesMaterial.color = new Color(speedLinesMaterial.color.r, speedLinesMaterial.color.g, speedLinesMaterial.color.b, 0);
 
+        emission.rateOverTime = vitesse * 600;
 
+        radius.radius = Mathf.Clamp((-vitesse * 12) + 22, 12.8f, 15);
 
-        Mathf.Clamp(vitesse, 100, 300);
-
-        emission.rateOverTime = vitesse;
+        radiusTempo = radius.radius;
     }
 }

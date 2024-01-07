@@ -371,10 +371,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8d75984abfce441bea8fd1c9f3fb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ringBoost: 1.2
-  ringMaxSpeed: 300
-  ringMaxSpeedDivideRatio: 0
-  ringDragMaxAngle: 75
-  ringThrowRadiusActivation: 1
-  ringThrowVelocityRatio: 1
-  ringDragVelocityRatio: 0.9
+  _ringBoost: 1.2
+  _ringMinSpeed: 50
+  _ringDragMaxAngle: 75
+  _ringDragDotDirectionMax: 0.5
+  _ringThrowRadiusActivation: 5
+  _ringThrowVelocityRatio: 1
+  _ringDragVelocityRatio: 1

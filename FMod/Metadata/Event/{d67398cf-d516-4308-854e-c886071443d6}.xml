@@ -161,9 +161,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{a5214c22-2a32-40a8-ba36-d5ceb058d7d3}">
-		<property name="volume">
-			<value>10</value>
-		</property>
 		<property name="name">
 			<value>Lvl-1</value>
 		</property>
@@ -458,10 +455,10 @@
 			<value>-1000</value>
 		</property>
 		<property name="value">
-			<value>-80</value>
+			<value>-40</value>
 		</property>
 		<property name="curveShape">
-			<value>-0.364852637</value>
+			<value>-0.299073607</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{aada97a6-a064-4800-8d28-63633350d676}">

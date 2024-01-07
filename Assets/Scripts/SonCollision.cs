@@ -8,6 +8,7 @@ public class SonCollision : MonoBehaviour
     private FMOD.Studio.EventInstance SonUseRing;
     private FMOD.Studio.EventInstance Music;
     private FMOD.Studio.EventInstance PiedMarche;
+    private FMOD.Studio.EventInstance Slide;
     private Rigidbody rb;
     private float velocity;
     private PlayerMovements movementscript;
@@ -21,7 +22,9 @@ public class SonCollision : MonoBehaviour
         SonUseRing = FMODUnity.RuntimeManager.CreateInstance("event:/RingBehave/UseRing");
         Music = FMODUnity.RuntimeManager.CreateInstance("event:/WorldBehave/Ambiance");
         PiedMarche = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerBehave/MoveOnFloor");
+        Slide = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerBehave/Slide");
         Music.start();
+        Slide.start();  
         rb = GetComponent<Rigidbody>();
         movementscript = GetComponent<PlayerMovements>();
         
@@ -31,7 +34,15 @@ public class SonCollision : MonoBehaviour
     void Update()
     {
         Music.setParameterByName("Hauteur", transform.position.y-250f);
-
+        if (rb.velocity.magnitude>= 60.0f && movementscript.isGrounded)
+        {
+            Slide.setParameterByName("Volume", 1);
+        }
+        else
+        {
+            Slide.setParameterByName("Volume", 0);
+        }
+        Slide.setParameterByName("Vitesse", rb.velocity.magnitude);
         velocity = rb.velocity.magnitude;
 
     }
@@ -45,24 +56,42 @@ public class SonCollision : MonoBehaviour
             {
                 SonHit.setParameterByName("Type", 0);
                 SonHit.start();
-                PiedMarche.setParameterByName("TypeSol", 0);
             }
             else
             {
                 SonHit.setParameterByName("Type", 1);
                 SonHit.start();
-                PiedMarche.setParameterByName("TypeSol", 1);
             }
             
         }
-        if (collision.gameObject.CompareTag("Wall"))
+        else if (collision.gameObject.CompareTag("Wall"))
         {
             SonHit.setParameterByName("Type", 1);
             SonHit.start();
         }
-        if (collision.gameObject.CompareTag("Bouncer"))
+        else if (collision.gameObject.CompareTag("Tree"))
         {
             SonHit.setParameterByName("Type", 2);
+            SonHit.start();
+        }
+        else if (collision.gameObject.CompareTag("Bouncer"))
+        {
+            SonHit.setParameterByName("Type", 3);
+        }
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            PiedMarche.setParameterByName("TypeSol", 1);
+            Slide.setParameterByName("TypeSol", 1);
+
+
+        }
+        else if (collision.gameObject.CompareTag("Wall"))
+        {
+            PiedMarche.setParameterByName("TypeSol", 1);
+            Slide.setParameterByName("TypeSol", 1);
         }
     }
     private void OnTriggerEnter(Collider other)

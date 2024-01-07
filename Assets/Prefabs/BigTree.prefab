@@ -64,9 +64,17 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fd4dba605f353aa459bd2c337d10ccfd, type: 2}
+    - target: {fileID: -7421033346236238759, guid: 61bb6e1953ee7c243bb89a8094aedacd, type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 61bb6e1953ee7c243bb89a8094aedacd, type: 3}
       propertyPath: m_Name
       value: BigTree
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 61bb6e1953ee7c243bb89a8094aedacd, type: 3}
+      propertyPath: m_TagString
+      value: Tree
       objectReference: {fileID: 0}
     - target: {fileID: 5156380648761706199, guid: 61bb6e1953ee7c243bb89a8094aedacd, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -76,10 +84,49 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7032823420476312315, guid: 61bb6e1953ee7c243bb89a8094aedacd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8211313657539654950}
     - targetCorrespondingSourceObject: {fileID: -7421033346236238759, guid: 61bb6e1953ee7c243bb89a8094aedacd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4681973869903223323}
   m_SourcePrefab: {fileID: 100100000, guid: 61bb6e1953ee7c243bb89a8094aedacd, type: 3}
+--- !u!1 &4382195206801088029 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7032823420476312315, guid: 61bb6e1953ee7c243bb89a8094aedacd, type: 3}
+  m_PrefabInstance: {fileID: 6721962129261696230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8211313657539654950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4382195206801088029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 866759819
+      Data2: 1320560497
+      Data3: 882677905
+      Data4: 1609528076
+    Path: event:/WorldBehave/Bird
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &4920751642900897983 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7421033346236238759, guid: 61bb6e1953ee7c243bb89a8094aedacd, type: 3}

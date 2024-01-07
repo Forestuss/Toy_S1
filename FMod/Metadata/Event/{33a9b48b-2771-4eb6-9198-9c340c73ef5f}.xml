@@ -8,7 +8,7 @@
 			<value>Bird</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>5</value>
 		</property>
 		<relationship name="folder">
 			<destination>{395bc95c-dae3-4181-885d-705427058111}</destination>
@@ -69,7 +69,7 @@
 			<destination>{327d841b-8faf-4acc-98e1-d1f30fdbf8d7}</destination>
 		</relationship>
 		<relationship name="modules">
-			<destination>{e2cac131-cb42-4055-9dcc-84ef3516d9d3}</destination>
+			<destination>{5b64a179-150f-43db-8a6e-664cb66ce73c}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{ae57dc54-377b-4509-bd06-4123bfd005f2}</destination>
@@ -77,7 +77,10 @@
 	</object>
 	<object class="Timeline" id="{f1b9ea99-b0c1-45d9-a926-c914cacfcb7f}">
 		<relationship name="modules">
-			<destination>{e2cac131-cb42-4055-9dcc-84ef3516d9d3}</destination>
+			<destination>{5b64a179-150f-43db-8a6e-664cb66ce73c}</destination>
+		</relationship>
+		<relationship name="markers">
+			<destination>{314eb367-27ac-4215-82c1-89c868c8a12b}</destination>
 		</relationship>
 	</object>
 	<object class="ParameterProxy" id="{82eaa014-60da-48c9-84c4-7132a72c8f83}">
@@ -107,17 +110,18 @@
 			<destination>{2e15816e-fbf8-4ad4-91b5-24b8d41ad3e6}</destination>
 		</relationship>
 	</object>
-	<object class="MultiSound" id="{e2cac131-cb42-4055-9dcc-84ef3516d9d3}">
+	<object class="SoundScatterer" id="{5b64a179-150f-43db-8a6e-664cb66ce73c}">
 		<property name="length">
-			<value>19.5</value>
+			<value>5</value>
 		</property>
-		<relationship name="modulators">
-			<destination>{18d784c3-10d0-469d-a10c-31226f393de2}</destination>
-		</relationship>
-		<relationship name="sounds">
-			<destination>{5e033185-5c62-46e0-9964-3dfeb1fd0f0c}</destination>
-			<destination>{782b4230-ec44-4f13-b9b8-ea3de89d4f4a}</destination>
-			<destination>{b2d2edc5-d2b5-4173-81f9-26809a4420fd}</destination>
+		<property name="minimumTimeBetweenSounds">
+			<value>7500</value>
+		</property>
+		<property name="maximumTimeBetweenSounds">
+			<value>50000</value>
+		</property>
+		<relationship name="sound">
+			<destination>{bf20b860-dd63-42de-8edf-d780f167b4fa}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{ae57dc54-377b-4509-bd06-4123bfd005f2}">
@@ -137,6 +141,20 @@
 			<destination>{39fa437c-1804-4b25-ad7a-e973f93d4b49}</destination>
 		</relationship>
 	</object>
+	<object class="LoopRegion" id="{314eb367-27ac-4215-82c1-89c868c8a12b}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="length">
+			<value>5</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{f1b9ea99-b0c1-45d9-a926-c914cacfcb7f}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{c77fe91a-ac56-4f57-b951-d6b41431714e}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{b93e3b1e-6575-402c-bc8a-64858c32bd5d}">
 		<relationship name="effects">
 			<destination>{c89cba96-da3e-430d-9c30-636d123051d8}</destination>
@@ -144,27 +162,12 @@
 	</object>
 	<object class="MixerBusPanner" id="{a433bed2-161c-4ba3-8384-e048b7a84631}" />
 	<object class="MixerBusFader" id="{b2a0a4c2-5249-48e6-b5d2-407e5d0263b0}" />
-	<object class="RandomizerModulator" id="{18d784c3-10d0-469d-a10c-31226f393de2}">
-		<property name="nameOfPropertyBeingModulated">
-			<value>pitch</value>
-		</property>
-		<property name="amount">
-			<value>14</value>
-		</property>
-	</object>
-	<object class="SingleSound" id="{5e033185-5c62-46e0-9964-3dfeb1fd0f0c}">
-		<relationship name="audioFile">
-			<destination>{03b3e173-38ce-4807-bc60-fe607882ed1e}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{782b4230-ec44-4f13-b9b8-ea3de89d4f4a}">
-		<relationship name="audioFile">
-			<destination>{4acfe263-92cf-44a8-9523-7f5736fccf9a}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{b2d2edc5-d2b5-4173-81f9-26809a4420fd}">
-		<relationship name="audioFile">
-			<destination>{577fd87f-c2f0-4800-b4de-0b23fc547bfa}</destination>
+	<object class="MultiSound" id="{bf20b860-dd63-42de-8edf-d780f167b4fa}">
+		<relationship name="sounds">
+			<destination>{ef49cd46-97a1-4724-b5b5-4245dfe07471}</destination>
+			<destination>{37530fdd-4cad-4e3c-b2a6-3fdac884fa02}</destination>
+			<destination>{7fabbbe6-4d6a-42ee-bbac-59d34081f040}</destination>
+			<destination>{268edcc9-f827-4751-8694-0969a1c1a265}</destination>
 		</relationship>
 	</object>
 	<object class="Automator" id="{2e15816e-fbf8-4ad4-91b5-24b8d41ad3e6}">
@@ -182,6 +185,26 @@
 	</object>
 	<object class="MixerBusPanner" id="{171adf06-c123-40fb-8b46-14ea90fde4ed}" />
 	<object class="MixerBusFader" id="{c89cba96-da3e-430d-9c30-636d123051d8}" />
+	<object class="SingleSound" id="{ef49cd46-97a1-4724-b5b5-4245dfe07471}">
+		<relationship name="audioFile">
+			<destination>{4acfe263-92cf-44a8-9523-7f5736fccf9a}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{37530fdd-4cad-4e3c-b2a6-3fdac884fa02}">
+		<relationship name="audioFile">
+			<destination>{03b3e173-38ce-4807-bc60-fe607882ed1e}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{7fabbbe6-4d6a-42ee-bbac-59d34081f040}">
+		<relationship name="audioFile">
+			<destination>{577fd87f-c2f0-4800-b4de-0b23fc547bfa}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{268edcc9-f827-4751-8694-0969a1c1a265}">
+		<relationship name="audioFile">
+			<destination>{3c921f91-5a3f-4ec1-bd1d-26d7c5004fb8}</destination>
+		</relationship>
+	</object>
 	<object class="AutomationCurve" id="{62b23378-a71d-46ca-bed3-42ce2e9b0110}">
 		<relationship name="parameter">
 			<destination>{4a434fc1-f4d6-42cf-85c1-432b7a08f0f2}</destination>
@@ -197,10 +220,10 @@
 			<value>0.034965034965034968</value>
 		</property>
 		<property name="value">
-			<value>1</value>
+			<value>10</value>
 		</property>
 		<property name="curveShape">
-			<value>-0.0845748335</value>
+			<value>0.066415824</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{f8db0d6a-d7f2-48a7-927c-3cc9db38983d}">

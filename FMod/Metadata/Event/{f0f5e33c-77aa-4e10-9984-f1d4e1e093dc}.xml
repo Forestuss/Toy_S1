@@ -170,7 +170,7 @@
 			<value>pitch</value>
 		</property>
 		<property name="amount">
-			<value>21</value>
+			<value>5</value>
 		</property>
 	</object>
 	<object class="Automator" id="{91ca112c-afea-4451-b79b-5df3d732435b}">

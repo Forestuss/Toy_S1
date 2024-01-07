@@ -41,6 +41,7 @@ public class SonCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("collision");
         SonHit.setParameterByName("F2V", velocity);
         if (collision.gameObject.CompareTag("Ground"))
         {

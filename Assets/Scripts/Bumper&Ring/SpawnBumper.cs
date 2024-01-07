@@ -41,7 +41,7 @@ public class SpawnBumper : MonoBehaviour
             Vector3 rayDirection = (_Target.transform.position - transform.position).normalized;
             RaycastHit hit;
 
-            if (Physics.Raycast(transform.position, rayDirection, out hit, 10))
+            if (Physics.Raycast(transform.position, rayDirection, out hit, 20))
             {
                 Vector3 hitnormal = hit.normal;
                 Vector3 hitpos = hit.point - hitnormal*7;

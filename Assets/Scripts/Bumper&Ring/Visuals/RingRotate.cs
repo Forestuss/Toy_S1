@@ -27,7 +27,7 @@ public class RingRotate : MonoBehaviour
 
     public void SpeedRotate()
     {
-        _playerSpeed = Mathf.Clamp(GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Rigidbody>().velocity.magnitude/50, 1.5f, 5);
+        _playerSpeed = Mathf.Clamp(GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Rigidbody>().velocity.magnitude/100, 1.5f, 3);
         _rotateTimer = _playerSpeed;
         //Debug.Log("RotateSpeed: " +  _playerSpeed);
         _isRotating = true;

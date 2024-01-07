@@ -77,9 +77,6 @@ public class SonCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             PiedMarche.setParameterByName("TypeSol", 1);
-
-
-
         }
         else if (collision.gameObject.CompareTag("Wall"))
         {

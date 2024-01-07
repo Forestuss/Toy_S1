@@ -10,17 +10,17 @@ public class SpawnRing : MonoBehaviour
     [SerializeField] private GameObject _Target;
 
     [Header("Ring Charges")]
-    public int ringMaxCharge; //Nombre de charges maximum de ring à placer. Si 0: charges illimitées
-    public float ringCooldown; //Le temps d'attente avant de pouvoir placer un autre ring
+    [SerializeField] private int _ringMaxCharge; //Nombre de charges maximum de ring à placer. Si 0: charges illimitées
+    [SerializeField] private float _ringCooldown; //Le temps d'attente avant de pouvoir placer un autre ring
 
     [Header("Ring Reset")]
-    public int ringChargeOnGround; //Nombre de charges récupérées en touchant le sol
-    public int ringChargeOnBumper; //Nombre de charges récupérées en touchant un Bumper
+    [SerializeField] private int _ringChargeOnGround; //Nombre de charges récupérées en touchant le sol
+    [SerializeField] private int _ringChargeOnBumper; //Nombre de charges récupérées en touchant un Bumper
 
     [Header("Debug")]
     public float ringCharge;
-    [SerializeField] private float _timerCooldown;
-    [SerializeField] private bool _isUnlimited;
+    [SerializeField] private float _timerCooldown; //Cooldown entre 2 possible poses de ring
+    [SerializeField] private bool _isUnlimited; //Debug qui retire les limitations
 
     private PlayerMovements movementScript;
     private bool reload = true;
@@ -30,18 +30,19 @@ public class SpawnRing : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        SonPlaced = FMODUnity.RuntimeManager.CreateInstance("event:/RingBehave/CreateRing");
-        SonReload = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerBehave/RechargeRing");
 
         movementScript = GetComponent<PlayerMovements>();
 
-        ringCharge = ringMaxCharge;
-        _timerCooldown = ringCooldown;
+        SonPlaced = FMODUnity.RuntimeManager.CreateInstance("event:/RingBehave/CreateRing");
+        SonReload = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerBehave/RechargeRing");
+
+        ringCharge = _ringMaxCharge;
+        _timerCooldown = _ringCooldown;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && (_timerCooldown <= 0 || _isUnlimited) && (ringCharge > 0 || _isUnlimited || ringMaxCharge == 0))
+        if (Input.GetMouseButtonDown(0) && (_timerCooldown <= 0 || _isUnlimited) && (ringCharge > 0 || _isUnlimited || _ringMaxCharge == 0))
         {
             Vector3 rayDirection = (_Target.transform.position - transform.position).normalized;
             RaycastHit hit;
@@ -51,7 +52,6 @@ public class SpawnRing : MonoBehaviour
                 Instantiate(_Ring, hit.point, Camera.main.transform.rotation);
                 SonPlaced.start();
                 reload = false;
-                //Debug.Log("special instantiate");
             }
 
             else
@@ -61,12 +61,12 @@ public class SpawnRing : MonoBehaviour
                 reload = false;
             }
 
-            _timerCooldown = ringCooldown;
+            _timerCooldown = _ringCooldown;
 
             if (ringCharge > 0)
             {
-                SonPlaced.setParameterByName("Charge", ringCharge);
                 ringCharge -= 1;
+                SonPlaced.setParameterByName("Charge", ringCharge);
                 Debug.Log("Bulles restantes: " + ringCharge);
             }
         }
@@ -89,19 +89,18 @@ public class SpawnRing : MonoBehaviour
     {
         if (Type == "Bouncer")
         {
-            ringCharge = Mathf.Clamp(ringCharge + ringChargeOnBumper, 0, ringMaxCharge);
+            ringCharge = Mathf.Clamp(ringCharge + _ringChargeOnBumper, 0, _ringMaxCharge);
             if (!reload)
             {
-                SonReload.start();
                 SonPlaced.setParameterByName("Charge", ringCharge);
+                SonReload.start();
                 reload = true;
             }
-            //Debug.Log(ringChargeOnBumper + " Ring rechargés ! (Bumper)");
         }
 
         if (Type == "Ground")
         {
-            ringCharge = Mathf.Clamp(ringCharge + ringChargeOnGround, 0, ringMaxCharge);
+            ringCharge = Mathf.Clamp(ringCharge + _ringChargeOnGround, 0, _ringMaxCharge);
             SonPlaced.setParameterByName("Charge", ringCharge);
             if (!reload)
             {
@@ -109,7 +108,6 @@ public class SpawnRing : MonoBehaviour
                 SonPlaced.setParameterByName("Charge", ringCharge);
                 reload = true;
             }
-            //Debug.Log(ringChargeOnGround + " Ring rechargés ! (Sol)");
         }
     }
 

@@ -10,20 +10,20 @@ public class SpawnBumper : MonoBehaviour
     [SerializeField] private GameObject _Target;
 
     [Header("Bumper Charges")]
-    public int bumperMaxCharge; //Nombre de charges maximum de bumper à placer. Si 0: charges illimitées
-    public float bumperCooldown; //Le temps d'attente avant de pouvoir placer un autre bumper
+    [SerializeField] private int _bumperMaxCharge; //Nombre de charges maximum de bumper à placer. Si 0: charges illimitées
+    [SerializeField] private float _bumperCooldown; //Le temps d'attente avant de pouvoir placer un autre bumper
 
     [Header("bumper Reset")]
-    public int bumperChargeOnGround; //Nombre de charges récupérées en touchant le sol
-    public int bumperChargeOnBumper; //Nombre de charges récupérées en touchant un Bumper
+    [SerializeField] private int _bumperChargeOnGround; //Nombre de charges récupérées en touchant le sol
+    [SerializeField] private int _bumperChargeOnBumper; //Nombre de charges récupérées en touchant un Bumper
 
     [Header("Debug")]
     public float bumperCharge;
-    [SerializeField] private float _timerCooldown;
-    [SerializeField] private bool _isUnlimited;
+    [SerializeField] private float _timerCooldown; //Cooldown effectif du bumper 
+    [SerializeField] private bool _isUnlimited; //Debug qui retire les limitations
 
     private PlayerMovements movementScript;
-    private bool reload=true;
+    private bool reload = true;
     private FMOD.Studio.EventInstance SonReload;
     private FMOD.Studio.EventInstance SonPlaced;
 
@@ -35,24 +35,24 @@ public class SpawnBumper : MonoBehaviour
 
         movementScript = GetComponent<PlayerMovements>();
 
-        bumperCharge = bumperMaxCharge;
-        _timerCooldown = bumperCooldown;
+        bumperCharge = _bumperMaxCharge;
+        _timerCooldown = _bumperCooldown;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) && (_timerCooldown <= 0 || _isUnlimited) && (bumperCharge > 0 || _isUnlimited || bumperMaxCharge == 0))
+        if (Input.GetMouseButtonDown(1) && (_timerCooldown <= 0 || _isUnlimited) && (bumperCharge > 0 || _isUnlimited || _bumperMaxCharge == 0))
         {
             Vector3 rayDirection = (_Target.transform.position - transform.position).normalized;
             RaycastHit hit;
 
-            if (Physics.Raycast(transform.position, rayDirection, out hit, 10))
+            if (Physics.Raycast(transform.position, rayDirection, out hit, 20))
             {
-                
-                Instantiate(_Bumper, hit.point, Camera.main.transform.rotation);
+                Vector3 hitnormal = hit.normal;
+                Vector3 hitpos = hit.point - hitnormal * 7;
+                Instantiate(_Bumper, hitpos, Quaternion.Euler(hitnormal));
                 SonPlaced.start();
                 reload = false;
-                //Debug.Log("special instantiate");
             }
 
             else
@@ -62,7 +62,7 @@ public class SpawnBumper : MonoBehaviour
                 reload = false;
             }
 
-            _timerCooldown = bumperCooldown;
+            _timerCooldown = _bumperCooldown;
 
             if (bumperCharge > 0)
             {
@@ -90,21 +90,18 @@ public class SpawnBumper : MonoBehaviour
     {
         if (Type == "Bouncer")
         {
-            bumperCharge = Mathf.Clamp(bumperCharge + bumperChargeOnBumper, 0, bumperMaxCharge);
-            //Debug.Log(bumperChargeOnBumper + " Bumper rechargés ! (Bumper)");
+            bumperCharge = Mathf.Clamp(bumperCharge + _bumperChargeOnBumper, 0, _bumperMaxCharge);
         }
 
         if (Type == "Ground")
         {
-            bumperCharge = Mathf.Clamp(bumperCharge + bumperChargeOnGround, 0, bumperMaxCharge);
-            if(!reload)
+            bumperCharge = Mathf.Clamp(bumperCharge + _bumperChargeOnGround, 0, _bumperMaxCharge);
+            if (!reload)
             {
                 SonReload.start();
                 reload = true;
                 SonPlaced.setParameterByName("Charge", bumperCharge);
-
             }
-            //Debug.Log(bumperChargeOnGround + " Bumper rechargés ! (Sol)");
         }
     }
 

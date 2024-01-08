@@ -121,9 +121,6 @@
 		<property name="timelockedOffset">
 			<value>0.28500000000000003</value>
 		</property>
-		<property name="volume">
-			<value>-7.5</value>
-		</property>
 		<relationship name="automators">
 			<destination>{019ca0fa-c9cf-4c8d-a783-b0175821304d}</destination>
 		</relationship>
@@ -264,7 +261,7 @@
 			<value>3</value>
 		</property>
 		<property name="value">
-			<value>-24</value>
+			<value>-11.499999</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{b69747ce-bd70-4bff-86af-8ef2e9e844d9}">
@@ -272,7 +269,7 @@
 			<value>2</value>
 		</property>
 		<property name="value">
-			<value>-21</value>
+			<value>-8.49999905</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{fb979a3c-3272-43d1-86f2-d5d396c9ec3e}">
@@ -280,7 +277,7 @@
 			<value>1</value>
 		</property>
 		<property name="value">
-			<value>-14</value>
+			<value>-1.49999619</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{7667f274-d504-42fc-9f2f-bfc23152b36d}">
@@ -288,7 +285,7 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>-7</value>
+			<value>5.50000191</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{4129247f-d43c-4069-97f1-84ec41de6393}">

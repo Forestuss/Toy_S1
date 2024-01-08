@@ -29,7 +29,7 @@ public class RingBehavior : MonoBehaviour
             if (Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) < _ringDragMaxAngle && Vector3.Dot(_dotDirection, other.attachedRigidbody.velocity.normalized) < _ringDragDotDirectionMax)
             {
                 _ringDirection = 0;
-                //gameObject.GetComponentInChildren<RingRotate>().SpeedRotate();
+                gameObject.GetComponentInChildren<RingRotate>().SpeedRotate();
                 other.gameObject.GetComponent<PlayerMovements>().MaxSpeedAugment();
                 Debug.Log("RIGHT anglezone/outzone and dotDirection n°1: " + Vector3.Dot(_dotDirection, other.attachedRigidbody.velocity.normalized));
             }
@@ -37,7 +37,7 @@ public class RingBehavior : MonoBehaviour
             else if (Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) > 180 - _ringDragMaxAngle && Vector3.Dot(_dotDirection, other.attachedRigidbody.velocity.normalized) < _ringDragDotDirectionMax)
             {
                 _ringDirection = 1;
-                //gameObject.GetComponentInChildren<RingRotate>().SpeedRotate();
+                gameObject.GetComponentInChildren<RingRotate>().SpeedRotate();
                 other.gameObject.GetComponent<PlayerMovements>().MaxSpeedAugment();
                 Debug.Log("RIGHT anglezone/outzone and dotDirection n°2: " + Vector3.Dot(_dotDirection, other.attachedRigidbody.velocity.normalized));
             }

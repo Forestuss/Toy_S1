@@ -128,7 +128,6 @@ public class PlayerMovements : MonoBehaviour
 
 
         float actualSpeed = _rb.velocity.magnitude;
-        Debug.Log(actualSpeed);
         speedDisp.SetText("speed : {0:1}", actualSpeed);
 
         _animator.SetFloat("Speed", actualSpeed);

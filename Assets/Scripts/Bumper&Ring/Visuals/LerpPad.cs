@@ -15,7 +15,7 @@ public class LerpPad : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.GetChild(0).localScale != new Vector3(1f, 1f, 1f))
+        if(transform.GetChild(0).localScale != new Vector3(0.2347889f, 0.2347889f, 0.2347889f))
         {
             transform.GetChild(0).localScale = Vector3.Lerp(transform.GetChild(0).localScale, new Vector3(1f, 1f, 1f), lerpSpeed);
         } 

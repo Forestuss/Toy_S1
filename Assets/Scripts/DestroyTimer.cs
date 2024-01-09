@@ -10,7 +10,7 @@ public class DestroyTimer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tempsAvantDestruct = tempsAvantDestruct * 60f;
+        tempsAvantDestruct = tempsAvantDestruct * 60f; // converti le temps reseigné en minutes
         tempsDestruct = tempsAvantDestruct;
     }
 

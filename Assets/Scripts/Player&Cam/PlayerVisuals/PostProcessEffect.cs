@@ -25,7 +25,6 @@ public class PostProcessEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         vitesse = (_rb.velocity.magnitude - 200);
         vitesse = Mathf.Clamp(vitesse, 0, 100);
 

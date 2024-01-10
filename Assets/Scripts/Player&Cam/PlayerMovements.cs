@@ -85,10 +85,10 @@ public class PlayerMovements : MonoBehaviour
             _jumping = true;
 
         // Récuperation des inputs pour le slide
-        if (Input.GetKey(KeyCode.C) && isGrounded)
-            _isSliding = true;
-        else
-            _isSliding = false;
+        //if (Input.GetKey(KeyCode.C) && isGrounded)
+        //    _isSliding = true;
+        //else
+        //    _isSliding = false;
     }
 
     void FixedUpdate()

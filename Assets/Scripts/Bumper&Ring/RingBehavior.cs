@@ -23,7 +23,6 @@ public class RingBehavior : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.attachedRigidbody.useGravity = false;
             Vector3 _dotDirection = (other.transform.position - transform.position).normalized;
 
             if (Vector3.Angle(this.transform.forward, other.attachedRigidbody.velocity.normalized) < _ringDragMaxAngle && Vector3.Dot(_dotDirection, other.attachedRigidbody.velocity.normalized) < _ringDragDotDirectionMax)
@@ -52,6 +51,7 @@ public class RingBehavior : MonoBehaviour
 
             if (!_isRingBoostLocked)
             {
+                other.attachedRigidbody.useGravity = false;
                 _dragVelocity = Mathf.Max(other.attachedRigidbody.velocity.magnitude, _ringMinSpeed);
                 _dragDirection = Vector3.Lerp(other.attachedRigidbody.velocity.normalized, _ringDragCenterDirection, _ringDragVelocityRatio);
                 other.attachedRigidbody.velocity = _dragDirection * _dragVelocity * _ringBoost;

@@ -97,7 +97,7 @@ Material:
     - _GlossyReflections: 1
     - _Max: 1
     - _Metallic: 0
-    - _Min: 0.3
+    - _Min: 0.2
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -113,7 +113,7 @@ Material:
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 0
-    - _shades: 0.15
+    - _shades: 0.07
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

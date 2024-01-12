@@ -38,9 +38,9 @@ public class PlayerMovements : MonoBehaviour
     [Header("Layers")]
     [SerializeField] private LayerMask _groundLayer;
 
-    [Space]
-    [Header("Speed Display")]
-    public TextMeshProUGUI speedDisp;
+    //[Space]
+    //[Header("Speed Display")]
+    //public TextMeshProUGUI speedDisp;
 
     [Space]
     [Header("Others")]
@@ -128,7 +128,7 @@ public class PlayerMovements : MonoBehaviour
 
 
         float actualSpeed = _rb.velocity.magnitude;
-        speedDisp.SetText("speed : {0:1}", actualSpeed);
+        //speedDisp.SetText("speed : {0:1}", actualSpeed);
 
         _animator.SetFloat("Speed", actualSpeed);
         _animator.SetBool("IsGrounded", isGrounded);

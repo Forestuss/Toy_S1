@@ -314,11 +314,17 @@
 		<property name="nameOfPropertyBeingModulated">
 			<value>volume</value>
 		</property>
-		<property name="releaseTime">
-			<value>2000</value>
+		<property name="initialValue">
+			<value>-9.5</value>
+		</property>
+		<property name="attackTime">
+			<value>480</value>
+		</property>
+		<property name="attackShape">
+			<value>-0.587577224</value>
 		</property>
 		<property name="releaseShape">
-			<value>0.271852642</value>
+			<value>0.112211019</value>
 		</property>
 		<property name="finalValue">
 			<value>-80</value>
@@ -369,11 +375,20 @@
 		<property name="nameOfPropertyBeingModulated">
 			<value>volume</value>
 		</property>
+		<property name="initialValue">
+			<value>-10</value>
+		</property>
+		<property name="attackTime">
+			<value>680</value>
+		</property>
+		<property name="attackShape">
+			<value>-0.728825033</value>
+		</property>
 		<property name="releaseTime">
-			<value>2600</value>
+			<value>1400</value>
 		</property>
 		<property name="releaseShape">
-			<value>0.728825152</value>
+			<value>0.379229963</value>
 		</property>
 		<property name="finalValue">
 			<value>-80</value>
@@ -404,14 +419,20 @@
 		<property name="nameOfPropertyBeingModulated">
 			<value>volume</value>
 		</property>
+		<property name="initialValue">
+			<value>-10</value>
+		</property>
+		<property name="attackTime">
+			<value>780</value>
+		</property>
 		<property name="attackShape">
 			<value>-1.00000048</value>
 		</property>
 		<property name="releaseTime">
-			<value>2600</value>
+			<value>980</value>
 		</property>
 		<property name="releaseShape">
-			<value>0.728825271</value>
+			<value>0.312405944</value>
 		</property>
 		<property name="finalValue">
 			<value>-80</value>

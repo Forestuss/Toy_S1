@@ -14,10 +14,6 @@ public class SonCollision : MonoBehaviour
     private float velocity;
     private PlayerMovements movementscript;
 
-    private bool isCollisionBefore;
-    private float compteur;
-    public float EspacementHit;
-
 
 
     // Start is called before the first frame update
@@ -27,7 +23,7 @@ public class SonCollision : MonoBehaviour
         SonUseRing = FMODUnity.RuntimeManager.CreateInstance("event:/RingBehave/UseRing");
         Music = FMODUnity.RuntimeManager.CreateInstance("event:/WorldBehave/Ambiance");
         PiedMarche = FMODUnity.RuntimeManager.CreateInstance("event:/PlayerBehave/MoveOnFloor");
-        isCollisionBefore = false;
+
         Music.start();
 
         rb = GetComponent<Rigidbody>();
@@ -38,19 +34,15 @@ public class SonCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Music.setParameterByName("Hauteur", transform.position.y-245f);
+        Music.setParameterByName("Hauteur", transform.position.y-250f);
         velocity = rb.velocity.magnitude;
-
-        //Reset du compteur de hit pour eviter la surcharge
-        compteur=Time.deltaTime;
-        if (compteur==EspacementHit)
-        {
-            isCollisionBefore = false;
-        }
+;
     }
-    private void Hit(Collision collision)
+
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        Debug.Log("collision");
+        SonHit.setParameterByName("F2V", velocity);
         if (collision.gameObject.CompareTag("Ground"))
         {
             if (movementscript.isGrounded)
@@ -63,7 +55,7 @@ public class SonCollision : MonoBehaviour
                 SonHit.setParameterByName("Type", 1);
                 SonHit.start();
             }
-
+            
         }
         else if (collision.gameObject.CompareTag("Wall"))
         {
@@ -78,20 +70,6 @@ public class SonCollision : MonoBehaviour
         else if (collision.gameObject.CompareTag("Bouncer"))
         {
             SonHit.setParameterByName("Type", 3);
-        }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (!isCollisionBefore)
-        {
-            isCollisionBefore = true;
-            SonHit.setParameterByName("F2V", velocity);
-            Hit(collision);
-        }
-        else
-        {
-            SonHit.setParameterByName("F2V",velocity/1.5f);
-            Hit(collision);
         }
     }
     private void OnCollisionStay(Collision collision)
@@ -116,10 +94,6 @@ public class SonCollision : MonoBehaviour
     }
     private void Footstep()
     {
-        if (movementscript.isGrounded && rb.velocity.magnitude<60)
-        {
-            PiedMarche.start();
-        }
-        
+        PiedMarche.start();
     }
 }

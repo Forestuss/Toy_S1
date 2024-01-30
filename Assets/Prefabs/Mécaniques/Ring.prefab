@@ -673,7 +673,7 @@ MonoBehaviour:
   _ringMinSpeed: 50
   _ringDragMaxAngle: 75
   _ringDragDotDirectionMax: 0.5
-  _ringThrowRadiusActivation: 5
+  _ringThrowRadiusActivation: 1
   _ringThrowVelocityRatio: 1
   _ringDragVelocityRatio: 1
 --- !u!114 &4252689217918279451
